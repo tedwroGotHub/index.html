@@ -139,7 +139,9 @@
    var pre_BCOurl = 'https://www.barchart.com/stocks/quotes/';
    var post_BCOurl = '/insider-trades';
    var intraday_col_width = 10;       // in percent
-   const isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
+   var isMobileDevice = false;
+   if (typeof screen.orientation !== 'undefined') { isMobileDevice = true; }  // Used to update links by prep_HTML
+//FIXME isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
 
    // Prep home page for use: check for wash sales, duplicates, etc
    prep_myChart();
