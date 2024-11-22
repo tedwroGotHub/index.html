@@ -13,18 +13,17 @@
       p.trd {color: silver; text-decoration:none; }
       td.trd {color: purple; font-family: monospace; }
       td.trdG {color: black; font-family: monospace; white-space: nowrap;}
-      td.td { height: 85px; } /* img.spy height divided by 3 */
+      td.td { height: 85px; }
       input.trd {color: red; font-variant: small-caps; border: 2px solid black; }
       input.trdG {color: green; font-variant: small-caps; border: 2px solid green; }
       input.trdO {color: red; font-variant: small-caps; border: 2px solid orangered; }
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
-      img.spy { width: 702px; height: 473px; } /* td.td times 3 */
-      img.map { width: 1405px; height: 520px; }
+      img.spy { width: 602px; height: 430px; }
+      img.map { width: 1205px; height: 447px; }
       img.router { width: 100px; height: 90px; }
-      iframe.ticker { width: 1405px; height: 360px; }
-      embed.meteo { width:1405px !important; }
-      table.mode {background-color: #2C001E; }   /* dark mode #2C001E  light mode silver */
+      iframe.ticker { width: 1205px; height: 370px; }
+      table.mode {background-color: #silver; }   /* dark mode #2C001E  light mode silver */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
@@ -38,27 +37,6 @@
       .dropdown-content a {color: white; padding: 12px 16px; text-decoration: none; display: block; }
       .dropdown-content a:hover {background-color: red; color: white; }
       .dropdown:hover .dropdown-content {display: block; }
-
-      /* For Meteoblue iframe used https://www.w3docs.com/snippets/css/how-to-scale-the-content-of-iframe-element.html */
-      #scaled-frame {
-        width: 1000px;
-        height: 2000px;
-        border: 0px;
-      }
-      #scaled-frame {
-        zoom: 1;
-        -moz-transform: scale(1.15);
-        -moz-transform-origin: 0 0;
-        -o-transform: scale(1.15);
-        -o-transform-origin: 0 0;
-        -webkit-transform: scale(1.15);
-        -webkit-transform-origin: 0 0;
-      }
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
-        #scaled-frame {
-          zoom: 1;
-        }
-      }
 
    </STYLE></HEAD><BODY BGCOLOR="#2C001E" onload="prep_HTML()">
 
@@ -2402,9 +2380,7 @@
             <tr>
                <td align="center" colspan="6" bgcolor="#2C001E">
                   <a href="https://www.meteoblue.com/en/weather/today/royal-oak_united-states_5007804" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
-                  <div id="wrap">
-                     <iframe id="scaled-frame" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1050px; height: 550px; "><!-- Note used CSS to upsize Meteoblue iframe //--></iframe>
-                  </div>
+                  <iframe src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1050px; height: 550px; "></iframe>
                </td>
             </tr>
          </table>
