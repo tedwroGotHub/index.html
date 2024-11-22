@@ -48,18 +48,19 @@
    ticker[i++] = 'pmm';   rHigh_PMM   = 6.60;   //  9/12/2022 and $5.10 was absolute LOW
    ticker[i++] = 'fulc';  rHigh_FULC  =  33;    //  9/21/2021
    ticker[i++] = 'upst';  rHigh_UPST  = 401;    // 10/20/2021
-   ticker[i++] = 'SPY';   rHigh_SPY   = 411;    // 11/01
-   ticker[i++] = 'DIA';   rHigh_DIA   = 322;    // 11/01
-   ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 11/01
-   ticker[i++] = '$vix';  rHigh_$VIX  = 13.00;  // 11/01
+   ticker[i++] = 'SPY';   rHigh_SPY   = 411;    // 11/22
+   ticker[i++] = 'DIA';   rHigh_DIA   = 322;    // 11/22
+   ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 11/22
+   ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 11/22
+// FIXME ticker[i++] = '$vix';  rHigh_$VIX  = 13.00;  // 11/22 stockcharts.com requires $vix not just vix
    //   W a t c h l i s t   S t a r t s   H e r e
-   ticker[i++] = 'ADM';   rHigh_ADM   =  30;    // 11/01
-   ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 11/01
-   ticker[i++] = 'INTC';  rHigh_INTC  =  20;    // 11/01
-   ticker[i++] = 'LTH';   rHigh_LTH   =  12;    // 11/01
-   ticker[i++] = 'MRO';   rHigh_MRO   =  22;    // 11/01
-   ticker[i++] = 'NKE';   rHigh_NKE   =  53;    // 11/01
-   ticker[i++] = 'UPS';   rHigh_UPS   =  80;    // 11/01
+   ticker[i++] = 'ADM';   rHigh_ADM   =  30;    // 11/22
+   ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 11/22
+   ticker[i++] = 'INTC';  rHigh_INTC  =  20;    // 11/22
+   ticker[i++] = 'LTH';   rHigh_LTH   =  12;    // 11/22
+   ticker[i++] = 'MRO';   rHigh_MRO   =  22;    // 11/22
+   ticker[i++] = 'NKE';   rHigh_NKE   =  53;    // 11/22
+   ticker[i++] = 'UPS';   rHigh_UPS   =  80;    // 11/22
    //   E n d   o f   S y m b o l s
    //
    //   U S E R   S E T T I N G S   F O R   A N A L Y S I S
@@ -83,32 +84,49 @@
    var net_cumm_gain = new Array();
    var trend_dp = new Array(max_gain,800,700,600,500,400,300,250,200,150,100,50,0,-50,-100,-150,-200,-250,-300,-400,-500,-600,min_gain);
    var symbol = ''; var tr_count=1; var i; var incl_Charts = TRUE;
-   var base_url = 'https://stockcharts.com/c-sc/sc?s=';
-   var optin_url = '&i=t' ;
-   var big_size_chart = ' width="930" height="900"';
-   var small_size_chart = ' height="530" width="700"';
+   // Template for Charts https://bigcharts.marketwatch.com/advchart/frames/frames.asp?show=&insttype=Fund&symb=pmm&time=6&startdate=1%2F4%2F1999&enddate=11%2F20%2F2024&freq=1&compidx=aaaaa%3A0&comptemptext=&comp=none&ma=3&maval=50%2C200&uf=0&lf=1&lf2=0&lf3=0&type=4&style=320&size=3&x=59&y=9&timeFrameToggle=false&compareToToggle=false&indicatorsToggle=false&chartStyleToggle=false&state=11
+   var base_url = 'https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=';
+   var option_url = '&uf=0&type=4&style=320' ;
+   var big_size_chart = '&size=4';
+   var small_size_chart = '&size=3';
    var default_size_url = big_size_chart;
-   var r_t_zoomed_url = ' height="757" width="1000"';
+   var analysis_url = '&ma=3&maval=50,200&mocktick=1';
+
+// FIXME retirement of stockcharts.com
+//   var base_url = 'https://stockcharts.com/c-sc/sc?s=';
+//   var option_url = '&i=t' ;
+//   var big_size_chart = ' width="930" height="900"';
+//   var small_size_chart = ' height="530" width="700"';
+//   var chart_period = '&p=D' ;
+//   var r_t_zoomed_url = ' height="757" width="1000"';
+//   var url_2d = '&yr=0&mn=0&dy=2' ;
+//   var url_5d = '&yr=0&mn=0&dy=5' ;
+//   var url_10d = '&yr=0&mn=0&dy=10' ;
+//   var url_1mo = '&yr=0&mn=1&dy=0' ;
+//   var url_2mo = '&yr=0&mn=2&dy=0' ;
+//   var url_3mo = '&yr=0&mn=3&dy=0' ;
+//   var url_6mo = '&yr=0&mn=6&dy=0' ;
+//   var url_1yr = '&yr=1&mn=0&dy=0' ;
+//   var url_2yr = '&yr=2&mn=0&dy=0' ;
+//   var url_5yr = '&yr=5&mn=0&dy=0' ;
+//   var url_10yr = '&yr=10&mn=0&dy=0' ;
+//   var url_20yr = '&yr=20&mn=0&dy=0' ;
+
    var chart_zoom = 1.5;               // zoom scale for show charts page only
-   var chart_period = '&p=D' ;
-// FIXME
-// MOST  "https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=" + symbol + "&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1"
-// iDAY  "https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=" + symbol + "&uf=0&type=4&size=4&style=320&freq=7&time=1&ma=3&maval=50,200&mocktick=1"
-// 1YRWK "https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=" + symbol + "&uf=0&type=4&size=4&style=320&freq=2&time=8&ma=3&maval=50,200&mocktick=1"
-// 10YRMo"https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=" + symbol + "&uf=0&type=4&size=4&style=320&freq=3&time=13&ma=3&maval=50,200&mocktick=1"
-// ALLQTR"https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=" + symbol + "&uf=0&type=4&size=4&style=320&freq=4&time=20&ma=3&maval=50,200&mocktick=1"
-   var url_2d = '&yr=0&mn=0&dy=2' ;
-   var url_5d = '&yr=0&mn=0&dy=5' ;
-   var url_10d = '&yr=0&mn=0&dy=10' ;
-   var url_1mo = '&yr=0&mn=1&dy=0' ;
-   var url_2mo = '&yr=0&mn=2&dy=0' ;
-   var url_3mo = '&yr=0&mn=3&dy=0' ;
-   var url_6mo = '&yr=0&mn=6&dy=0' ;
-   var url_1yr = '&yr=1&mn=0&dy=0' ;
-   var url_2yr = '&yr=2&mn=0&dy=0' ;
-   var url_5yr = '&yr=5&mn=0&dy=0' ;
-   var url_10yr = '&yr=10&mn=0&dy=0' ;
-   var url_20yr = '&yr=20&mn=0&dy=0' ;
+   var url_1d = '&freq=7&time=1' ;
+   var url_2d = '&freq=7&time=2' ;
+   var url_5d = '&freq=8&time=3' ;
+   var url_10d = '&freq=8&time=18' ;
+   var url_1mo = '&freq=1&time=4' ;
+   var url_2mo = '&freq=1&time=5' ;
+   var url_3mo = '&freq=1&time=6' ;
+   var url_6mo = '&freq=1&time=7' ;
+   var url_1yr = '&freq=2&time=8' ;
+   var url_2yr = '&freq=2&time=9' ;
+   var url_5yr = '&freq=3&time=12' ;
+   var url_10yr = '&freq=3&time=13' ;
+   var url_20yr = '&freq=4&time=20' ;
+
    var date_url = '';
    var pre_hurl = 'https://finance.yahoo.com/quote/';
    var post_hurl = '/history?p='
@@ -116,7 +134,7 @@
    var post_FVIZurl = '';
    var pre_BCOurl = 'https://www.barchart.com/stocks/quotes/';
    var post_BCOurl = '/insider-trades';
-   var intraday_col_width = 10;       // in percent
+   var entryValue_col_width = 10;       // in percent
    var isMobileDevice = false;
    if (typeof screen.orientation !== 'undefined') { isMobileDevice = true; }  // Used to update links by prep_HTML if on mobile
 
@@ -1253,41 +1271,49 @@
       //
       if( trading_days_since_entry > chart_5yr_days ) {
          // It's been more trading days than 5yr chart can show
-         url = base_url + symbol + chart_period + url_10yr + optin_url + r_t_zoomed_url;
+// FIXME url = base_url + symbol + chart_period + url_10yr + option_url + r_t_zoomed_url;
+         url = base_url + symbol + option_url + big_size_chart + url_10yr + analysis_url;
       }
       else {
          if( trading_days_since_entry > chart_2yr_days ) {
             // It's been more trading days than 2yr chart can show
-            url = base_url + symbol + chart_period + url_5yr + optin_url + r_t_zoomed_url;
+// FIXME    url = base_url + symbol + chart_period + url_5yr + option_url + r_t_zoomed_url;
+            url = base_url + symbol + option_url + big_size_chart + url_5yr + analysis_url;
          }
          else {
             if( trading_days_since_entry > chart_1yr_days ) {
                // It's been more trading days than 1yr chart can show
-               url = base_url + symbol + chart_period + url_2yr + optin_url + r_t_zoomed_url;
+// FIXME       url = base_url + symbol + chart_period + url_2yr + option_url + r_t_zoomed_url;
+               url = base_url + symbol + option_url + big_size_chart + url_2yr + analysis_url;
             }
             else {
                if( trading_days_since_entry > chart_6mo_days ) {
                   // It's been more trading days than 6mo chart can show
-                  url = base_url + symbol + chart_period + url_1yr + optin_url + r_t_zoomed_url;
+// FIXME          url = base_url + symbol + chart_period + url_1yr + option_url + r_t_zoomed_url;
+                  url = base_url + symbol + option_url + big_size_chart + url_1yr + analysis_url;
                }
                else {
                   if( trading_days_since_entry > chart_3mo_days ) {
                      // It's been more trading days than 3mo chart can show
-                     url = base_url + symbol + chart_period + url_6mo + optin_url + r_t_zoomed_url;
+// FIXME             url = base_url + symbol + chart_period + url_6mo + option_url + r_t_zoomed_url;
+                     url = base_url + symbol + option_url + big_size_chart + url_6mo + analysis_url;
                   }
                   else {
                      if( trading_days_since_entry > chart_2mo_days ){
                         // It's been more trading days than 2mo chart can show
-                        url = base_url + symbol + chart_period + url_3mo + optin_url + r_t_zoomed_url;
+// FIXME                url = base_url + symbol + chart_period + url_3mo + option_url + r_t_zoomed_url;
+                        url = base_url + symbol + option_url + big_size_chart + url_3mo + analysis_url;
                      }
                      else {
                         if( trading_days_since_entry > chart_1mo_days ){
                            // It's been more trading days than 1mo chart can show
-                           url = base_url + symbol + chart_period + url_2mo + optin_url + r_t_zoomed_url;
+// FIXME                   url = base_url + symbol + chart_period + url_2mo + option_url + r_t_zoomed_url;
+                           url = base_url + symbol + option_url + big_size_chart + url_2mo + analysis_url;
                         }
                         else {
                            // Use 1mo chart for any trades less than 1mo chart tradings ago
-                           url = base_url + symbol + chart_period + url_1mo + optin_url + r_t_zoomed_url;
+// FIXME                   url = base_url + symbol + chart_period + url_1mo + option_url + r_t_zoomed_url;
+                           url = base_url + symbol + option_url + big_size_chart + url_1mo + analysis_url;
                         }
                      }
                   }
@@ -1464,14 +1490,24 @@
 
       // Determine what time period selected & set flags
       //
-      // Determine if we should include intraday chart
-      if(day_form.intraday.checked == TRUE) {
+      // Determine if we should include entryValue for Entry
+      if(day_form.entryValue.checked == TRUE) {
          // Set flag
-         include_intraday = TRUE;
+         include_entryValue = TRUE;
          somedays_selected = TRUE;
       }
       else {
-         include_intraday = FALSE;
+         include_entryValue = FALSE;
+      }
+
+      // Determine if we should include 1 day chart
+      if(day_form.Day1.checked == TRUE) {
+         // Set flag
+         include_1day = TRUE;
+         somedays_selected = TRUE;
+      }
+      else {
+         include_1day = FALSE;
       }
 
       // Determine if we should include 2 day chart
@@ -1683,96 +1719,115 @@
          sc.write('<tr>');
          sc.write('<td class="trd" bgcolor="#1F1F1F">' + symbol + '</td>');
 
+         // Display 1 day Intraday chart if option was selected
+         if(include_1day == TRUE){
+            url = base_url + symbol + option_url + default_size_url + url_1d + analysis_url;
+            // Write URL for 1 day chart
+            sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
+         }
+
          // Display 2 day chart if option was selected
          if(include_2day == TRUE){
-            url = base_url + symbol + chart_period + url_2d + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_2d + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_2d + analysis_url;
             // Write URL for 2 day chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 5 day chart if option was selected
          if(include_5day == TRUE){
-            url = base_url + symbol + chart_period + url_5d + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_5d + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_5d + analysis_url;
             // Write URL for 5 day chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 10 day chart if option was selected
          if(include_10day == TRUE){
-            url = base_url + symbol + chart_period + url_10d + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_10d + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_10d + analysis_url;
             // Write URL for 10 day chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 1 month chart if option was selected
          if(include_1mo == TRUE){
-            url = base_url + symbol + chart_period + url_1mo + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_1mo + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_1mo + analysis_url;
             // Write URL for 1 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 2 month chart if option was selected
          if(include_2mo == TRUE){
-            url = base_url + symbol + chart_period + url_2mo + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_2mo + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_2mo + analysis_url;
             // Write URL for 2 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 3 month chart if option was selected
          if(include_3mo == TRUE){
-            url = base_url + symbol + chart_period + url_3mo + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_3mo + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_3mo + analysis_url;
             // Write URL for 3 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 6 month chart if option was selected
          if(include_6mo == TRUE){
-            url = base_url + symbol + chart_period + url_6mo + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_6mo + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_6mo + analysis_url;
             // Write URL for 6 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 1 Year chart if option was selected
          if(include_1Year == TRUE){
-            url = base_url + symbol + chart_period + url_1yr + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_1yr + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_1yr + analysis_url;
             // Write URL for 1 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 2 Year chart if option was selected
          if(include_2Year == TRUE){
-            url = base_url + symbol + chart_period + url_2yr + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_2yr + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_2yr + analysis_url;
             // Write URL for 2 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 5 Year chart if option was selected
          if(include_5Year == TRUE){
-            url = base_url + symbol + chart_period + url_5yr + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_5yr + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_5yr + analysis_url;
             // Write URL for 5 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 10 Year chart if option was selected
          if(include_10Year == TRUE){
-            url = base_url + symbol + chart_period + url_10yr + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_10yr + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_10yr + analysis_url;
             // Write URL for 10 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
          // Display 20 Year chart if option was selected
          if(include_20Year == TRUE){
-            url = base_url + symbol + chart_period + url_20yr + optin_url + default_size_url;
+// FIXME    url = base_url + symbol + chart_period + url_20yr + option_url + default_size_url;
+            url = base_url + symbol + option_url + default_size_url + url_20yr + analysis_url;
             // Write URL for 20 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
          }
 
-         // Display intraday chart if option was selected
-         if(include_intraday == TRUE){
+         // Display entryValue Entry value if option was selected
+         if(include_entryValue == TRUE){
             // Display pullback entry price for this symbol
             eval('var rHigh = rHigh_' + symbol.toUpperCase() + ';'); // Get the recent high for this symbol, force symbol to uppercase for rHigh value
             watch_tgt = rHigh * ePt;                                 // Calculate our entry pullback target
-            sc.write('<td class="trd" width="' + intraday_col_width + '%">$' + round(watch_tgt,2) + '</td>');
+            sc.write('<td class="trd" width="' + entryValue_col_width + '%">$' + round(watch_tgt,2) + '</td>');
          }
 
          // Always close this row, since we displayed some charts
@@ -1812,19 +1867,20 @@
    }
 
 
-   // Function to set chart period as Daily or Weekly
-   //
-   function set_chart_period() {
-      // Set chart period based on user input
-      if(sel_form.Period.checked == TRUE){
-         // use daily period for all charts
-         chart_period = '&p=D' ;
-      }
-      else {
-         // use weekly period for all charts
-         chart_period = '&p=W' ;
-      }
-   }
+// FIXME remove this entire function
+//   // Function to set chart period as Daily or Weekly
+//   //
+//   function set_chart_period() {
+//      // Set chart period based on user input
+//      if(sel_form.Period.checked == TRUE){
+//         // use daily period for all charts
+//         chart_period = '&p=D' ;
+//      }
+//      else {
+//         // use weekly period for all charts
+//         chart_period = '&p=W' ;
+//      }
+//   }
 
 
    // Function to include or exclude charts, only used in Open and Closed Trade Reviews
@@ -1865,7 +1921,7 @@
       // Set the default chart time periods for review
       element = "sel_form.bigCharts.checked = TRUE;"; eval(element);
       set_bigCharts();
-      element = "day_form.intraday.checked = TRUE;"; eval(element);
+      element = "day_form.entryValue.checked = TRUE;"; eval(element);
       //element = "day_form.Day5.checked = TRUE;"; eval(element);
       element = "day_form.Mo1.checked = TRUE;"; eval(element);
       //element = "day_form.Mo2.checked = TRUE;"; eval(element);
@@ -1887,7 +1943,7 @@
       day_form.reset();
       //
       // Select chart timeframes desired to look at with open trades
-      //element = "day_form.intraday.checked = TRUE;"; eval(element);
+      //element = "day_form.entryValue.checked = TRUE;"; eval(element);
       //element = "day_form.Day10.checked = TRUE;"; eval(element);
       //
       // Initialize capital stats, only call once during review_open_trades
@@ -2170,7 +2226,7 @@
                   <input class="trd" type="checkbox" name="SPY" value='SPY'>SPY
                   <input class="trd" type="checkbox" name="DIA" value='DIA'>DIA
                   <input class="trd" type="checkbox" name="$tran" value='$tran'>$tran
-                  <input class="trd" type="checkbox" name="$vix" value='$vix'>$vix
+                  <input class="trd" type="checkbox" name="vix" value='vix'>$vix
                   <input class="trd" type="checkbox" name="ADM" value='ADM'>ADM
                   <input class="trd" type="checkbox" name="HAL" value='HAL'>HAL
                   <input class="trd" type="checkbox" name="INTC" value='INTC'>INTC
@@ -2197,7 +2253,7 @@
                   <input class="trd" type="checkbox" name="NoEntry" checked="TRUE">excludeNE
                   <input class="trd" type="checkbox" name="NoPaper" checked="TRUE">excludePT
                   <input class="trd" type="checkbox" name="OnPaper" value="0">includePT
-                  <input class="trd" type="checkbox" name="Period" value="Period" checked="TRUE" onClick="set_chart_period()">Daily
+<!-- FIXME        <input class="trd" type="checkbox" name="Period" value="Period" checked="TRUE" onClick="set_chart_period()">Daily //-->
                   <input class="trd" type="checkbox" name="inclCharts" value="inclCharts" checked="TRUE" onClick="set_inclCharts()">inclCharts
                   <input class="trd" type="checkbox" name="bigCharts" checked="TRUE" onClick="set_bigCharts()">BigCharts
                </td>
@@ -2209,7 +2265,8 @@
                   <form name="day_form">
                      <tr>
                         <td class="trdG">
-                           <input type="checkbox" name="intraday" value="intraday">Entry
+                           <input type="checkbox" name="entryValue" value="entryValue">Entry
+                           <input type="checkbox" name="Day1" value="Day1">1day
                            <input type="checkbox" name="Day2" value="Day2">2day
                            <input type="checkbox" name="Day5" value="Day5">5day
                            <input type="checkbox" name="Day10" value="Day10">10day
@@ -2345,6 +2402,7 @@
                      <a class="trd" href="https://ssyoutube.com/en36/youtube-video-downloader" target="_blank">VideoDL</a>
                      <a class="trd" href="https://www.savethevideo.com/" target="_blank">SaveVideo</a>
                      <hr class="indigo">
+                     <a class="trd" href="https://github.com/tedwroGotHub/index.html" target="_blank">GitHub</a>
                      <a class="trd" href="https://script.google.com/home/projects/1DpFjQ4HIeSsbDNUm8wEmCpg4RFQjPo1E7JESWL7on6mzR__aj3h62WNI/edit" target="_blank">StockWatcher</a>
                      <a class="trd" href="https://news.stocktradersdaily.com/news_release/9/%28PMM%29+Investment+Analysis+and+Advice_062324113602.html" target="_blank">PMM</a>
                      <a class="trd" href="https://tradingeconomics.com/indu:ind" target="_blank">T/E</a>
@@ -2371,8 +2429,8 @@
                <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
                <td align="center" bgcolor="#2C001E" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
             <tr>
-<!-- FIXME               <td align="center" colspan="6" rowspan="5" bgcolor="#2C001E"><a class="trd" href="https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" onerror="this.style.display='none'" alt=""></a></td>//-->
-               <td align="center" colspan="6" bgcolor="#2C001E"><a class="trd" href="https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
+<!-- FIXME     <td align="center" colspan="6" rowspan="5" bgcolor="#2C001E"><a class="trd" href="https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" onerror="this.style.display='none'" alt=""></a></td>//-->
+               <td align="center" colspan="6" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
             </tr>
             <tr>
                <td align="center" colspan="6" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&single=true&chrome=false"></iframe></td>
