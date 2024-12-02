@@ -2597,6 +2597,8 @@ unzip -P  '' -d /tmp/                     # UNZIP ENTIRE ARCHIVE
 cp ~/Music/*.mp3 /media/usb/Internal\ shared\ storage/Download/
 cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
 ~/Music/tagUpdater.sh > 2review.txt 2>&1
+grep -Rnw '/home/rugby' -e 'checkmy.pictures'
+~/Music/tagUpdater.sh > 2review.txt 2>&1
 
 sudo dpkg-reconfigure keyboard-configuration: enter 5 times and then enable killing Xorg with Ctrl+Alt+BkSpc
 sudo nano /etc/systemd/system.conf
@@ -2718,6 +2720,19 @@ cd ~/Downloads; tar xjf firefox-*.tar.bz2
 sudo mv firefox /opt
 sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
 wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+chrome://geckoview/content/config.xhtml
+
+
+S C R C P Y :
+https://github.com/Genymobile/scrcpy/releases/tag/v3.0
+https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md
+sudo apt install ffmpeg libsdl2-2.0-0 adb wget gcc git pkg-config meson ninja-build libsdl2-dev libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev libswresample-dev libusb-1.0-0 libusb-1.0-0-dev
+git clone https://github.com/Genymobile/scrcpy
+cd scrcpy
+./install_release.sh
+For New Releases,
+git pull
+./install_release.sh
 
 //-->
 </BODY>
