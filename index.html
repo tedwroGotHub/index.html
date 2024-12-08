@@ -2327,6 +2327,7 @@
                      <form action="https://www.google.com/search" target="_blank" method="GET"><input class="search" type="search" maxlength="100" name="q" size="25" placeholder="Search"></form>
                      <a class="trd" href="https://messages.google.com/web/authentication" target="_blank">Messages
                      <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost
+                     <a class="trd" href="https://www.redpocket.com/login" target="_blank">RedPocket</a>
                      <a class="trd" href="https://outage.dteenergy.com/" target="_blank">Outage</a>
                      <a class="trd" href="https://www.consumersenergy.com/login" target="_blank">Consumers</a>
                      <a class="trd" href="https://arborpointe.myvetstoreonline.pharmacy/" target="_blank">EddieRx</a>
@@ -2357,7 +2358,6 @@
                      <hr class="red">
 <!-- FIXME
                      <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
-                     <a class="trd" href="https://www.redpocket.com/login" target="_blank">RedPocket</a>
                      <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
                      <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
                      <a class="trd" href="https://my.patientfusion.com/portal/overview/" target="_blank">PatientPortal</a>
@@ -2723,16 +2723,6 @@ chrome://geckoview/content/config.xhtml
 about:config
 layout.forms.input-type-search.enabled set TRUE
 
-S C R C P Y :
-https://github.com/Genymobile/scrcpy/releases/tag/v3.0
-https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md
-sudo apt install ffmpeg libsdl2-2.0-0 adb wget gcc git pkg-config meson ninja-build libsdl2-dev libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev libswresample-dev libusb-1.0-0 libusb-1.0-0-dev
-git clone https://github.com/Genymobile/scrcpy
-cd scrcpy
-./install_release.sh
-For New Releases,
-git pull
-./install_release.sh
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XUBUNTU 24.04.1 INSTALL
@@ -2745,11 +2735,14 @@ Synaptic..preferences:
 apt-cache depends --important p7zip-full 
 grep -Rnw '/home/rugby/' -e 'Blackbox'
 
+
 I N S T A L L :
-sudo apt install bzip2 xtrlock 
+sudo apt install bzip2 xtrlock eyed3 libid3-tools 
+
 
 P U R G E :
 sudo apt purge snapd apparmor bluez 
+
 
 C O N F I G :
 sudo apt update; sudo apt upgrade; sudo apt autoremove;
@@ -2771,8 +2764,12 @@ xfce4-terminal prefs:
 - Uncheck display menubar
 - Default Geometry 100x30
 - Ubuntu Mono Medium font, size 11
+Set default application to Nano text editor where req'd:
+xfce4-terminal -x nano %f
+Create desktop Launchers with:
+xfce4-terminal -T "myChart" --maximize -x nano index.html
 sudo nano /etc/default/grub
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash fbcon=rotate:3"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet fbcon=rotate:3"
 GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
 sudo update-grub
 
@@ -2784,9 +2781,65 @@ cd ~/Downloads; tar xjf firefox-*.tar.bz2
 sudo mv firefox /opt
 sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
 sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
-chrome://geckoview/content/config.xhtml
-about:config
-layout.forms.input-type-search.enabled set TRUE
+Settings:
+- Dark
+- Fonts, Ubuntu, size 14 for all, override site settings for font choices
+- Homepage  file:///home/rugby/index.html
+- Search    uncheck Show Search Suggesttions, uncheck Shortcuts in Address bar (Facebook, Twitter), thrift Search Engines
+- Strict Privacy
+- History   use custom settings for History, clear history when Firefox closes
+- Uncheck everything in "Firefox Data Collection and Use"
+- Disable "Firefox Data Collection and Use", incl Studies
+- Completely disable "DNS over HTTPS", use my default DNS resolver
+- Enable Firefox Sync
+Import Passwords
+Theme: install Dreamer-Balanced purple theme
+Customize New Tab page:
+- disable Shortcuts
+- Add Home button
+- Remove bonus space & Pocket
+Install uBlock Origin blocker
+Customize about:config:
+- layout.forms.input-type-search.enabled set TRUE
+For MOBILE only:
+- dom.disable_open_during_load  to FALSE
+- chrome://geckoview/content/config.xhtml
+
+
+S C R C P Y :
+https://github.com/Genymobile/scrcpy/releases/tag/v3.0
+https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md
+https://github.com/Genymobile/scrcpy/blob/master/doc/shortcuts.md
+sudo apt install ffmpeg libsdl2-2.0-0 adb wget \
+                 gcc git pkg-config meson ninja-build libsdl2-dev \
+                 libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev \
+                 libswresample-dev libusb-1.0-0 libusb-1.0-0-dev
+  which installed all this:
+  adb android-libbase android-libboringssl android-libcutils android-liblog android-libziparchive binutils binutils-common
+  binutils-x86-64-linux-gnu ffmpeg gcc gcc-13 gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu gir1.2-ibus-1.0 git git-man libasan8
+  libasound2-dev libass9 libavcodec-dev libavdevice-dev libavdevice60 libavfilter-dev libavfilter9 libavformat-dev libavformat60
+  libavutil-dev libbinutils libblas3 libblkid-dev libbluray2 libbs2b0 libcc1-0 libcdio-cdda2t64 libcdio-paranoia2t64 libcdio19t64
+  libchromaprint1 libcjson1 libctf-nobfd0 libctf0 libdbus-1-dev libdc1394-25 libdecor-0-0 libdecor-0-dev libdrm-dev libegl-dev
+  liberror-perl libffi-dev libfftw3-double3 libflite1 libgbm-dev libgcc-13-dev libgfortran5 libgirepository-2.0-0 libgl-dev
+  libgles-dev libgles1 libglib2.0-dev libglib2.0-dev-bin libglx-dev libgme0 libgprofng0 libhwasan0 libibus-1.0-5 libibus-1.0-dev
+  libice-dev libitm1 liblapack3 liblilv-0-0 liblsan0 libmbedcrypto7t64 libmount-dev libmysofa1 libnorm1t64 libopenal-data
+  libopenal1 libopenmpt0t64 libpciaccess-dev libpcre2-16-0 libpcre2-32-0 libpcre2-dev libpcre2-posix3 libpgm-5.3-0t64 libpkgconf3
+  libplacebo338 libpocketsphinx3 libpostproc-dev libpostproc57 libprotobuf32t64 libpthread-stubs0-dev libpulse-dev libquadmath0
+  librabbitmq4 librist4 librubberband2 libsamplerate0-dev libsdl2-2.0-0 libsdl2-dev libselinux1-dev libsepol-dev libserd-0-0
+  libsframe1 libsm-dev libsndio-dev libsndio7.0 libsodium23 libsord-0-0 libsphinxbase3t64 libsratom-0-0 libsrt1.5-gnutls
+  libssh-gcrypt-4 libswresample-dev libswscale-dev libswscale7 libtsan2 libubsan1 libudev-dev libudfread0 libunibreak5
+  libusb-1.0-0-dev libvidstab1.1 libwayland-bin libwayland-dev libx11-dev libxau-dev libxcb1-dev libxcursor-dev libxdmcp-dev
+  libxext-dev libxfixes-dev libxi-dev libxinerama-dev libxkbcommon-dev libxrandr-dev libxrender-dev libxss-dev libxt-dev libxv-dev
+  libxxf86vm-dev libzimg2 libzix-0-0 libzmq5 meson ninja-build pkg-config pkgconf pkgconf-bin python3-setuptools uuid-dev
+  x11proto-dev xorg-sgml-doctools xtrans-dev zlib1g-dev
+
+git clone https://github.com/Genymobile/scrcpy
+cd scrcpy
+./install_release.sh
+scrcpy --push-target=/sdcard/Documents/
+For New Releases,
+git pull
+./install_release.sh
 
 //-->
 </BODY>
