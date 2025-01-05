@@ -19,7 +19,7 @@
       input.trdO {color: red; font-variant: small-caps; border: 2px solid orangered; }
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
-      img.spy { width: 615px; height: 400px; }
+      img.spy { width: 610px; height: 400px; }
       img.map { width: 1230px; height: 400px; }
       img.router { width: 100px; height: 80px; }
       iframe.ticker { width: 1230px; height: 310px; }
@@ -2543,6 +2543,8 @@ sudo nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
 ExecStart=
 ExecStart=-/sbin/agetty --noclear --skip-login --login-options=rugby %I 38400 linux
 sudo systemctl enable getty@tty1.service
+sudo systemctl set-default multi-user.target
+confirm by using  systemctl get-default 
 nano ~/.profile
 #Startx Automatically
 # FIXME if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -2589,7 +2591,7 @@ For MOBILE only:
 - Settings..Passwords..check Autofill in other apps to stop using Google Password Manager
 - Developer Options:
 + Stay Awake when charging
-+ Default USB Config: file xfer
+FIXME + Default USB Config: file xfer
 
 
 B A S H R C :
@@ -2599,7 +2601,7 @@ alias c='printf "\033c"'
 alias h='history'
 alias hi='nano ~/.bash_history; c'
 alias ho='sudo nano /etc/hosts; c'
-alias mp='jmtpfs ~/mtp/'
+#FIXME alias mp='jmtpfs ~/mtp/'
 alias um='sudo umount /media/usb/'
 alias xi='nano .xinitrc; c'
 alias td='nano ~/ToDo.txt; c'
