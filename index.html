@@ -19,10 +19,10 @@
       input.trdO {color: red; font-variant: small-caps; border: 2px solid orangered; }
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
-      img.spy { width: 528px; height: 400px; }
-      img.map { width: 1058px; height: 400px; }
+      img.spy { width: 615px; height: 400px; }
+      img.map { width: 1230px; height: 400px; }
       img.router { width: 100px; height: 80px; }
-      iframe.ticker { width: 1058px; height: 310px; }
+      iframe.ticker { width: 1230px; height: 310px; }
       table.mode {background-color: #silver; }   /* dark mode #2C001E  light mode silver */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
@@ -2355,6 +2355,7 @@
                      <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
                      <a class="trd" href="https://www.gayporno.fm/fetishmen-asher-devin-takes-dildo_2880088.html" target="_blank">GayPorno</a>
                      <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
+                     <a class="trd" href="https://www.tube8.com/gay/porn-video/81315531/" target="_blank">Tube8</a>
                      <hr class="green">
                      <a class="trd" href="https://imginn.com" target="_blank">insta</a>
                      <hr class="red">
@@ -2485,7 +2486,7 @@ android.com/find
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XUBUNTU 24.04.1 INSTALL
    Bios Version JYGLKCPC.86A.0067.2021.1111.1431   Version 0067   Dated: Dec 11, 2021
-   Minimal install, Do not select Restricted Media or Proprietary Software
+   Minimal install, but incl Restricted Media but not Proprietary Software
    Software & Updates:  Post install just main & universe repos, never check for updates
    Synaptic..preferences:
    - check "Clicking on the status icon marks the most likely action"
@@ -2495,111 +2496,137 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-   sudo apt install bzip2 eyed3 libid3-tools mhwaveedit lame gvfs-backends 
+sudo apt install bzip2 eyed3 libid3-tools xclip 
 
 
 P U R G E :
-   sudo apt purge snapd apparmor bluez 
+sudo apt purge snapd apparmor bluez
 
 
 C O N F I G :
-   sudo apt update; sudo apt upgrade; sudo apt autoremove;
-   sudo mv hosts /etc/hosts; sudo mv nanorc /etc/nanorc 
-   chmod 744 up2date.sh
-   sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
-   Section "Monitor"
-           Identifier "HDMI-1"
-           Option "DPMS" "false"
-           Option "Rotate" "left"
-   EndSection
-   Panel: set clock format to  %b %_d, %l:%M 
-   Settings..Appearance:
-   - Numix style
-   - 2x Window scaling
-   xfce4-terminal prefs:
-   - General: Cursor..Cursor blinks
-   - Automatically copy selection to clipboard
-   - Uncheck display menubar
-   - Default Geometry 100x30
-   - Ubuntu Mono Medium font, size 11
-   - Use middle mouse click to open URL's
-   Set default application to Nano text editor where req'd:
-   xfce4-terminal -x nano %f
-   Create desktop Launchers with:
-   xfce4-terminal -T "myChart" --maximize -x nano index.html
-   sudo nano /etc/default/grub
-   GRUB_CMDLINE_LINUX_DEFAULT="quiet fbcon=rotate:3"
-   GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
-   sudo update-grub
-   sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources
+sudo apt update; sudo apt upgrade; sudo apt autoremove;
+sudo mv hosts /etc/hosts; sudo mv nanorc /etc/nanorc 
+chmod 744 up2date.sh
+sudo chmod 777 ~/cl 
+rm -r Desktop/ Documents/ Downloads/ Pictures/ Public/ Videos/ Templates/
+sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
+Section "Monitor"
+        Identifier "HDMI-1"
+        Option "DPMS" "false"
+        Option "Rotate" "left"
+EndSection
+sudo nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet fbcon=rotate:3"
+GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
+sudo update-grub
+sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
+sudo dpkg-reconfigure console-setup
+picked UTF-8, Guess optimal, TerminusBold,16x32
+sudo cp /usr/share/xsessions/xfce.desktop /usr/share/xsessions/tedBuntu.desktop
+sudo nano /usr/share/xsessions/tedBuntu.desktop
+revise Exec line to   Exec=/etc/X11/Xsession
+FIXME mkdir ~/mtp so jtmpfs will mount phone
+sudo nano /etc/environment
+append ":/home/rugby" to path and add these 6 lines:
+FONTCONFIG_FILE=/etc/fonts/fonts.conf
+FONTCONFIG_PATH=/etc/fonts
+LANGUAGE=en_US:en
+LANG=en_US.UTF-8
+XDG_SESSION_TYPE=x11
+DISPLAY=":0.0"
+
+
+A U T O L O G I N :
+sudo mkdir -pv /etc/systemd/system/getty@tty1.service.d/
+sudo nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --noclear --skip-login --login-options=rugby %I 38400 linux
+sudo systemctl enable getty@tty1.service
+nano ~/.profile
+#Startx Automatically
+# FIXME if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+if [[ $(tty) = /dev/tty1 ]]; then
+   . startx >/dev/null 2>&1
+   logout
+fi
+
 
 F I R E F O X :
-   https://www.mozilla.org/en-US/firefox/linux/?utm_medium=referral&utm_source=support.mozilla.org
-   https://support.mozilla.org/en-US/kb/install-firefox-linux
-   cd ~/Downloads; tar xjf firefox-*.tar.bz2
-   sudo mv firefox /opt
-   sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-   sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
-   Settings:
-   - Dark
-   - Fonts, Ubuntu, size 14 for all, override site settings for font choices
-   - Homepage  file:///home/rugby/index.html
-   - Search    uncheck Show Search Suggesttions, uncheck Shortcuts in Address bar (Facebook, Twitter), thrift Search Engines
-   - Strict Privacy
-   - History   use custom settings for History, clear history when Firefox closes
-   - Uncheck everything in "Firefox Data Collection and Use"
-   - Disable "Firefox Data Collection and Use", incl Studies
-   - Completely disable "DNS over HTTPS", use my default DNS resolver
-   - Enable Firefox Sync
-   Import Passwords
-   Theme: install Dreamer-Balanced purple theme
-   Customize New Tab page:
-   - disable Shortcuts
-   - Add Home button
-   - Remove bonus space & Pocket
-   Install uBlock Origin blocker
-   Customize about:config:
-   - layout.forms.input-type-search.enabled set TRUE
-   For MOBILE only:
-   - dom.disable_open_during_load  to FALSE
-   - chrome://geckoview/content/config.xhtml
-   - Settings..Passwords..check Autofill in other apps to stop using Google Password Manager
-   - Developer Options:
-      + Stay Awake when charging
-      + Default USB Config: file xfer
+https://www.mozilla.org/en-US/firefox/linux/?utm_medium=referral&utm_source=support.mozilla.org
+https://support.mozilla.org/en-US/kb/install-firefox-linux
+tar xjf firefox-*.tar.bz2
+sudo mv firefox /opt
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+Settings:
+- Dark
+- Fonts, Ubuntu, size FIXME for all, override site settings for font choices
+- Homepage  file:///home/rugby/index.html
+- Search    uncheck Show Search Suggestions, uncheck Shortcuts in Address bar (Facebook, Twitter), thrift Search Engines
+- Strict Privacy
+- History   use custom settings for History, clear history when Firefox closes
+- Uncheck everything in "Firefox Data Collection and Use"
+- Disable "Firefox Data Collection and Use", incl Studies
+- Completely disable "DNS over HTTPS", use my default DNS resolver
+- Enable Firefox Sync
+Customize New Tab page:
+- disable Shortcuts
+- Add Home button & Sceenshot tool
+- Remove bonus space & Pocket
+Install uBlock Origin blocker
+   Manage uBlock Extension Shortcuts:
+   Enter element picker mode: Ctrl+Alt+P
+   Enter element zapper mode: Ctrl+Alt+Z
+   Open the dashboard:        Ctrl+Alt+D
+   Toggle JavaScript:         Ctrl+Alt+J
+Customize about:config:
+- layout.forms.input-type-search.enabled set TRUE
+- browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar set FALSE
+For MOBILE only:
+- dom.disable_open_during_load  to FALSE
+- chrome://geckoview/content/config.xhtml
+- Settings..Passwords..check Autofill in other apps to stop using Google Password Manager
+- Developer Options:
++ Stay Awake when charging
++ Default USB Config: file xfer
 
-S C R C P Y :
-   https://github.com/Genymobile/scrcpy/releases/tag/v3.0
-   https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md
-   https://github.com/Genymobile/scrcpy/blob/master/doc/shortcuts.md
-   sudo apt install ffmpeg libsdl2-2.0-0 adb wget gcc git pkg-config meson ninja-build libsdl2-dev libavcodec-dev \
-                    libavdevice-dev libavformat-dev libavutil-dev libswresample-dev libusb-1.0-0 libusb-1.0-0-dev
-     which installed all this:
-     adb android-libbase android-libboringssl android-libcutils android-liblog android-libziparchive binutils binutils-common
-     binutils-x86-64-linux-gnu ffmpeg gcc gcc-13 gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu gir1.2-ibus-1.0 git git-man libasan8
-     libasound2-dev libass9 libavcodec-dev libavdevice-dev libavdevice60 libavfilter-dev libavfilter9 libavformat-dev libavformat60
-     libavutil-dev libbinutils libblas3 libblkid-dev libbluray2 libbs2b0 libcc1-0 libcdio-cdda2t64 libcdio-paranoia2t64 libcdio19t64
-     libchromaprint1 libcjson1 libctf-nobfd0 libctf0 libdbus-1-dev libdc1394-25 libdecor-0-0 libdecor-0-dev libdrm-dev libegl-dev
-     liberror-perl libffi-dev libfftw3-double3 libflite1 libgbm-dev libgcc-13-dev libgfortran5 libgirepository-2.0-0 libgl-dev
-     libgles-dev libgles1 libglib2.0-dev libglib2.0-dev-bin libglx-dev libgme0 libgprofng0 libhwasan0 libibus-1.0-5 libibus-1.0-dev
-     libice-dev libitm1 liblapack3 liblilv-0-0 liblsan0 libmbedcrypto7t64 libmount-dev libmysofa1 libnorm1t64 libopenal-data
-     libopenal1 libopenmpt0t64 libpciaccess-dev libpcre2-16-0 libpcre2-32-0 libpcre2-dev libpcre2-posix3 libpgm-5.3-0t64 libpkgconf3
-     libplacebo338 libpocketsphinx3 libpostproc-dev libpostproc57 libprotobuf32t64 libpthread-stubs0-dev libpulse-dev libquadmath0
-     librabbitmq4 librist4 librubberband2 libsamplerate0-dev libsdl2-2.0-0 libsdl2-dev libselinux1-dev libsepol-dev libserd-0-0
-     libsframe1 libsm-dev libsndio-dev libsndio7.0 libsodium23 libsord-0-0 libsphinxbase3t64 libsratom-0-0 libsrt1.5-gnutls
-     libssh-gcrypt-4 libswresample-dev libswscale-dev libswscale7 libtsan2 libubsan1 libudev-dev libudfread0 libunibreak5
-     libusb-1.0-0-dev libvidstab1.1 libwayland-bin libwayland-dev libx11-dev libxau-dev libxcb1-dev libxcursor-dev libxdmcp-dev
-     libxext-dev libxfixes-dev libxi-dev libxinerama-dev libxkbcommon-dev libxrandr-dev libxrender-dev libxss-dev libxt-dev libxv-dev
-     libxxf86vm-dev libzimg2 libzix-0-0 libzmq5 meson ninja-build pkg-config pkgconf pkgconf-bin python3-setuptools uuid-dev
-     x11proto-dev xorg-sgml-doctools xtrans-dev zlib1g-dev
 
-   git clone https://github.com/Genymobile/scrcpy
-   cd scrcpy
-   ./install_release.sh
-   scrcpy --push-target=/sdcard/Documents/
-   For New Releases,
-   git pull
-   ./install_release.sh
+B A S H R C :
+nano .bashrc
+alias l='ls -CF'
+alias c='printf "\033c"'
+alias h='history'
+alias hi='nano ~/.bash_history; c'
+alias ho='sudo nano /etc/hosts; c'
+alias mp='jmtpfs ~/mtp/'
+alias um='sudo umount /media/usb/'
+alias xi='nano .xinitrc; c'
+alias td='nano ~/ToDo.txt; c'
+alias mc='nano ~/index.html; c'
+alias mt1='sudo mount -t vfat /dev/sdb1 /media/usb -o uid=1000,gid=1000,utf8'
+alias mt0='sudo mount -t vfat /dev/sdb /media/usb -o uid=1000,gid=1000,utf8'
+alias upd='~/up2date.sh'
+alias home='cd /home/rugby'revise   PS1='\w\$ '
+
+
+B A S H   H I S T O R Y :
+nano .bash_history
+ firefox -width="2160" -height="3840"  /home/rugby/index.html
+ unzip -P  -d /tmp/ -j Stuff.zip '*rick*'  # EDIT SINGLE FILE
+ zip -ej Stuff.zip /tmp/Tricks.txt         # UPDATE SINGLE FILE INTO ARCHIVE or zip -d "Stuff.zip" file.name to DELETE
+ unzip -l Stuff.zip | nano -v -            # LIST CONTENTS
+ unzip -P  '' -d /tmp/                     # UNZIP ENTIRE ARCHIVE
+ cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
+ cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
+ grep -Rnw '/home/rugby' -e 'checkmy.pictures'
+#---------------------------------------------------------------------------------------------------------------------
+sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources
+
+
+M A Y B E S
+   + amixer -D pulse set Master 5%+
+   + amixer -D pulse set Master 5%-
 
 //-->
 </BODY>
