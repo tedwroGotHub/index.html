@@ -2315,6 +2315,9 @@
                    <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
                    <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
                    <hr class="red">
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
                  </div>
                </td>
                <td align="center" bgcolor="deeppink" class="td"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
@@ -2496,7 +2499,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install bzip2 eyed3 gvfs-backends gfvs-fuse libid3-tools xclip 
+sudo apt install bzip2 eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools xclip 
 
 
 P U R G E :
@@ -2526,7 +2529,7 @@ picked UTF-8, Guess optimal, TerminusBold,16x32
 sudo cp /usr/share/xsessions/xfce.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
-FIXME mkdir ~/mtp so jtmpfs will mount phone
+mkdir ~/mtp so jtmpfs will mount phone
 sudo nano /etc/environment
 append ":/home/rugby" to path and add these 6 lines:
 FONTCONFIG_FILE=/etc/fonts/fonts.conf
@@ -2615,6 +2618,8 @@ alias mc='nano ~/index.html; c'
 alias mt1='sudo mount -t vfat /dev/sdb1 /media/usb -o uid=1000,gid=1000,utf8'
 alias mt0='sudo mount -t vfat /dev/sdb /media/usb -o uid=1000,gid=1000,utf8'
 alias upd='~/up2date.sh'
+alias mtp='jmtpfs ~/mtp'
+alias umtp='fusermount -u /home/rugby/mtp'
 alias home='cd /home/rugby'
 
 
@@ -2625,7 +2630,8 @@ nano .bash_history
  zip -ej Stuff.zip /tmp/Tricks.txt         # UPDATE SINGLE FILE INTO ARCHIVE or zip -d "Stuff.zip" file.name to DELETE
  unzip -l Stuff.zip | nano -v -            # LIST CONTENTS
  unzip -P  '' -d /tmp/                     # UNZIP ENTIRE ARCHIVE
- FIXME cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
+ nano ~/Music/tagUpdater.sh 
+ cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
 #---------------------------------------------------------------------------------------------------------------------
