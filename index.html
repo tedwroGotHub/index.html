@@ -52,7 +52,6 @@
    ticker[i++] = 'DIA';   rHigh_DIA   = 322;    // 12/27
    ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 12/27
    ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 12/27
-// FIXME ticker[i++] = '$vix';  rHigh_$VIX  = 13.00;  // 12/27 stockcharts.com requires $vix not just vix
    //   W a t c h l i s t   S t a r t s   H e r e
    ticker[i++] = 'ADM';   rHigh_ADM   =  30;    // 12/27
    ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 12/27
@@ -91,7 +90,7 @@
    var default_size_url = big_size_chart;
    var analysis_url = '&ma=3&maval=50,200&mocktick=1';
 
-// FIXME retirement of stockcharts.com
+// retirement of stockcharts.com
 //   var base_url = 'https://stockcharts.com/c-sc/sc?s=';
 //   var option_url = '&i=t' ;
 //   var big_size_chart = ' width="900" height="874"';
@@ -1270,48 +1269,48 @@
       //
       if( trading_days_since_entry > chart_5yr_days ) {
          // It's been more trading days than 5yr chart can show
-// FIXME url = base_url + symbol + chart_period + url_10yr + option_url + r_t_zoomed_url;
+         // stockcharts.com   url = base_url + symbol + chart_period + url_10yr + option_url + r_t_zoomed_url;
          url = base_url + symbol + option_url + big_size_chart + url_10yr + analysis_url;
       }
       else {
          if( trading_days_since_entry > chart_2yr_days ) {
             // It's been more trading days than 2yr chart can show
-// FIXME    url = base_url + symbol + chart_period + url_5yr + option_url + r_t_zoomed_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_5yr + option_url + r_t_zoomed_url;
             url = base_url + symbol + option_url + big_size_chart + url_5yr + analysis_url;
          }
          else {
             if( trading_days_since_entry > chart_1yr_days ) {
                // It's been more trading days than 1yr chart can show
-// FIXME       url = base_url + symbol + chart_period + url_2yr + option_url + r_t_zoomed_url;
+               // stockcharts.com      url = base_url + symbol + chart_period + url_2yr + option_url + r_t_zoomed_url;
                url = base_url + symbol + option_url + big_size_chart + url_2yr + analysis_url;
             }
             else {
                if( trading_days_since_entry > chart_6mo_days ) {
                   // It's been more trading days than 6mo chart can show
-// FIXME          url = base_url + symbol + chart_period + url_1yr + option_url + r_t_zoomed_url;
+                  // stockcharts.com         url = base_url + symbol + chart_period + url_1yr + option_url + r_t_zoomed_url;
                   url = base_url + symbol + option_url + big_size_chart + url_1yr + analysis_url;
                }
                else {
                   if( trading_days_since_entry > chart_3mo_days ) {
                      // It's been more trading days than 3mo chart can show
-// FIXME             url = base_url + symbol + chart_period + url_6mo + option_url + r_t_zoomed_url;
+                     // stockcharts.com            url = base_url + symbol + chart_period + url_6mo + option_url + r_t_zoomed_url;
                      url = base_url + symbol + option_url + big_size_chart + url_6mo + analysis_url;
                   }
                   else {
                      if( trading_days_since_entry > chart_2mo_days ){
                         // It's been more trading days than 2mo chart can show
-// FIXME                url = base_url + symbol + chart_period + url_3mo + option_url + r_t_zoomed_url;
+                        // stockcharts.com               url = base_url + symbol + chart_period + url_3mo + option_url + r_t_zoomed_url;
                         url = base_url + symbol + option_url + big_size_chart + url_3mo + analysis_url;
                      }
                      else {
                         if( trading_days_since_entry > chart_1mo_days ){
                            // It's been more trading days than 1mo chart can show
-// FIXME                   url = base_url + symbol + chart_period + url_2mo + option_url + r_t_zoomed_url;
+                           // stockcharts.com                  url = base_url + symbol + chart_period + url_2mo + option_url + r_t_zoomed_url;
                            url = base_url + symbol + option_url + big_size_chart + url_2mo + analysis_url;
                         }
                         else {
                            // Use 1mo chart for any trades less than 1mo chart tradings ago
-// FIXME                   url = base_url + symbol + chart_period + url_1mo + option_url + r_t_zoomed_url;
+                           // stockcharts.com                  url = base_url + symbol + chart_period + url_1mo + option_url + r_t_zoomed_url;
                            url = base_url + symbol + option_url + big_size_chart + url_1mo + analysis_url;
                         }
                      }
@@ -1727,7 +1726,7 @@
 
          // Display 2 day chart if option was selected
          if(include_2day == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_2d + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_2d + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_2d + analysis_url;
             // Write URL for 2 day chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1735,7 +1734,7 @@
 
          // Display 5 day chart if option was selected
          if(include_5day == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_5d + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_5d + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_5d + analysis_url;
             // Write URL for 5 day chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1743,7 +1742,7 @@
 
          // Display 10 day chart if option was selected
          if(include_10day == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_10d + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_10d + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_10d + analysis_url;
             // Write URL for 10 day chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1751,7 +1750,7 @@
 
          // Display 1 month chart if option was selected
          if(include_1mo == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_1mo + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_1mo + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_1mo + analysis_url;
             // Write URL for 1 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1759,7 +1758,7 @@
 
          // Display 2 month chart if option was selected
          if(include_2mo == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_2mo + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_2mo + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_2mo + analysis_url;
             // Write URL for 2 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1767,7 +1766,7 @@
 
          // Display 3 month chart if option was selected
          if(include_3mo == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_3mo + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_3mo + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_3mo + analysis_url;
             // Write URL for 3 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1775,7 +1774,7 @@
 
          // Display 6 month chart if option was selected
          if(include_6mo == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_6mo + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_6mo + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_6mo + analysis_url;
             // Write URL for 6 month chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1783,7 +1782,7 @@
 
          // Display 1 Year chart if option was selected
          if(include_1Year == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_1yr + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_1yr + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_1yr + analysis_url;
             // Write URL for 1 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1791,7 +1790,7 @@
 
          // Display 2 Year chart if option was selected
          if(include_2Year == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_2yr + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_2yr + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_2yr + analysis_url;
             // Write URL for 2 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1799,7 +1798,7 @@
 
          // Display 5 Year chart if option was selected
          if(include_5Year == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_5yr + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_5yr + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_5yr + analysis_url;
             // Write URL for 5 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1807,7 +1806,7 @@
 
          // Display 10 Year chart if option was selected
          if(include_10Year == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_10yr + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_10yr + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_10yr + analysis_url;
             // Write URL for 10 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1815,7 +1814,7 @@
 
          // Display 20 Year chart if option was selected
          if(include_20Year == TRUE){
-// FIXME    url = base_url + symbol + chart_period + url_20yr + option_url + default_size_url;
+            // stockcharts.com   url = base_url + symbol + chart_period + url_20yr + option_url + default_size_url;
             url = base_url + symbol + option_url + default_size_url + url_20yr + analysis_url;
             // Write URL for 20 Year chart
             sc.write('<td><div class="click-zoom"><label><input type="checkbox"><img src=' + url + '></label></div></td>');
@@ -1866,7 +1865,7 @@
    }
 
 
-// FIXME remove this entire function
+// stockcharts.com   remove this entire function
 //   // Function to set chart period as Daily or Weekly
 //   //
 //   function set_chart_period() {
@@ -2251,7 +2250,6 @@
                   <input class="trd" type="checkbox" name="NoEntry" checked="TRUE">excludeNE
                   <input class="trd" type="checkbox" name="NoPaper" checked="TRUE">excludePT
                   <input class="trd" type="checkbox" name="OnPaper" value="0">includePT
-<!-- FIXME        <input class="trd" type="checkbox" name="Period" value="Period" checked="TRUE" onClick="set_chart_period()">Daily //-->
                   <input class="trd" type="checkbox" name="inclCharts" value="inclCharts" checked="TRUE" onClick="set_inclCharts()">inclCharts
                   <input class="trd" type="checkbox" name="bigCharts" checked="TRUE" onClick="set_bigCharts()">BigCharts
                </td>
@@ -2363,7 +2361,6 @@
                      <a class="trd" href="https://imginn.com" target="_blank">insta</a>
                      <hr class="red">
 <!-- FIXME
-                     <a class="trd" href="https://www.redpocket.com/login" target="_blank">RedPocket</a>
                      <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
                      <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
                      <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
@@ -2434,7 +2431,7 @@
                <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
                <td align="center" bgcolor="#2C001E" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
             <tr>
-<!-- FIXME  https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
+               <!-- https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
                <td align="center" colspan="6" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
             </tr>
             <tr>
@@ -2551,8 +2548,7 @@ https://askubuntu.com/questions/16371/how-do-i-disable-x-at-boot-time-so-that-th
 sudo systemctl set-default multi-user.target
 confirm by using  systemctl get-default 
 nano ~/.profile
-#Startx Automatically
-# FIXME if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+# startX Automatically
 if [[ $(tty) = /dev/tty1 ]]; then
    . startx >/dev/null 2>&1
    logout
@@ -2592,13 +2588,15 @@ Customize about:config:
 - layout.forms.input-type-search.enabled set TRUE
 - browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar set FALSE
 - devtools.toolbox.zoomValue set to 2
+- pdfjs.defaultZoomValue set to page-width
 For MOBILE only:
 - dom.disable_open_during_load  to FALSE
+- layout.css.devPixelsPerPx   set to 1
 - chrome://geckoview/content/config.xhtml
 - Settings..Passwords..check Autofill in other apps to stop using Google Password Manager
 - Developer Options:
-+ Stay Awake when charging
-FIXME + Default USB Config: file xfer
+   + Stay Awake when charging
+   + Default USB Config: file xfer
 
 
 B A S H R C :
@@ -2625,15 +2623,15 @@ alias home='cd /home/rugby'
 
 B A S H   H I S T O R Y :
 nano .bash_history
- firefox -width="2160" -height="3840"  /home/rugby/index.html
- unzip -P  -d /tmp/ -j Stuff.zip '*rick*'  # EDIT SINGLE FILE
- zip -ej Stuff.zip /tmp/Tricks.txt         # UPDATE SINGLE FILE INTO ARCHIVE or zip -d "Stuff.zip" file.name to DELETE
- unzip -l Stuff.zip | nano -v -            # LIST CONTENTS
- unzip -P  '' -d /tmp/                     # UNZIP ENTIRE ARCHIVE
+ echo -n Password: ; read -s password; unzip -P $password -d /tmp/ -j Stuff.zip '*ata*'  # EDIT SINGLE FILE
+ zip -ej Stuff.zip /tmp/Data.txt                                                         # UPD FILE zip -d "Stuff.zip" file.name
+ unzip -l Stuff.zip | nano -v -                                                          # LIST CONTENTS
+ echo -n Password: ; read -s password; unzip -P $password 'Stuff.zip' -d /tmp/           # UNZIP ENTIRE ARCHIVE
  nano ~/Music/tagUpdater.sh 
  cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
+ history -a 
 #---------------------------------------------------------------------------------------------------------------------
 
 //-->
