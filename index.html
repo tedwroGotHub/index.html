@@ -2298,14 +2298,14 @@
                <td align="center" bgcolor="darkorange" class="td"><div class="dropdown">
                  <button class="dropbtnFed">Feed</button>
                  <div class="dropdown-content">
-                   <a class="trd" href="#" onclick="window.open('https://str8upgayporn.com/'); window.open('https://www.curbsideclassic.com/'); window.open('https://www.thetruthaboutcars.com/'); window.open('https://gmauthority.com/blog/'); window.open('https://www.ghacks.net/'); window.open('https://www.bloomberg.com/'); ">Open ALL</a>
+                   <a class="trd" href="#" onclick="window.open('https://str8upgayporn.com/'); window.open('https://www.curbsideclassic.com/'); window.open('https://www.thetruthaboutcars.com/'); window.open('https://gmauthority.com/blog/'); window.open('https://www.ghacks.net/'); window.open('https://www.omgubuntu.co.uk/'); window.open('https://www.dedoimedo.com/'); window.open('https://krebsonsecurity.com/'); window.open('https://www.bloomberg.com/'); ">Open ALL</a>
                    <hr class="indigo">
                    <a class="trd" href="https://str8upgayporn.com/" target="_blank">str8upgayporn</a>
                    <a class="trd" href="https://www.curbsideclassic.com/" target="_blank">CurbsideClassics</a>
                    <a class="trd" href="https://www.thetruthaboutcars.com/" target="_blank">TTAC</a>
-                   <a class="trd" href="https://www.omgubuntu.co.uk/" target="_blank">omgUbuntu</a>
                    <a class="trd" href="https://gmauthority.com/blog/" target="_blank">GM Authority</a>
                    <a class="trd" href="https://www.ghacks.net/" target="_blank">gHacks</a>
+                   <a class="trd" href="https://www.omgubuntu.co.uk/" target="_blank">omgUbuntu</a>
                    <a class="trd" href="https://www.dedoimedo.com/" target="_blank">Dedoimedo</a>
                    <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
                    <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
@@ -2556,6 +2556,81 @@ if [[ $(tty) = /dev/tty1 ]]; then
    . startx >/dev/null 2>&1
    logout
 fi
+nano ~/.xinitrc
+#!/usr/bin/env bash
+xrdb -merge ~/.Xresources
+#xset s off -dpms
+#exec /usr/bin/google-chrome --window-size="2160,3840" --window-position=0,0 "/home/rugby/index.html"
+#exec firefox
+#xterm -fa "Terminus:size=20" -maximized &
+firefox -width="2160" -height="3840" /home/rugby/index.html 
+#/usr/bin/google-chrome --incognito --window-size="2160,3840" --window-position=0,0 "/home/rugby/index.html" &
+#exec x-window-manager
+#exec xterm -geometry 300x106+0+0
+#chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
+#DISPLAY=:0 firefox &
+
+
+N E T W O R K :
+per https://www.tecmint.com/switch-from-netplan-to-interfaces-ubuntu/
+sudo cat /etc/netplan/*.yaml
+sudo apt install ifupdown
+sudo nano /etc/network/interfaces
+# ------------------------------------------------
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+#source /etc/network/interfaces.d/*
+auto lo
+iface lo inet loopback
+# Hardwired network
+allow-hotplug eth0
+iface eth0 inet dhcp
+# WIFI
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+wpa-ssid "DoYouWantAntz"
+wpa-psk "BecauseThatsH0wY0uGetAntz"
+#wpa-ssid "I Has a Hotdog"
+#wpa-psk "roMney2O12"
+#2wpa-ssid "SpectrumSetup-58"
+#2wpa-psk "woodenpant197"
+# USB Tethered Network
+allow-hotplug usb0
+iface usb0 inet dhcp
+# ------------------------------------------------
+# HELPFUL UTILITIES FOR DEBUG
+# ifconfig -a
+# ip addr
+# ip a; sudo ifup wlan0
+# ------------------------------------------------
+sudo systemctl restart networking
+sudo apt purge netplan.io
+
+
+A L S A S O U N D :
+sudo nano /etc/asound.conf
+# Dump Pulseadio and replace with Alsa
+# per https://forums.gentoo.org/viewtopic-t-1094774-start-0.html
+# aplay -l
+# alsa-info
+# SOUND FOUND ON DEVICE 3
+# speaker-test -D plughw:0,3 -c 2
+#
+# Replace all 3's if different Device, replace all 0's if different Card
+#
+pcm_slave.slave_rate48000Hz {
+        pcm "hw:0,3"
+#       This is the rate the sond card does.
+#       Any random input rates are resampled to this.
+        rate 48000
+}
+pcm.rate44100Hz {
+        type plug
+        slave slave_rate48000Hz
+}
+defaults.pcm.card 0
+defaults.pcm.device 3
+defaults.ctl.card 0
 
 
 F I R E F O X :
@@ -2603,7 +2678,23 @@ For MOBILE only:
 
 
 C H R O M E :
-https://www.tecmint.com/switch-from-netplan-to-interfaces-ubuntu/
+Download deb from google.com
+sudo apt install /home/rugby/google-chrome-stable_current_amd64.deb
+if needed, allow javascript for "file:///home/rugby/index.html" or "file:///*"
+FIXME Use GTK theme. Use Alt+mouse to re-position window
+Fonts: Customize fonts: size 18/15, Ubuntu and Mono, Default Page zoom 175%
+Remove all extensions, make sure google docs does not make docs avail offline
+Privacy & Security: Confirm "Use secure DNS" is disabled
+Search for Preload and make sure disabled
+Uncheck Continue running background apps when Google Chrome is closed in Settings..System
+chrome://flags/#enable-force-dark                     select "selective inversion with NON-IMAGE elements"
+chrome://extensions/shortcuts
+Turn off Journeys from History
+chrome://settings/content/federatedIdentityApi?search=Third-party+sign-in
+General.useragent.override
+Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1
+Ctrl+Shift+P   search for Network   Show Network conditions    Screenshot
+
 
 B A S H R C :
 nano .bashrc
@@ -2628,7 +2719,6 @@ alias home='cd /home/rugby'
 
 
 B A S H   H I S T O R Y :
-nano .bash_history
  echo -n Password: ; read -s password; unzip -P $password -d /tmp/ -j Stuff.zip '*ata*'  # EDIT SINGLE FILE
  zip -ej Stuff.zip /tmp/Data.txt                                                         # UPD FILE zip -d "Stuff.zip" file.name
  unzip -l Stuff.zip | nano -v -                                                          # LIST CONTENTS
@@ -2639,6 +2729,7 @@ nano .bash_history
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
  history -a 
 #---------------------------------------------------------------------------------------------------------------------
+ DISPLAY=:0 google-chrome --window-size="2160,3840" --window-position=0.0 "/home/rugby/index.html" &
 
 //-->
 </BODY>
