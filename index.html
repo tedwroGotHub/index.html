@@ -13,16 +13,16 @@
       p.trd {color: silver; text-decoration:none; }
       td.trd {color: purple; font-family: monospace; }
       td.trdG {color: black; font-family: monospace; white-space: nowrap;}
-      td.td { height: 80px; }
+      td.td { height: 74px; }
       input.trd {color: red; font-variant: small-caps; border: 2px solid black; }
       input.trdG {color: green; font-variant: small-caps; border: 2px solid green; }
       input.trdO {color: red; font-variant: small-caps; border: 2px solid orangered; }
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
-      img.spy { width: 610px; height: 400px; }
-      img.map { width: 1230px; height: 400px; }
+      img.spy { width: 595px; height: 400px; }
+      img.map { width: 1200px; height: 400px; }
       img.router { width: 100px; height: 80px; }
-      iframe.ticker { width: 1230px; height: 310px; }
+      iframe.ticker { width: 1200px; height: 310px; }
       table.mode {background-color: #silver; }   /* dark mode #2C001E  light mode silver */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
@@ -48,17 +48,17 @@
    ticker[i++] = 'pmm';   rHigh_PMM   = 6.60;   //  9/12/2022 and $5.10 was absolute LOW
    ticker[i++] = 'fulc';  rHigh_FULC  =  33;    //  9/21/2021
    ticker[i++] = 'upst';  rHigh_UPST  = 401;    // 10/20/2021
-   ticker[i++] = 'SPY';   rHigh_SPY   = 411;    // 12/27
-   ticker[i++] = 'DIA';   rHigh_DIA   = 322;    // 12/27
-   ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 12/27
-   ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 12/27
+   ticker[i++] = 'SPY';   rHigh_SPY   = 411;    // 02/03
+   ticker[i++] = 'DIA';   rHigh_DIA   = 322;    // 02/03
+   ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 02/03
+   ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 02/03
    //   W a t c h l i s t   S t a r t s   H e r e
-   ticker[i++] = 'ADM';   rHigh_ADM   =  30;    // 12/27
-   ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 12/27
-   ticker[i++] = 'INTC';  rHigh_INTC  =  18;    // 12/27
-   ticker[i++] = 'LTH';   rHigh_LTH   =  12;    // 12/27
-   ticker[i++] = 'NKE';   rHigh_NKE   =  53;    // 12/27
-   ticker[i++] = 'UPS';   rHigh_UPS   =  90;    // 12/27
+   ticker[i++] = 'ADM';   rHigh_ADM   =  30;    // 02/03
+   ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 02/03
+   ticker[i++] = 'INTC';  rHigh_INTC  =  18;    // 02/03
+   ticker[i++] = 'LTH';   rHigh_LTH   =  12;    // 02/03
+   ticker[i++] = 'NKE';   rHigh_NKE   =  53;    // 02/03
+   ticker[i++] = 'UPS';   rHigh_UPS   =  90;    // 02/03
    //   E n d   o f   S y m b o l s
    //
    //   U S E R   S E T T I N G S   F O R   A N A L Y S I S
@@ -2499,11 +2499,11 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install bzip2 eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools xclip 
+sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools xclip ifupdown dnstop fonts-ubuntu
 
 
 P U R G E :
-sudo apt purge snapd apparmor bluez
+sudo apt purge snapd apparmor bluez netplan.io
 
 
 C O N F I G :
@@ -2514,14 +2514,18 @@ sudo chmod 777 ~/cl
 rm -r Desktop/ Documents/ Downloads/ Pictures/ Public/ Videos/ Templates/
 nano .config/user-dirs.dirs   to cleanup file Save as dialog
 sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
+# ------------------------------------------------
 Section "Monitor"
         Identifier "HDMI-1"
         Option "DPMS" "false"
         Option "Rotate" "left"
 EndSection
+# ------------------------------------------------
 sudo nano /etc/default/grub
+# ------------------------------------------------
 GRUB_CMDLINE_LINUX_DEFAULT="quiet fbcon=rotate:3"
 GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
+# ------------------------------------------------
 sudo update-grub
 sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
 sudo dpkg-reconfigure console-setup
@@ -2531,44 +2535,55 @@ sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
 mkdir ~/mtp so jtmpfs will mount phone
 sudo nano /etc/environment
-append ":/home/rugby" to path and add these 6 lines:
+# ------------------------------------------------
+# append ":/home/rugby" to path and add these 6 lines:
 FONTCONFIG_FILE=/etc/fonts/fonts.conf
 FONTCONFIG_PATH=/etc/fonts
 LANGUAGE=en_US:en
 LANG=en_US.UTF-8
 XDG_SESSION_TYPE=x11
 DISPLAY=":0.0"
+# ------------------------------------------------
+Fix Debconf errors after package purge:
+echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+sudo dpkg-reconfigure debconf --frontend=readline
+picked 6. Noninteractive and 1. Critical
+sudo chmod 777 /var/cache/debconf/
+sudo chmod 777 /var/cache/debconf/passwords.dat 
+debconf-show debconf
 
 
 A U T O L O G I N :
 sudo mkdir -pv /etc/systemd/system/getty@tty1.service.d/
 sudo nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
+# ------------------------------------------------
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty --noclear --skip-login --login-options=rugby %I 38400 linux
+# ------------------------------------------------
 sudo systemctl enable getty@tty1.service
 https://askubuntu.com/questions/16371/how-do-i-disable-x-at-boot-time-so-that-the-system-boots-in-text-mode
 sudo systemctl set-default multi-user.target
 confirm by using  systemctl get-default 
 nano ~/.profile
+# ------------------------------------------------
 # startX Automatically
 if [[ $(tty) = /dev/tty1 ]]; then
    . startx >/dev/null 2>&1
    logout
 fi
+# ------------------------------------------------
 nano ~/.xinitrc
+# ------------------------------------------------
 #!/usr/bin/env bash
-xrdb -merge ~/.Xresources
-#xset s off -dpms
-#exec /usr/bin/google-chrome --window-size="2160,3840" --window-position=0,0 "/home/rugby/index.html"
-#exec firefox
-#xterm -fa "Terminus:size=20" -maximized &
-firefox -width="2160" -height="3840" /home/rugby/index.html 
-#/usr/bin/google-chrome --incognito --window-size="2160,3840" --window-position=0,0 "/home/rugby/index.html" &
-#exec x-window-manager
-#exec xterm -geometry 300x106+0+0
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
-#DISPLAY=:0 firefox &
+xrdb -merge ~/.Xresources
+amixer sset 'PCM' 75%
+xset s off -dpms
+#xterm -fa "Terminus:size=20" -maximized &
+#firefox -width="2160" -height="3840" /home/rugby/index.html 
+google-chrome --window-size="2160,3840" --window-position=0.0 /home/rugby/index.html
+# ------------------------------------------------
 
 
 N E T W O R K :
@@ -2590,8 +2605,6 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 wpa-ssid "DoYouWantAntz"
 wpa-psk "BecauseThatsH0wY0uGetAntz"
-#wpa-ssid "I Has a Hotdog"
-#wpa-psk "roMney2O12"
 #2wpa-ssid "SpectrumSetup-58"
 #2wpa-psk "woodenpant197"
 # USB Tethered Network
@@ -2602,14 +2615,15 @@ iface usb0 inet dhcp
 # ifconfig -a
 # ip addr
 # ip a; sudo ifup wlan0
+# sudo systemctl restart networking
+# sudo apt purge netplan.io
 # ------------------------------------------------
-sudo systemctl restart networking
-sudo apt purge netplan.io
 
 
 A L S A S O U N D :
 sudo nano /etc/asound.conf
-# Dump Pulseadio and replace with Alsa
+# ------------------------------------------------
+# Dump Pulseadio and Pipewire to replace with Alsa
 # per https://forums.gentoo.org/viewtopic-t-1094774-start-0.html
 # aplay -l
 # alsa-info
@@ -2631,6 +2645,7 @@ pcm.rate44100Hz {
 defaults.pcm.card 0
 defaults.pcm.device 3
 defaults.ctl.card 0
+# ------------------------------------------------
 
 
 F I R E F O X :
@@ -2681,7 +2696,7 @@ C H R O M E :
 Download deb from google.com
 sudo apt install /home/rugby/google-chrome-stable_current_amd64.deb
 if needed, allow javascript for "file:///home/rugby/index.html" or "file:///*"
-FIXME Use GTK theme. Use Alt+mouse to re-position window
+Use Purple Chrome theme. Use Alt+mouse to re-position window
 Fonts: Customize fonts: size 18/15, Ubuntu and Mono, Default Page zoom 175%
 Remove all extensions, make sure google docs does not make docs avail offline
 Privacy & Security: Confirm "Use secure DNS" is disabled
@@ -2689,7 +2704,6 @@ Search for Preload and make sure disabled
 Uncheck Continue running background apps when Google Chrome is closed in Settings..System
 chrome://flags/#enable-force-dark                     select "selective inversion with NON-IMAGE elements"
 chrome://extensions/shortcuts
-Turn off Journeys from History
 chrome://settings/content/federatedIdentityApi?search=Third-party+sign-in
 General.useragent.override
 Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1
@@ -2698,12 +2712,11 @@ Ctrl+Shift+P   search for Network   Show Network conditions    Screenshot
 
 B A S H R C :
 nano .bashrc
+# ------------------------------------------------
 alias l='ls -CF'
 alias c='printf "\033c"'
 alias h='history'
-alias t='DISPLAY=:0 thunar &'
-alias v='DISPLAY=:0 pavucontrol &'
-alias x='DISPLAY=:0 xterm &'
+alias v='alsamixer'
 alias hi='nano ~/.bash_history; c'
 alias ho='sudo nano /etc/hosts; c'
 alias um='sudo umount /media/usb/'
@@ -2716,6 +2729,7 @@ alias upd='~/up2date.sh'
 alias mtp='jmtpfs ~/mtp'
 alias umtp='fusermount -u /home/rugby/mtp'
 alias home='cd /home/rugby'
+# ------------------------------------------------
 
 
 B A S H   H I S T O R Y :
@@ -2727,9 +2741,11 @@ B A S H   H I S T O R Y :
  cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
- history -a 
-#---------------------------------------------------------------------------------------------------------------------
+ DISPLAY=:0 firefox &
  DISPLAY=:0 google-chrome --window-size="2160,3840" --window-position=0.0 "/home/rugby/index.html" &
+ history -a 
+ sudo dnstop -l 3 eth0; c
+#---------------------------------------------------------------------------------------------------------------------
 
 //-->
 </BODY>
