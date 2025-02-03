@@ -2499,7 +2499,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools xclip ifupdown dnstop fonts-ubuntu
+sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown dnstop fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core xsel
 
 
 P U R G E :
@@ -2534,6 +2534,10 @@ sudo cp /usr/share/xsessions/xfce.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
 mkdir ~/mtp so jtmpfs will mount phone
+sudo systemctl disable --now apt-daily{,-upgrade}.{timer,service}; sudo systemctl disable fstrim.timer; sudo systemctl disable motd-news.timer; sudo systemctl disable accounts-daemon.service; sudo systemctl mask accounts-daemon.service; sudo systemctl disable udisks2.service; sudo systemctl disable remote-fs.target; sudo systemctl disable systemd-rfkill; sudo systemctl mask systemd-rfkill; sudo systemctl disable systemd-tmpfiles-clean.timer; sudo systemctl mask systemd-tmpfiles-clean.timer; sudo systemctl disable systemd-rfkill.socket; sudo systemctl mask systemd-rfkill.socket; 
+sudo chmod -x /etc/update-motd.d/*
+sudo systemctl unmask suspend.target sleep.target
+systemctl is-enabled systemd-rfkill.service  to confirm disabled
 sudo nano /etc/environment
 # ------------------------------------------------
 # append ":/home/rugby" to path and add these 6 lines:
@@ -2597,17 +2601,17 @@ sudo nano /etc/network/interfaces
 #source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
-# Hardwired network
+# -----------------     Hardwired network
 allow-hotplug eth0
 iface eth0 inet dhcp
-# WIFI
-allow-hotplug wlan0
-iface wlan0 inet dhcp
-wpa-ssid "DoYouWantAntz"
-wpa-psk "BecauseThatsH0wY0uGetAntz"
-#2wpa-ssid "SpectrumSetup-58"
-#2wpa-psk "woodenpant197"
-# USB Tethered Network
+# -----------------     WIFI
+#allow-hotplug wlan0
+#iface wlan0 inet dhcp
+#wpa-ssid "DoYouWantAntz"
+#wpa-psk "BecauseThatsH0wY0uGetAntz"
+#  wpa-ssid "SpectrumSetup-58"
+#  wpa-psk "woodenpant197"
+# -----------------     USB Tethered Network
 allow-hotplug usb0
 iface usb0 inet dhcp
 # ------------------------------------------------
@@ -2617,6 +2621,7 @@ iface usb0 inet dhcp
 # ip a; sudo ifup wlan0
 # sudo systemctl restart networking
 # sudo apt purge netplan.io
+# sudo ip link set wlan0 down
 # ------------------------------------------------
 
 
@@ -2723,6 +2728,7 @@ alias um='sudo umount /media/usb/'
 alias xi='nano .xinitrc; c'
 alias td='nano ~/ToDo.txt; c'
 alias mc='nano ~/index.html; c'
+alias clf='cl >> clipboard; echo >> clipboard'
 alias mt1='sudo mount -t vfat /dev/sdb1 /media/usb -o uid=1000,gid=1000,utf8'
 alias mt0='sudo mount -t vfat /dev/sdb /media/usb -o uid=1000,gid=1000,utf8'
 alias upd='~/up2date.sh'
