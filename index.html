@@ -20,9 +20,9 @@
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
       img.spy { width: 595px; height: 400px; }
-      img.map { width: 1200px; height: 400px; }
+      img.map { width: 1200px; height: 390px; }
       img.router { width: 100px; height: 80px; }
-      iframe.ticker { width: 1200px; height: 300px; }
+      iframe.ticker { width: 1200px; height: 310px; }
       table.mode {background-color: #silver; }   /* dark mode #2C001E  light mode silver */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
@@ -49,13 +49,11 @@
    ticker[i++] = 'fulc';  rHigh_FULC  =  33;    //  9/21/2021
    ticker[i++] = 'upst';  rHigh_UPST  = 401;    // 10/20/2021
    ticker[i++] = 'SPY';   rHigh_SPY   = 411;    // 02/18
-   ticker[i++] = 'DIA';   rHigh_DIA   = 322;    // 02/18
+   ticker[i++] = 'dia';   rHigh_DIA   = 322;    // 02/18
    ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 02/18
    ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 02/18
    //   W a t c h l i s t   S t a r t s   H e r e
-   ticker[i++] = 'ADM';   rHigh_ADM   =  30;    // 02/18
    ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 02/18
-   ticker[i++] = 'INTC';  rHigh_INTC  =  18;    // 02/18
    ticker[i++] = 'LTH';   rHigh_LTH   =  12;    // 02/18
    ticker[i++] = 'UPS';   rHigh_UPS   =  90;    // 02/18
    //   E n d   o f   S y m b o l s
@@ -268,7 +266,7 @@
       r_t('DB'  ,'02/01/2022','02/01/2022', 14.23, 14.17, 14.17,703, 'i5D IN 11:23am OUT<br>iLO: $14.16 (0.5%)<br>iHI: $14.40 (1.2%)<br>iLT: 11:32<br>LOW of $12.27 (-13.8%) on day 17<br>HIGH of $16.70 (17.4%) on day 8<br>Optimal Trade LOW of $14.00 (-1.6%) on day 1');
       r_t('ITUB','02/01/2022','02/01/2022',  4.79,  4.77, 4.77,2088, 'i5D IN 11:16am OUT<br>iLO: $4.76 (0.6%)<br>iHI: $4.80 (0.2%)<br>iLT: 11:50<br>LOW of $4.62 (-3.5%) on day 7<br>HIGH of $5.17 (7.9%) on day 9<br>Optimal Trade LOW of $4.62 (-3.5%) on day 7<br>Notice how weekly HIGHS were touching but not breeaking 200 MA on weekly chart post trade.');
       //   110 Trades ME: $32 AW: $227  pW: 44%   AL: -$119   pL: 56%  Running Profit: $3,530.90
-      r_t('DIA' ,'01/24/2022','01/24/2022',336.80,333.43,333.43, 30, 'SPY IN 10:35am OUT 11:48am<br>iLO: $336.80 (0.0%)<br>iHI: $338.33 (0.5%)<br>iLT: 10:10<br>Potential:<br>iLO: $331.35 (1.6%)<br>iHI: $344.11 (2.2%)<br>iLT: 12:26<br>Market rebounded after 2:50 pm.<br>Long Term Swing Trade:<br>LOW of $322.69 (-4.2%) on day 23<br>HIGH of $358.10 (6.3%) on day 13');
+      r_t('dia' ,'01/24/2022','01/24/2022',336.80,333.43,333.43, 30, 'SPY IN 10:35am OUT 11:48am<br>iLO: $336.80 (0.0%)<br>iHI: $338.33 (0.5%)<br>iLT: 10:10<br>Potential:<br>iLO: $331.35 (1.6%)<br>iHI: $344.11 (2.2%)<br>iLT: 12:26<br>Market rebounded after 2:50 pm.<br>Long Term Swing Trade:<br>LOW of $322.69 (-4.2%) on day 23<br>HIGH of $358.10 (6.3%) on day 13');
       r_t('SPY' ,'01/24/2022','01/24/2022',429.50,425.12,425.21, 23, 'SPY IN 10:33am OUT 11:41am<br>iLO: $429.50 (0.0%)<br>iHI: $430.83 (0.3%)<br>iLT: 10:19<br>Potential:<br>iLO: $420.76 (2.0%)<br>iHI: $439.93 (2.4%)<br>iLT: 12:17<br>Market rebounded after 2:50 pm.<br>Long Term Swing Trade:<br>LOW of $410.64 (-4.4%) on day 23<br>HIGH of $458.12 (6.7%) on day 8');
       //   108 Trades ME: $35 AW: $227  pW: 44%   AL: -$120   pL: 56%  Running Profit: $3,733
       r_t('FATH','01/20/2022','01/20/2022',  9.41,  9.32, 9.32,1063, 'i5D IN 10:38am OUT 12:33pm<br>iLO:  $9.32 (1.0%)<br>iHI:  $9.45 (0.4%)<br>iLT: 10:02<br>Potential:<br>iLO: $9.29 (1.3%)<br>iHI: $9.69 (3.0%)<br>iLT: 10:02<br>Disparity in pricing between Fidelity and TradingView (about 20 cents).<br>Stock Alerts did not call for Stop exit during trade, but bracket order worked per plan.<br>LOW of $7.73 (-17.9%) on day 18<br>HIGH of $11.50 (22.2%) on day 5<br>Daily volume less than 500,000. Really should NOT have been in this trade.<br>50/200 MAs inverted, not really a swing trade here either.<br>Not trading long enough to have a 200 MA on 3 MO chart yet. Another reason NOT to enter. ');
@@ -366,7 +364,7 @@
       r_t('fulc','09/21/2021','10/04/2021', 30.20, 28.61, 25.34, 25, 'NO ENTRY UNO   <br>LOW on day 3<br>HIGH of $31.58 (4.6%) on day 2<br>MACD says should never have entered<br>Weak intraday volume, no trades at times<br>Tapered exit plan: 25 sh @ $28.50 for $43 loss was executed higher price for smaller loss, 17% share holding reduction. Still have shares to unload.<br>Would have Reqd a -1.3% stop to hit a 1MO peak of $31.58 (4.6%) gain.<br>High would have been hit on Trading Day 2 and Low on Day 1.');
       // Assessment: First week of using automated Pb values in myChart, make calcs easier, need to keep pushing accuracy of entry & setup
       // 51 Trades ME: $71 AW: $301  pW: 47%   AL: -$132   pL: 53%  Running Profit: $3,680
-      r_t('DIA' ,'09/20/2021','09/23/2021',338.45,348.60,336.22, 15, 'S&P IN: 12:43pm: OUT:  1:51pm<br>LOW of $336.02 hit on day 1<br>HIGH of $348.60 (3.0)% hit on day 4<br>Followed Alert to BUY @ 2.0% pullback<br>3% target of $348.60 set initially.<br>Explicitely followed plan for a well managed trade.<br>Would have Reqd a -0.7% stop to hit a 1MO peak of $354.51 (4.7%) gain.<br>High would have been hit on Trading Day 22 and Low on Day 1.<br>Was below 50 MA entire time during trade holding.');
+      r_t('dia' ,'09/20/2021','09/23/2021',338.45,348.60,336.22, 15, 'S&P IN: 12:43pm: OUT:  1:51pm<br>LOW of $336.02 hit on day 1<br>HIGH of $348.60 (3.0)% hit on day 4<br>Followed Alert to BUY @ 2.0% pullback<br>3% target of $348.60 set initially.<br>Explicitely followed plan for a well managed trade.<br>Would have Reqd a -0.7% stop to hit a 1MO peak of $354.51 (4.7%) gain.<br>High would have been hit on Trading Day 22 and Low on Day 1.<br>Was below 50 MA entire time during trade holding.');
       r_t('SPSC','09/17/2021','09/22/2021',149.50,158.47,146.51, 35, 'UNO IN:  9:45am, OUT: 10:10am<br>LOW of $147.08 hit on day 2<br>HIGH of $162.19 % hit on day 4<br>Would have Reqd a -1.8% stop to hit a 1MO peak of $169.15 (13.1%) gain.<br>High would have been hit on Trading Day 6 and Low on Day 2.<br>Left an additional 7% gain on the table exiting at only a 6% gain on Day 4.<br>Avg daily volume was about 200K sh/day.<br>Never crossed or near 50MA.<br>MACD DC formed on Trading Day 12 (after already exited), stock price then just went sideways for next 2 weeks.');
       // 49 Trades ME: $66 AW: $308  pW: 45%   AL: -$132   pL: 55%  Running Profit: $3,213
       r_t('ON'  ,'09/16/2021','09/17/2021', 49.40, 48.42, 48.41,100, 'UNO2% IN:  3:59pm, OUT: 10:37am<br>LOW of $48.42 hit on day 2<br>HIGH of $49.40 (0%) WASH on day 1 @ entry, Tanked afterwards, no gain possible.<br>Would have Reqd a -5.3% stop to hit a 1MO peak of $49.78 (0.8%) gain.<br>High would have been hit on Trading Day 6 and Low on Day 3.<br>Opportunity: 6% PB entry could have yielded a 6% gain in the 21 trading days.<br>Avg daily volume was about 3M sh/day.<br>Crossed 50MA on 13th trading day and never recovered.');
@@ -2221,14 +2219,11 @@
                   <input class="trd" type="checkbox" name="fulc" value='fulc'>fulc
                   <input class="trd" type="checkbox" name="upst" value='upst'>upst
                   <input class="trd" type="checkbox" name="SPY" value='SPY'>SPY
-                  <input class="trd" type="checkbox" name="DIA" value='DIA'>DIA
+                  <input class="trd" type="checkbox" name="DIA" value='dia'>dia
                   <input class="trd" type="checkbox" name="$tran" value='$tran'>$tran
                   <input class="trd" type="checkbox" name="vix" value='vix'>$vix
-                  <input class="trd" type="checkbox" name="ADM" value='ADM'>ADM
                   <input class="trd" type="checkbox" name="HAL" value='HAL'>HAL
-                  <input class="trd" type="checkbox" name="INTC" value='INTC'>INTC
                   <input class="trd" type="checkbox" name="LTH" value='LTH'>LTH
-                  <input class="trd" type="checkbox" name="NKE" value='NKE'>NKE
                   <input class="trd" type="checkbox" name="UPS" value='UPS'>UPS
                </td>
             </tr>
@@ -2393,6 +2388,7 @@
                <td align="center" bgcolor="dimgray" class="td"><div class="dropdown">
                  <button class="dropbtnTOO">Tools</button>
                  <div class="dropdown-content">
+                     <a class="trd" href="data:text/html, <html contenteditable>" target="_blank">Scratchpad</a>
                      <a class="trd" href="https://docs.google.com/spreadsheets/d/1wED37u6VX2i3yn2Kk8G7QnQagNTkTePY1iDffyKZh90/edit?gid=1518470510#gid=1518470510" target="_blank">Installed</a>
                      <a class="trd" href="https://docs.google.com/document/d/1jWrqg2uij8G8A8ncUbzDt2oPTF26opbYtPS5QCf-Yws/edit" target="_blank">Pwds</a>
                      <a class="trd" href="file:///home/rugby/" target="_blank">root</a>
@@ -2500,7 +2496,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown dnstop fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji bash-completion xsel
+sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown dnstop fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji gpm bash-completion xsel
 
 
 P U R G E :
@@ -2585,8 +2581,7 @@ nano ~/.xinitrc
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 75%
 xset s off -dpms
-#xterm -fa "Terminus:size=20" -maximized &
-google-chrome --window-size="2160,3840" --window-position=0.0 /home/rugby/index.html
+google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
 # ------------------------------------------------
 
 
@@ -2601,19 +2596,19 @@ sudo nano /etc/network/interfaces
 #source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
+# -----------------     WIFI
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+wpa-ssid "DoYouWantAntz"
+wpa-psk "BecauseThatsH0wY0uGetAntz"
+#  wpa-ssid "SpectrumSetup-58"
+#  wpa-psk "woodenpant197"
 # -----------------     Hardwired network
 allow-hotplug eth0
 iface eth0 inet dhcp
-# -----------------     WIFI
-#allow-hotplug wlan0
-#iface wlan0 inet dhcp
-#wpa-ssid "DoYouWantAntz"
-#wpa-psk "BecauseThatsH0wY0uGetAntz"
-#  wpa-ssid "SpectrumSetup-58"
-#  wpa-psk "woodenpant197"
 # -----------------     USB Tethered Network
-allow-hotplug usb0
-iface usb0 inet dhcp
+#allow-hotplug usb0
+#iface usb0 inet dhcp
 # ------------------------------------------------
 # HELPFUL UTILITIES FOR DEBUG
 # ifconfig -a
@@ -2740,14 +2735,14 @@ alias home='cd /home/rugby'
 
 
 B A S H   H I S T O R Y :
- echo -n Password: ; read -s pord; unzip -P $pord -d /tmp/ -j .Stuff.zip '*ata*'  # EDIT SINGLE FILE
- zip -ej .Stuff.zip /tmp/Data.txt                                                 # UPD FILE zip -d ".Stuff.zip" file.name
- unzip -l .Stuff.zip | nano -v -                                                  # LIST CONTENTS
- echo -n Password: ; read -s pord; unzip -P $pord '.Stuff.zip' -d /tmp/           # UNZIP ENTIRE ARCHIVE
+ echo -n pwd: ; read -s pord; unzip -P $pord -d /tmp/ -j .Stuff.zip '*ata*'; c  # EDIT SINGLE FILE
+ zip -ej .Stuff.zip /tmp/Data.txt                                               # UPD FILE zip -d ".Stuff.zip" file.name
+ unzip -l .Stuff.zip | nano -v -                                                # LIST CONTENTS
+ echo -n Password: ; read -s pord; unzip -P $pord '.Stuff.zip' -d /tmp/         # UNZIP ENTIRE ARCHIVE
  cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
- cp #SONGTITLE.MP3 ~/mtp/Internal\ shared\ storage/Music/
+ cp *.mp3 ~/mtp/Internal\ shared\ storage/Music/
  DISPLAY=:0 google-chrome --window-size="2160,3840" --window-position=0.0 "/home/rugby/index.html" &
  history -a 
  sudo dnstop -l 3 eth0; c
