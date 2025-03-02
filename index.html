@@ -37,7 +37,6 @@
       .dropdown-content a {color: white; padding: 12px 16px; text-decoration: none; display: block; }
       .dropdown-content a:hover {background-color: red; color: white; }
       .dropdown:hover .dropdown-content {display: block; }
-
    </STYLE></HEAD><BODY BGCOLOR="#2C001E" onload="prep_HTML()">
 
    <SCRIPT LANGUAGE="JavaScript">
@@ -2334,7 +2333,7 @@
                      <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
                      <a class="trd" href="https://www.genisyscu.org/rates" target="_blank">Genisys</a>
                      <hr class="red">
-                     <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">AscensionHealth</a>
+                     <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">HenryFordHealth</a>
                      <a class="trd" href="https://completespinejointcenter.setmore.com/book?step=time-slot&products=s7ab51526494985133&type=service&staff=r46221526575463066&staffSelected=true" target="_blank">CompleteSpine</a>
                      <a class="trd" href="https://patient.labcorp.com/landing" target="_blank">Labcorp</a>
                      <a class="trd" href="https://myhealth.bankofamerica.com/Login.aspx?" target="_blank">myHSA</a>
@@ -2397,7 +2396,7 @@
                      <a class="trd" href="https://takeout.google.com/manage?pli=1" target="_blank">Takeout</a>
                      <hr class="green">
                      <a class="trd" href="https://www.nutritionix.com" target="_blank">Nutrition</a>
-                     <a class="trd" href="https://swordsolutions.com/inspections/" target="_blank">Inspections</a>
+                     <a class="trd" href="https://swordsolutions.com/inspections/" target="_blank">Restaurants</a>
                      <a class="trd" href="https://www.zoetispetcare.com/rewards" target="_blank">Zoetis</a>
                      <hr class="red">
                      <a class="trd" href="https://www.shazam.com/" target="_blank">Shazam</a>
@@ -2496,7 +2495,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown dnstop fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji gpm bash-completion xsel
+sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown dnstop fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji bash-completion xsel
 
 
 P U R G E :
@@ -2646,50 +2645,6 @@ defaults.pcm.card 0
 defaults.pcm.device 3
 defaults.ctl.card 0
 # ------------------------------------------------
-
-
-F I R E F O X :
-https://www.mozilla.org/en-US/firefox/linux/?utm_medium=referral&utm_source=support.mozilla.org
-https://support.mozilla.org/en-US/kb/install-firefox-linux
-tar xjf firefox-*.tar.bz2
-sudo mv firefox /opt
-sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
-Settings:
-- Dark
-- Fonts, Ubuntu, size 16 for all, override site settings for font choices
-- Homepage  file:///home/rugby/index.html
-- Search    uncheck Show Search Suggestions, uncheck Shortcuts in Address bar (Facebook, Twitter), thrift Search Engines
-- Strict Privacy
-- History   use custom settings for History, clear history when Firefox closes
-- Uncheck everything in "Firefox Data Collection and Use"
-- Disable "Firefox Data Collection and Use", incl Studies
-- Completely disable "DNS over HTTPS", use my default DNS resolver
-- Enable Firefox Sync
-Customize New Tab page:
-- disable Shortcuts
-- Add Home button & Sceenshot tool
-- Remove bonus space & Pocket
-Install uBlock Origin blocker
-   Manage uBlock Extension Shortcuts:
-   Activate Toolbar button:   Ctrl+Alt+T
-   Enter element picker mode: Ctrl+Alt+P
-   Enter element zapper mode: Ctrl+Alt+Z
-   Open the dashboard:        Ctrl+Alt+D
-   Toggle JavaScript:         Ctrl+Alt+J
-Customize about:config:
-- layout.forms.input-type-search.enabled set TRUE
-- browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar set FALSE
-- devtools.toolbox.zoomValue set to 2
-- pdfjs.defaultZoomValue set to page-width
-For MOBILE only:
-- dom.disable_open_during_load  to FALSE
-- layout.css.devPixelsPerPx   set to 1
-- chrome://geckoview/content/config.xhtml
-- Settings..Passwords..check Autofill in other apps to stop using Google Password Manager
-- Developer Options:
-   + Stay Awake when charging
-   + Default USB Config: file xfer
 
 
 C H R O M E :
