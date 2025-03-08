@@ -7,9 +7,10 @@
       a.clock:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 45px;}
       a.clock:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 45px;}
       a.clock:hover{color: white; font-family: Ubuntu; text-decoration:none; font-size: 45px;}
-      hr.green  {border: 2px solid green; width: 97%; }
-      hr.red    {border: 2px solid red; width: 97%; }
-      hr.indigo {border: 2px solid purple; width: 97%; }
+      hr.green   {border: 2px solid green; width: 97%; }
+      hr.red     {border: 2px solid red; width: 97%; }
+      hr.orange  {border: 2px solid darkorange; width: 97%; }
+      hr.indigo  {border: 2px solid purple; width: 97%; }
       p.trd {color: silver; text-decoration:none; }
       td.trd {color: purple; font-family: monospace; }
       td.trdG {color: black; font-family: monospace; white-space: nowrap;}
@@ -2303,6 +2304,10 @@
                    <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
                    <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
                    <hr class="green">
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
+                   <hr class="orange">
                    <a class="trd" href="https://music.youtube.com/" target="_blank">Podcasts</a>
                    <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
                    <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
@@ -2356,9 +2361,7 @@
                      <a class="trd" href="https://imginn.com" target="_blank">insta</a>
                      <hr class="red">
 <!-- FIXME
-                     <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
-                     <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
-                     <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
+
                      <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
                      <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
                      <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
@@ -2555,6 +2558,7 @@ debconf-show debconf
 sudo nano /etc/fstab delete swap file line
 sudo swapoff -a
 sudo rm /swap.img 
+sudo nano /etc/systemd/logind.conf reduce TTYs from 6 to 3
 
 
 A U T O L O G I N :
@@ -2670,13 +2674,14 @@ Ctrl+Shift+P   search for Network   Show Network conditions    Screenshot
 For Android Phone:
 + Settings..Site Settings..Third-party sign-in: Disable
 
+
 B A S H R C :
 nano .bashrc
 # ------------------------------------------------
 alias l='ls -CF'
 alias c='printf "\033c"'
 alias h='history'
-alias v='alsamixer'
+alias v='alsamixer; c'
 alias hi='nano ~/.bash_history; c'
 alias ho='sudo nano /etc/hosts; c'
 alias um='sudo umount /media/usb/'
