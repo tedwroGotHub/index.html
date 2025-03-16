@@ -2303,10 +2303,10 @@
                    <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
                    <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
                    <hr class="green">
+                   <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
                    <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
                    <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
                    <hr class="orange">
-                   <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
                    <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
                    <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
                    <hr class="red">
@@ -2680,6 +2680,7 @@ alias l='ls -CF'
 alias c='printf "\033c"'
 alias h='history'
 alias v='alsamixer; c'
+alias ha='set -o history'
 alias hi='nano ~/.bash_history; c'
 alias ho='sudo nano /etc/hosts; c'
 alias um='sudo umount /media/usb/'
@@ -2693,21 +2694,20 @@ alias upd='~/up2date.sh'
 alias mtp='jmtpfs ~/mtp'
 alias umtp='fusermount -u /home/rugby/mtp'
 alias home='cd /home/rugby'
+set +o history # STOP SAVING BASH HISTORY
 # ------------------------------------------------
 
 
 B A S H   H I S T O R Y :
- echo -n pwd: ; read -s pord; unzip -P $pord -d /tmp/ -j .Stuff.zip '*ata*'; c  # EDIT SINGLE FILE
- zip -ej .Stuff.zip /tmp/Data.txt                                               # UPD FILE zip -d ".Stuff.zip" file.name
- unzip -l .Stuff.zip | nano -v -                                                # LIST CONTENTS
- echo -n Password: ; read -s pord; unzip -P $pord '.Stuff.zip' -d /tmp/         # UNZIP ENTIRE ARCHIVE
+ echo -n pwd: ; read -s p; unzip -P $p -d /tmp/ -j .Stuff.zip '*ata*'; c  # EDIT SINGLE FILE
+ zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip | nano -v -        # UPD FILE zip -d ".Stuff.zip" filename LIST CONTENTS
+ echo -n pwd: ; read -s p; unzip -P $p '.Stuff.zip' -d /tmp/              # UNZIP ENTIRE ARCHIVE
  cp ~/Music/*.mp3 ~/mtp/Internal\ shared\ storage/Music/
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
  cp *.mp3 ~/mtp/Internal\ shared\ storage/Music/
- DISPLAY=:0 google-chrome --window-size="2160,3840" --window-position=0.0 "/home/rugby/index.html" &
- history -a 
  sudo dnstop -l 3 eth0; c
+ history -a # apt-cache depends uxplay
 #---------------------------------------------------------------------------------------------------------------------
 
 //-->
