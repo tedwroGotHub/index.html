@@ -2307,9 +2307,6 @@
                    <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
                    <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
                    <hr class="orange">
-                   <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
-                   <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
-                   <hr class="red">
                  </div>
                </td>
                <td align="center" bgcolor="deeppink" class="td"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
@@ -2333,7 +2330,6 @@
                      <a class="trd" id="GoHome" href="https://www.google.com/maps/dir//617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/@42.5423896,-83.2260921,12z/data=!4m9!4m8!1m0!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238301!2d42.4848317!3e0!5m1!1e1?entry=ttu" id="GoHome" target="_blank">Home</a>
                      <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">GasPrices</a>
                      <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
-                     <a class="trd" href="https://www.genisyscu.org/rates" target="_blank">Genisys</a>
                      <hr class="red">
                      <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">HenryFordHealth</a>
                      <a class="trd" href="https://completespinejointcenter.setmore.com/book?step=time-slot&products=s7ab51526494985133&type=service&staff=r46221526575463066&staffSelected=true" target="_blank">CompleteSpine</a>
@@ -2358,7 +2354,10 @@
                      <a class="trd" href="https://imginn.com" target="_blank">insta</a>
                      <hr class="red">
 <!-- FIXME
-                     <a class="trd" href="https://music.youtube.com/" target="_blank">Podcasts</a>
+                     <a class="trd" href="https://www.genisyscu.org/rates" target="_blank">Genisys</a>
+                     <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
+                     <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
+                     <hr class="red">
                      <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
                      <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
                      <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
@@ -2372,8 +2371,6 @@
                      <a class="trd" href="https://www.massagebook.com/business/10864208/select-product/services/category/Bodywork?src=massagebook&ncf_source=search_site" target="_blank">Nate</a>
                      <a class="trd" href="https://www.vagaro.com/us04/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVCI+vu7btIWtDFTPUdZ5yZl95ABV+hPYfGxw4XFZwALY+3QnSASHZOE4q3Nya9wSBSmXsbQX+IRDdbi9SArI9h/pp3610OfXeJpXGStd5V891UEGtKJjHy0sujllxrCqrFmRXri6GGqnizc1qkzoS7fZg5c16iMob5Y94BjToCG5fHeCLym9xAXG6YMMLqj0wwnyE8oHxYIYHU9Y4Ti9Ts+YYYvcg/cYHheDevfeeB6VoedwlKtZ5Hs+a+U7XXOOtjSjhWC4b3RCmxbuf/+49khk9ZTOrUKNtt4Sf5oZH2n44rWrrmgHF4c3clytvVpIbB+VMmehmpK8stpLU2BmGdLooeLM5tP3lxD/L6uWk2sfB6yJiR1/D9dODXIVIGAo/w==" target="_blank">DPbw</a>
                      <a class="trd" href="#" onclick="window.open('https://www.lowes.com/pd/Midea-Midea-0-7-CuFt-Countertop-Microwave-Oven-Black/5005343725'); window.open('https://www.menards.com/main/appliances/microwaves/countertop-microwaves/criterion-reg-0-7-cu-ft-countertop-microwave/ccm07m1b/p-3289655538341538-c-1500043654078.htm?exp=false'); ">Microwaves</a>
-                     <a class="trd" href="chrome://net-export" target="_blank">Netlog</a>
-                     <a class="trd" href="about:networking#dns" target="_blank">DNS</a>
 //-->
                   </div>
                </td>
@@ -2525,6 +2522,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet fbcon=rotate:3"
 GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
 # ------------------------------------------------
 sudo update-grub
+sudo nano /etc/initramfs-tools/initramfs.conf   revise from MOST to DEP
+sudo update-initramfs  -u -k all
 sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
 sudo dpkg-reconfigure console-setup
 picked UTF-8, Guess optimal, TerminusBold,16x32
@@ -2584,7 +2583,7 @@ nano ~/.xinitrc
 #!/usr/bin/env bash
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
-amixer sset 'PCM' 75%
+amixer sset 'PCM' 65%
 xset s off -dpms
 google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
 # ------------------------------------------------
@@ -2602,10 +2601,10 @@ sudo nano /etc/network/interfaces
 auto lo
 iface lo inet loopback
 # -----------------     WIFI
-allow-hotplug wlan0
-iface wlan0 inet dhcp
-wpa-ssid "DoYouWantAntz"
-wpa-psk "BecauseThatsH0wY0uGetAntz"
+#allow-hotplug wlan0
+#iface wlan0 inet dhcp
+#wpa-ssid "DoYouWantAntz"
+#wpa-psk "BecauseThatsH0wY0uGetAntz"
 #  wpa-ssid "SpectrumSetup-58"
 #  wpa-psk "woodenpant197"
 # -----------------     Hardwired network
