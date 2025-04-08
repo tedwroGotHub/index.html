@@ -44,17 +44,15 @@
    // Define Stock symbols
    var ticker = new Array(); ck_stocks = new Array(); ticker=[""];
    i = ticker.length; var total_symbols;
-   ticker[i++] = 'pmm';   rHigh_PMM   = 6.60;   //  9/12/2022 and $5.10 was absolute LOW
+   ticker[i++] = 'pmm';   rHigh_PMM   = 5.10;   //  9/12/2022 and $5.10 was absolute LOW
    ticker[i++] = 'fulc';  rHigh_FULC  =  33;    //  9/21/2021
    ticker[i++] = 'upst';  rHigh_UPST  = 401;    // 10/20/2021
-   ticker[i++] = 'SPY';   rHigh_SPY   = 411;    // 02/18
-   ticker[i++] = 'dia';   rHigh_DIA   = 322;    // 02/18
-   ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 02/18
-   ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 02/18
+   ticker[i++] = 'SPY';   rHigh_SPY   = 450;    // 04/08
+   ticker[i++] = 'dia';   rHigh_DIA   = 322;    // 04/08
+   ticker[i++] = '$tran'; rHigh_$TRAN = 11000;  // 04/08
+   ticker[i++] = 'vix';   rHigh_VIX   = 13.00;  // 04/08
    //   W a t c h l i s t   S t a r t s   H e r e
-   ticker[i++] = 'HAL';   rHigh_HAL   =  19;    // 02/18
-   ticker[i++] = 'LTH';   rHigh_LTH   =  12;    // 02/18
-   ticker[i++] = 'UPS';   rHigh_UPS   =  90;    // 02/18
+   ticker[i++] = 'LTH';   rHigh_LTH   =  20;    // 04/08
    //   E n d   o f   S y m b o l s
    //
    //   U S E R   S E T T I N G S   F O R   A N A L Y S I S
@@ -2221,9 +2219,7 @@
                   <input class="trd" type="checkbox" name="DIA" value='dia'>dia
                   <input class="trd" type="checkbox" name="$tran" value='$tran'>$tran
                   <input class="trd" type="checkbox" name="vix" value='vix'>$vix
-                  <input class="trd" type="checkbox" name="HAL" value='HAL'>HAL
                   <input class="trd" type="checkbox" name="LTH" value='LTH'>LTH
-                  <input class="trd" type="checkbox" name="UPS" value='UPS'>UPS
                </td>
             </tr>
             <tr>
@@ -2303,7 +2299,7 @@
                    <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
                    <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
                    <hr class="green">
-                   <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
+                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
                    <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
                    <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
                    <hr class="orange">
@@ -2355,6 +2351,7 @@
                      <hr class="red">
 <!-- FIXME
                      <a class="trd" href="https://www.genisyscu.org/rates" target="_blank">Genisys</a>
+                     <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
                      <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
                      <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
                      <hr class="red">
