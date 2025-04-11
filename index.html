@@ -20,10 +20,10 @@
       input.trdO {color: red; font-variant: small-caps; border: 2px solid orangered; }
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
-      img.spy { width: 595px; height: 400px; }
-      img.map { width: 1200px; height: 390px; }
+      img.spy { width: 525px; height: 400px; }
+      img.map { width: 1050px; height: 390px; }
       img.router { width: 100px; height: 80px; }
-      iframe.ticker { width: 1200px; height: 315px; }
+      iframe.ticker { width: 1050px; height: 315px; }
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
@@ -2223,7 +2223,7 @@
                </td>
             </tr>
             <tr>
-               <td class="trd" colspan="13">
+               <td class="trd">
                   <input class="trd" type="reset" name="stocks">
                   <input class="trd" type="button" name="stocks" value="Select ALL" onClick="select_all_stocks()">
                   <input class="trd" type="button" name="stocks" value="Select Watchlist" onClick="select_watchlist()">
@@ -2305,9 +2305,8 @@
                    <hr class="orange">
                  </div>
                </td>
-               <td align="center" bgcolor="deeppink" class="td"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
+               <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
                <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1eFo0uSG24vJOQCUTd31fx-D7RbJStGanIEXQDzDGIUo/" target="_blank">Energy</a></td>
-               <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1E_2xovKGjRShwHMidQvjZ8U6G3fcy5m5ECNtWNv--4o/" target="_blank">Budget</a></td>
             </tr>
             <tr>
                <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://voice.google.com/u/0/messages" target="_blank">Voice</a></td>
@@ -2320,12 +2319,14 @@
                      <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost
                      <a class="trd" href="https://outage.dteenergy.com/" target="_blank">Outage</a>
                      <a class="trd" href="https://www.consumersenergy.com/login" target="_blank">Consumers</a>
+                     <a class="trd" href="https://usage.dteenergy.com/?accountNumber=910016170938&productType=electric" target="_blank">DTE</a>
                      <a class="trd" href="https://arborpointe.myvetstoreonline.pharmacy/" target="_blank">EddieRx</a>
                      <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
                      <a class="trd" id="GoWork" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Life+Time,+4700+Investment+Dr,+Troy,+MI+48098,+United+States/@42.5424694,-83.1849884,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238459!2d42.4848197!1m5!1m1!1s0x8824c1510edb80c3:0xbcee7c62cfdae58b!2m2!1d-83.1727718!2d42.5894212!3e0" target="_blank">LTF Troy</a>
                      <a class="trd" id="GoHome" href="https://www.google.com/maps/dir//617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/@42.5423896,-83.2260921,12z/data=!4m9!4m8!1m0!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238301!2d42.4848317!3e0!5m1!1e1?entry=ttu" id="GoHome" target="_blank">Home</a>
                      <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">GasPrices</a>
                      <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
+                     <a class="trd" href="https://accounts.craigslist.org/login?rp=%2Flogin%2Fhome&rt=L" target="_blank">Craigslist</a>
                      <hr class="red">
                      <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">HenryFordHealth</a>
                      <a class="trd" href="https://completespinejointcenter.setmore.com/book?step=time-slot&products=s7ab51526494985133&type=service&staff=r46221526575463066&staffSelected=true" target="_blank">CompleteSpine</a>
@@ -2367,18 +2368,16 @@
                      <a class="trd" href="https://www.masseurfinder.com/massage/royal_oak/" target="_blank">MasseurFinder</a>
                      <a class="trd" href="https://www.massagebook.com/business/10864208/select-product/services/category/Bodywork?src=massagebook&ncf_source=search_site" target="_blank">Nate</a>
                      <a class="trd" href="https://www.vagaro.com/us04/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVCI+vu7btIWtDFTPUdZ5yZl95ABV+hPYfGxw4XFZwALY+3QnSASHZOE4q3Nya9wSBSmXsbQX+IRDdbi9SArI9h/pp3610OfXeJpXGStd5V891UEGtKJjHy0sujllxrCqrFmRXri6GGqnizc1qkzoS7fZg5c16iMob5Y94BjToCG5fHeCLym9xAXG6YMMLqj0wwnyE8oHxYIYHU9Y4Ti9Ts+YYYvcg/cYHheDevfeeB6VoedwlKtZ5Hs+a+U7XXOOtjSjhWC4b3RCmxbuf/+49khk9ZTOrUKNtt4Sf5oZH2n44rWrrmgHF4c3clytvVpIbB+VMmehmpK8stpLU2BmGdLooeLM5tP3lxD/L6uWk2sfB6yJiR1/D9dODXIVIGAo/w==" target="_blank">DPbw</a>
-                     <a class="trd" href="#" onclick="window.open('https://www.lowes.com/pd/Midea-Midea-0-7-CuFt-Countertop-Microwave-Oven-Black/5005343725'); window.open('https://www.menards.com/main/appliances/microwaves/countertop-microwaves/criterion-reg-0-7-cu-ft-countertop-microwave/ccm07m1b/p-3289655538341538-c-1500043654078.htm?exp=false'); ">Microwaves</a>
 //-->
                   </div>
                </td>
                <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://digital.fidelity.com/prgw/digital/login/full-page" target="_blank">Fidelity</a></td>
-               <td align="center" bgcolor="#2C1DD1" class="td"><a class="trd" href="https://usage.dteenergy.com/?accountNumber=910016170938&productType=electric" target="_blank">Usage</a></td>
-               <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1l50V8v-ZrDPEG4xfPRX2WLEkT6PdjdHdJ-p-dthCpAQ/" target="_blank">Journal</a></td>
+               <td align="center" bgcolor="#C11B17" class="td"><a class="trd" href="https://www.youtube.com/feed/you" target="_blank">YouTube</a></td>
             </tr>
             <tr>
                <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
                <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
-               <td align="center" colspan="1" bgcolor="#ff80ed" class="td"><a class="trd" href="https://accounts.craigslist.org/login?rp=%2Flogin%2Fhome&rt=L" target="_blank">Craigslist</a></td>
+               <td align="center" colspan="1" bgcolor="#ff80ed" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1l50V8v-ZrDPEG4xfPRX2WLEkT6PdjdHdJ-p-dthCpAQ/" target="_blank">Journal</a></td>
                <td align="center" bgcolor="dimgray" class="td"><div class="dropdown">
                  <button class="dropbtnTOO">Tools</button>
                  <div class="dropdown-content">
@@ -2416,26 +2415,24 @@
                  </div>
                </td>
                <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
-               <td align="center" bgcolor="#C11B17" class="td"><a class="trd" href="https://www.youtube.com/feed/you" target="_blank">YouTube</a></td>
             </tr>
             <tr>
                <td align="center" style="vertical-align:middle"><a href="http://192.168.1.254/" target="_blank"><img class="router" src="https://lh3.googleusercontent.com/d/1lwBlUH-0QxB2tQiqsd2L_UB4oFExXy_4" alt=""></a></td>
                <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="file:///home/rugby/ToDo.txt" target="_blank">ToDo</a></td>
-               <td align="center" bgcolor="#6AA84F" class="td"><a class="trd" href="https://calculator.apps.chrome/" target="_blank">Calc</a></td>
-               <td align="center" bgcolor="orangered" class="td"><a class="trd" href="https://www.homedepot.com/l/Madison-Heights/MI/Madison-Heights/48071/2731" target="_blank">HD</a></td>
-               <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
+               <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1E_2xovKGjRShwHMidQvjZ8U6G3fcy5m5ECNtWNv--4o/" target="_blank">Budget</a></td>
+               <td align="center" bgcolor="orangered" class="td"><a class="trd" href="https://www.homedepot.com/l/Madison-Heights/MI/Madison-Heights/48071/2731" target="_blank">HD</a>&nbsp;/&nbsp;<a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
                <td align="center" bgcolor="#2C001E" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
             <tr>
                <!-- https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
-               <td align="center" colspan="6" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
+               <td align="center" colspan="5" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
             </tr>
             <tr>
-               <td align="center" colspan="6" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&single=true&chrome=false"></iframe></td>
+               <td align="center" colspan="5" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&single=true&chrome=false"></iframe></td>
             </tr>
             <tr>
-               <td align="center" colspan="6" bgcolor="#2C001E">
+               <td align="center" colspan="5" bgcolor="#2C001E">
                   <a href="https://www.meteoblue.com/en/weather/14-days/royal-oak_united-states_5007804" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
-                  <iframe src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1050px; height: 550px; "></iframe>
+                  <iframe src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="3" scrolling="NO" allowtransparency="true" style="width: 1050px; height: 550px; transform:scale(1); "></iframe>
                </td>
             </tr>
          </table>
@@ -2576,8 +2573,8 @@ if [[ $(tty) = /dev/tty1 ]]; then
 fi
 # ------------------------------------------------
 nano ~/.xinitrc
-# ------------------------------------------------
 #!/usr/bin/env bash
+# ------------------------------------------------
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 65%
