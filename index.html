@@ -1623,7 +1623,7 @@
       }
 
       // Determine if we should include HistoricalData
-      if(day_form.hist.checked == TRUE) {
+      if(sel_form.hist.checked == TRUE) {
          // Set flag
          include_hist = TRUE;
          somedays_selected = TRUE;
@@ -1633,7 +1633,7 @@
       }
 
       // Determine if we should include FVIZ Data
-      if(day_form.fviz.checked == TRUE) {
+      if(sel_form.fviz.checked == TRUE) {
          // Set flag
          include_fviz = TRUE;
          somedays_selected = TRUE;
@@ -1643,7 +1643,7 @@
       }
 
       // Determine if we should include BarChart overview BCO
-      if(day_form.bco.checked == TRUE) {
+      if(sel_form.bco.checked == TRUE) {
          // Set flag
          include_bco = TRUE;
          somedays_selected = TRUE;
@@ -2241,6 +2241,9 @@
                   <input class="trd" type="checkbox" name="OnPaper" value="0">includePT
                   <input class="trd" type="checkbox" name="inclCharts" value="inclCharts" checked="TRUE" onClick="set_inclCharts()">inclCharts
                   <input class="trd" type="checkbox" name="bigCharts" checked="TRUE" onClick="set_bigCharts()">BigCharts
+                  <input type="checkbox" name="hist" value="hist">data
+                  <input type="checkbox" name="fviz" value="fviz">fV
+                  <input type="checkbox" name="bco" value="bco">bC
                </td>
             </form><!-- close sel_form //-->
             </tr>
@@ -2250,23 +2253,20 @@
                   <form name="day_form">
                      <tr>
                         <td class="trdG">
-                           <input type="checkbox" name="entryValue" value="entryValue">Entry
-                           <input type="checkbox" name="Day1" value="Day1">1day
-                           <input type="checkbox" name="Day2" value="Day2">2day
-                           <input type="checkbox" name="Day5" value="Day5">5day
-                           <input type="checkbox" name="Day10" value="Day10">10day
-                           <input type="checkbox" name="Mo1" value="Mo1">1mo
-                           <input type="checkbox" name="Mo2" value="Mo2">2mo
-                           <input type="checkbox" name="Mo3" value="Mo3">3mo
-                           <input type="checkbox" name="Mo6" value="Mo6">6mo
-                           <input type="checkbox" name="Year1" value="Year1">1yr
-                           <input type="checkbox" name="Year2" value="Year2">2yr
-                           <input type="checkbox" name="Year5" value="Year5">5yr
-                           <input type="checkbox" name="Year10" value="Year10">10yr
-                           <input type="checkbox" name="Year20" value="Year20">20yr
-                           <input type="checkbox" name="hist" value="hist">data
-                           <input type="checkbox" name="fviz" value="fviz">fV
-                           <input type="checkbox" name="bco" value="bco">bC
+                           <input type="checkbox" name="entryValue" value="entryValue">IN
+                           <input type="checkbox" name="Day1" value="Day1">1d
+                           <input type="checkbox" name="Day2" value="Day2">2d
+                           <input type="checkbox" name="Day5" value="Day5">5d
+                           <input type="checkbox" name="Day10" value="Day10">10d
+                           <input type="checkbox" name="Mo1" value="Mo1">1m
+                           <input type="checkbox" name="Mo2" value="Mo2">2m
+                           <input type="checkbox" name="Mo3" value="Mo3">3m
+                           <input type="checkbox" name="Mo6" value="Mo6">6m
+                           <input type="checkbox" name="Year1" value="Year1">1y
+                           <input type="checkbox" name="Year2" value="Year2">2y
+                           <input type="checkbox" name="Year5" value="Year5">5y
+                           <input type="checkbox" name="Year10" value="Year10">10y
+                           <input type="checkbox" name="Year20" value="Year20">20y
                            <input class="trdO" type="reset" name="includedays" value="Reset">
                            <input class="trdG" type="Button" name="Submit" value="Submit" onClick="submit_this()">
                            </form><!-- close day_form //-->
@@ -2305,7 +2305,7 @@
                    <hr class="orange">
                  </div>
                </td>
-               <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
+               <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
                <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1eFo0uSG24vJOQCUTd31fx-D7RbJStGanIEXQDzDGIUo/" target="_blank">Energy</a></td>
             </tr>
             <tr>
