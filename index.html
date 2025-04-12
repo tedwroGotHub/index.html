@@ -128,8 +128,8 @@
    var pre_BCOurl = 'https://www.barchart.com/stocks/quotes/';
    var post_BCOurl = '/insider-trades';
    var entryValue_col_width = 10;       // in percent
-//   var isMobileDevice = false;
-//   if (typeof screen.orientation !== 'undefined') { isMobileDevice = false; }  // Used to update links by prep_HTML if on mobile
+// FIXME   var isMobileDevice = false;
+// FIXME   if (typeof screen.orientation !== 'undefined') { isMobileDevice = false; }  // Used to update links by prep_HTML if on mobile
 
    // Prep home page for use: check for wash sales, duplicates, etc
    prep_myChart();
@@ -2193,8 +2193,9 @@
    // Function to determine if this is a mobile device
    //
    function isMobileDevice() {
-     const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-     return regex.test(navigator.userAgent);
+      // Code based on https://medium.com/geekculture/detecting-mobile-vs-desktop-browsers-in-javascript-ad46e8d23ce5
+      const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      return regex.test(navigator.userAgent);
    }
 
 
@@ -2210,8 +2211,9 @@
       // Adjust page layout based on whether Desktop or Mobile
       if( isMobileDevice == true ){
          // Increase height of Ticker iframe for mobile devices
+         // Code based on https://javascript.plainenglish.io/how-to-use-javascript-to-update-css-variables-135d17b5577c
          const element = document.querySelector('.ticker');
-         element.style.setProperty('height', '585px');
+         element.style.setProperty('height', '385px');
 
          // For a Mobile device, use default Navigation app on phone instead of Google Maps
          //myGPSapp = document.getElementById("GoWork").href = "geo:42.58942433830024, -83.17294874427856";
