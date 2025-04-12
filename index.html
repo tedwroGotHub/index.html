@@ -20,6 +20,7 @@
       input.trdO {color: red; font-variant: small-caps; border: 2px solid orangered; }
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
+      output.trd {color: white; text-decoration:none; }
       img.spy { width: 523px; height: 400px; }
       img.map { width: 1050px; height: 390px; }
       img.router { width: 100px; height: 80px; }
@@ -2192,7 +2193,7 @@
    // Populate HTML fields based on javascript variables
    //
    function prep_HTML(){
-      myStockNumber = document.getElementById("myStockNumber").value = total_symbols;
+      myStockNumber = document.getElementById("myStockNumber").value = total_symbols + " Stocks";
       startTime();
 
       // Adjust page layout based on whether Desktop or Mobile
@@ -2220,21 +2221,22 @@
                   <input class="trd" type="checkbox" name="$tran" value='$tran'>$tran
                   <input class="trd" type="checkbox" name="vix" value='vix'>$vix
                   <input class="trd" type="checkbox" name="LTH" value='LTH'>LTH
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<output class="trd" id="myStockNumber"></output>
                </td>
             </tr>
             <tr>
                <td class="trd">
                   <input class="trd" type="reset" name="stocks">
-                  <input class="trd" type="button" name="stocks" value="Select ALL" onClick="select_all_stocks()">
-                  <input class="trd" type="button" name="stocks" value="Select Watchlist" onClick="select_watchlist()">
-                  <input class="trd" type="button" name="picks" value="Open Trades" onClick="review_open_trades()">
-                  <input class="trd" type="button" name="picks" value="Closed Trades" onClick="review_closed_trades()">
+                  <input class="trd" type="button" name="stocks" value="SelectALL" onClick="select_all_stocks()">
+                  <input class="trd" type="button" name="stocks" value="SelectWatchlist" onClick="select_watchlist()">
+                  <input class="trd" type="button" name="picks" value="OpenTrades" onClick="review_open_trades()">
+                  <input class="trd" type="button" name="picks" value="ClosedTrades" onClick="review_closed_trades()">
                   <input class="trdP" title="Review Cutoff by Exit Date" type="date" style="width: 120px;" id="ReviewCutoffDate" value="2023-01-01">
                   <!-- original review_cutoff = 2020-10-01  how far back in Exit dates to review, format: YYYY-MM-DD //-->
-                  <input class="trdP" title="Year Cutoff" type="text" maxlength="4" size="1" style="width: 40px;" id="YearCutoffDate" value="2024">
+                  <input class="trdP" title="Year Cutoff" type="text" maxlength="4" size="1" style="width: 40px;" id="YearCutoffDate" value="2025">
                   <!-- default   year_cutoff   = 2023        what year to review if doing large scale lookback //-->
                   <input class="trdP" title="test Stock Symbol" type="text" maxlength="5" size="1" id="testSymbol" value="" tabindex="0" autofocus="autofocus">
-                  <output id="myStockNumber"></output> Stocks<br>
+                  <br>
                   <input class="trd" type="checkbox" name="WashSale" checked="TRUE">NoWashSales
                   <input class="trd" type="checkbox" name="NoEntry" checked="TRUE">excludeNE
                   <input class="trd" type="checkbox" name="NoPaper" checked="TRUE">excludePT
@@ -2351,11 +2353,9 @@
                      <a class="trd" href="https://imginn.com" target="_blank">insta</a>
                      <hr class="red">
 <!-- FIXME
-                     <a class="trd" href="https://www.genisyscu.org/rates" target="_blank">Genisys</a>
                      <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
                      <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
                      <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
-                     <hr class="red">
                      <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
                      <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
                      <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
@@ -2424,7 +2424,7 @@
                <td align="center" bgcolor="#2C001E" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
             <tr>
                <!-- https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
-               <td align="center" colspan="5" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a>&nbsp<a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
+               <td align="center" colspan="5" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
             </tr>
             <tr>
                <td align="center" colspan="5" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&single=true&chrome=false"></iframe></td>
