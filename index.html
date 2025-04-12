@@ -12,7 +12,7 @@
       hr.orange  {border: 2px solid darkorange; width: 97%; }
       hr.indigo  {border: 2px solid purple; width: 97%; }
       p.trd {color: silver; text-decoration:none; }
-      td.trd {color: purple; font-family: monospace; border: 1px solid white; }
+      td.trd {color: purple; font-family: monospace; }
       td.trdG {color: black; font-family: monospace; white-space: nowrap;}
       td.td { height: 74px; white-space:nowrap; }
       input.trd {color: red; font-variant: small-caps; border: 2px solid black; }
@@ -21,7 +21,7 @@
       input.trdP {color: blue; height: 20px; font-family: Ubuntu; font-size: 16px; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
       output.trd {color: white; text-decoration:none; }
-      img.spy { width: 523px; height: 400px; }
+      img.spy { width: 525px; height: 400px; }
       img.map { width: 1050px; height: 390px; }
       img.router { width: 100px; height: 80px; }
       iframe.ticker { width: 1050px; height: 350px; }
@@ -2206,236 +2206,227 @@
    //
    // END OF FUNCTIONS
 </SCRIPT>
-<table bgcolor="#2C001E" border="0" cellspacing="0" width="1050px">
+<table bgcolor="gainsboro" border="0" width="100%">
+   <form name="sel_form">
    <tr>
-      <td>
-         <table bgcolor="gainsboro" border="0">
-            <form name="sel_form">
+      <td class="trd">
+         <input class="trd" type="checkbox" name="pmm" value='pmm'>pmm
+         <input class="trd" type="checkbox" name="fulc" value='fulc'>fulc
+         <input class="trd" type="checkbox" name="upst" value='upst'>upst
+         <input class="trd" type="checkbox" name="SPY" value='SPY'>SPY
+         <input class="trd" type="checkbox" name="DIA" value='dia'>dia
+         <input class="trd" type="checkbox" name="$tran" value='$tran'>$tran
+         <input class="trd" type="checkbox" name="vix" value='vix'>$vix
+         <input class="trd" type="checkbox" name="LTH" value='LTH'>LTH
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<output class="trd" id="myStockNumber"></output>
+      </td>
+      <td align="center" bgcolor="#2C001E" class="td" rowspan="3"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
+   </tr>
+   <tr>
+      <td class="trd">
+         <input class="trd" type="reset" name="stocks">
+         <input class="trd" type="button" name="stocks" value="SelectALL" onClick="select_all_stocks()">
+         <input class="trd" type="button" name="stocks" value="SelectWatchlist" onClick="select_watchlist()">
+         <input class="trd" type="button" name="picks" value="OpenTrades" onClick="review_open_trades()">
+         <input class="trd" type="button" name="picks" value="ClosedTrades" onClick="review_closed_trades()">
+         <input class="trdP" title="Review Cutoff by Exit Date" type="date" style="width: 120px;" id="ReviewCutoffDate" value="2023-01-01">
+         <!-- original review_cutoff = 2020-10-01  how far back in Exit dates to review, format: YYYY-MM-DD //-->
+         <input class="trdP" title="Year Cutoff" type="text" maxlength="4" size="1" style="width: 40px;" id="YearCutoffDate" value="2025">
+         <!-- default   year_cutoff   = 2023        what year to review if doing large scale lookback //-->
+         <input class="trdP" title="test Stock Symbol" type="text" maxlength="5" size="1" id="testSymbol" value="" tabindex="0" autofocus="autofocus">
+         <br>
+         <input class="trd" type="checkbox" name="WashSale" checked="TRUE">NoWashSales
+         <input class="trd" type="checkbox" name="NoEntry" checked="TRUE">excludeNE
+         <input class="trd" type="checkbox" name="NoPaper" checked="TRUE">excludePT
+         <input class="trd" type="checkbox" name="OnPaper" value="0">includePT
+         <input class="trd" type="checkbox" name="inclCharts" value="inclCharts" checked="TRUE" onClick="set_inclCharts()">inclCharts
+         <input class="trd" type="checkbox" name="bigCharts" checked="TRUE" onClick="set_bigCharts()">BigCharts
+         <input type="checkbox" name="hist" value="hist">data
+         <input type="checkbox" name="fviz" value="fviz">fV
+         <input type="checkbox" name="bco" value="bco">bC
+      </td>
+   </form><!-- close sel_form //-->
+   </tr>
+   <tr>
+      <td class="trd">
+         <table class="mode" cellspacing="0">
+         <form name="day_form">
             <tr>
-               <td class="trd">
-                  <input class="trd" type="checkbox" name="pmm" value='pmm'>pmm
-                  <input class="trd" type="checkbox" name="fulc" value='fulc'>fulc
-                  <input class="trd" type="checkbox" name="upst" value='upst'>upst
-                  <input class="trd" type="checkbox" name="SPY" value='SPY'>SPY
-                  <input class="trd" type="checkbox" name="DIA" value='dia'>dia
-                  <input class="trd" type="checkbox" name="$tran" value='$tran'>$tran
-                  <input class="trd" type="checkbox" name="vix" value='vix'>$vix
-                  <input class="trd" type="checkbox" name="LTH" value='LTH'>LTH
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<output class="trd" id="myStockNumber"></output>
-               </td>
-            </tr>
-            <tr>
-               <td class="trd">
-                  <input class="trd" type="reset" name="stocks">
-                  <input class="trd" type="button" name="stocks" value="SelectALL" onClick="select_all_stocks()">
-                  <input class="trd" type="button" name="stocks" value="SelectWatchlist" onClick="select_watchlist()">
-                  <input class="trd" type="button" name="picks" value="OpenTrades" onClick="review_open_trades()">
-                  <input class="trd" type="button" name="picks" value="ClosedTrades" onClick="review_closed_trades()">
-                  <input class="trdP" title="Review Cutoff by Exit Date" type="date" style="width: 120px;" id="ReviewCutoffDate" value="2023-01-01">
-                  <!-- original review_cutoff = 2020-10-01  how far back in Exit dates to review, format: YYYY-MM-DD //-->
-                  <input class="trdP" title="Year Cutoff" type="text" maxlength="4" size="1" style="width: 40px;" id="YearCutoffDate" value="2025">
-                  <!-- default   year_cutoff   = 2023        what year to review if doing large scale lookback //-->
-                  <input class="trdP" title="test Stock Symbol" type="text" maxlength="5" size="1" id="testSymbol" value="" tabindex="0" autofocus="autofocus">
-                  <br>
-                  <input class="trd" type="checkbox" name="WashSale" checked="TRUE">NoWashSales
-                  <input class="trd" type="checkbox" name="NoEntry" checked="TRUE">excludeNE
-                  <input class="trd" type="checkbox" name="NoPaper" checked="TRUE">excludePT
-                  <input class="trd" type="checkbox" name="OnPaper" value="0">includePT
-                  <input class="trd" type="checkbox" name="inclCharts" value="inclCharts" checked="TRUE" onClick="set_inclCharts()">inclCharts
-                  <input class="trd" type="checkbox" name="bigCharts" checked="TRUE" onClick="set_bigCharts()">BigCharts
-                  <input type="checkbox" name="hist" value="hist">data
-                  <input type="checkbox" name="fviz" value="fviz">fV
-                  <input type="checkbox" name="bco" value="bco">bC
-               </td>
-            </form><!-- close sel_form //-->
-            </tr>
-            <tr>
-               <td class="trd">
-                  <table class="mode" cellspacing="0">
-                  <form name="day_form">
-                     <tr>
-                        <td class="trdG">
-                           <input type="checkbox" name="entryValue" value="entryValue">IN
-                           <input type="checkbox" name="Day1" value="Day1">1d
-                           <input type="checkbox" name="Day2" value="Day2">2d
-                           <input type="checkbox" name="Day5" value="Day5">5d
-                           <input type="checkbox" name="Day10" value="Day10">10d
-                           <input type="checkbox" name="Mo1" value="Mo1">1m
-                           <input type="checkbox" name="Mo2" value="Mo2">2m
-                           <input type="checkbox" name="Mo3" value="Mo3">3m
-                           <input type="checkbox" name="Mo6" value="Mo6">6m
-                           <input type="checkbox" name="Year1" value="Year1">1y
-                           <input type="checkbox" name="Year2" value="Year2">2y
-                           <input type="checkbox" name="Year5" value="Year5">5y
-                           <input type="checkbox" name="Year10" value="Year10">10y
-                           <input type="checkbox" name="Year20" value="Year20">20y
-                           <input class="trdO" type="reset" name="includedays" value="Reset">
-                           <input class="trdG" type="Button" name="Submit" value="Submit" onClick="submit_this()">
-                           </form><!-- close day_form //-->
-                        </td>
-                     </tr>
-                  </table>
+               <td class="trdG">
+                  <input type="checkbox" name="entryValue" value="entryValue">IN
+                  <input type="checkbox" name="Day1" value="Day1">1d
+                  <input type="checkbox" name="Day2" value="Day2">2d
+                  <input type="checkbox" name="Day5" value="Day5">5d
+                  <input type="checkbox" name="Day10" value="Day10">10d
+                  <input type="checkbox" name="Mo1" value="Mo1">1m
+                  <input type="checkbox" name="Mo2" value="Mo2">2m
+                  <input type="checkbox" name="Mo3" value="Mo3">3m
+                  <input type="checkbox" name="Mo6" value="Mo6">6m
+                  <input type="checkbox" name="Year1" value="Year1">1y
+                  <input type="checkbox" name="Year2" value="Year2">2y
+                  <input type="checkbox" name="Year5" value="Year5">5y
+                  <input type="checkbox" name="Year10" value="Year10">10y
+                  <input type="checkbox" name="Year20" value="Year20">20y
+                  <input class="trdO" type="reset" name="includedays" value="Reset">
+                  <input class="trdG" type="Button" name="Submit" value="Submit" onClick="submit_this()">
+                  </form><!-- close day_form //-->
                </td>
             </tr>
          </table>
       </td>
    </tr>
+</table>
+<table bgcolor="#2C001E" border="0" cellspacing="3">
    <tr>
-      <td>
-         <table bgcolor="#2C001E" border="0" cellspacing="3">
-            <tr>
-               <td align="center" bgcolor="#C11B17" class="td" width="75px"><a class="trd" href="https://mail.google.com/" target="_blank">Gmail</a></td>
-               <td align="center" bgcolor="blue" class="td" width="126px"><a class="trd" href="https://chase.com" target="_blank">Chase</a></td>
-               <td align="center" bgcolor="darkorange" class="td" width="283px"><div class="dropdown">
-                 <button class="dropbtnFed">Feed</button>
-                 <div class="dropdown-content">
-                   <a class="trd" href="#" onclick="window.open('https://str8upgayporn.com/'); window.open('https://www.curbsideclassic.com/'); window.open('https://www.thetruthaboutcars.com/'); window.open('https://gmauthority.com/blog/'); window.open('https://www.ghacks.net/'); window.open('https://www.omgubuntu.co.uk/'); window.open('https://www.dedoimedo.com/'); window.open('https://krebsonsecurity.com/'); window.open('https://www.bloomberg.com/'); ">Open ALL</a>
-                   <hr class="indigo">
-                   <a class="trd" href="https://str8upgayporn.com/" target="_blank">str8upgayporn</a>
-                   <a class="trd" href="https://www.curbsideclassic.com/" target="_blank">CurbsideClassics</a>
-                   <a class="trd" href="https://www.thetruthaboutcars.com/" target="_blank">TTAC</a>
-                   <a class="trd" href="https://gmauthority.com/blog/" target="_blank">GM Authority</a>
-                   <a class="trd" href="https://www.ghacks.net/" target="_blank">gHacks</a>
-                   <a class="trd" href="https://www.omgubuntu.co.uk/" target="_blank">omgUbuntu</a>
-                   <a class="trd" href="https://www.dedoimedo.com/" target="_blank">Dedoimedo</a>
-                   <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
-                   <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
-                   <hr class="green">
-                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
-                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
-                   <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
-                   <hr class="orange">
-                 </div>
-               </td>
-               <td align="center" bgcolor="mediumblue" class="td" width="284px"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
-               <td align="center" bgcolor="#77216F" class="td" width="283px"><a class="trd" href="https://docs.google.com/spreadsheets/d/1eFo0uSG24vJOQCUTd31fx-D7RbJStGanIEXQDzDGIUo/" target="_blank">Energy</a></td>
-            </tr>
-            <tr>
-               <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://voice.google.com/u/0/messages" target="_blank">Voice</a></td>
-               <td align="center" bgcolor="gray" class="td"><a class="trd" href="https://online.americanexpress.com/myca/logon/us/action/LogonHandler?request_type=LogonHandler&Face=en_US&inav=iNavLnkLog" target="_blank">AMEX</a></td>
-               <td align="center" bgcolor="indigo" class="td"><div class="dropdown">
-                  <button class="dropbtnSTF">Links</button>
-                  <div class="dropdown-content">
-                     <form action="https://www.google.com/search" target="_blank" method="GET"><input class="search" type="search" maxlength="100" name="q" size="25" placeholder="Search"></form>
-                     <a class="trd" href="https://messages.google.com/web/authentication" target="_blank">Messages
-                     <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost
-                     <a class="trd" href="https://outage.dteenergy.com/" target="_blank">Outage</a>
-                     <a class="trd" href="https://www.consumersenergy.com/login" target="_blank">Consumers</a>
-                     <a class="trd" href="https://usage.dteenergy.com/?accountNumber=910016170938&productType=electric" target="_blank">DTE</a>
-                     <a class="trd" href="https://arborpointe.myvetstoreonline.pharmacy/" target="_blank">EddieRx</a>
-                     <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
-                     <a class="trd" id="GoWork" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Life+Time,+4700+Investment+Dr,+Troy,+MI+48098,+United+States/@42.5424694,-83.1849884,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238459!2d42.4848197!1m5!1m1!1s0x8824c1510edb80c3:0xbcee7c62cfdae58b!2m2!1d-83.1727718!2d42.5894212!3e0" target="_blank">LTF Troy</a>
-                     <a class="trd" id="GoHome" href="https://www.google.com/maps/dir//617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/@42.5423896,-83.2260921,12z/data=!4m9!4m8!1m0!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238301!2d42.4848317!3e0!5m1!1e1?entry=ttu" id="GoHome" target="_blank">Home</a>
-                     <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">GasPrices</a>
-                     <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
-                     <a class="trd" href="https://accounts.craigslist.org/login?rp=%2Flogin%2Fhome&rt=L" target="_blank">Craigslist</a>
-                     <hr class="red">
-                     <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">HenryFordHealth</a>
-                     <a class="trd" href="https://completespinejointcenter.setmore.com/book?step=time-slot&products=s7ab51526494985133&type=service&staff=r46221526575463066&staffSelected=true" target="_blank">CompleteSpine</a>
-                     <a class="trd" href="https://patient.labcorp.com/landing" target="_blank">Labcorp</a>
-                     <a class="trd" href="https://myhealth.bankofamerica.com/Login.aspx?" target="_blank">myHSA</a>
-                     <a class="trd" href="https://www.memberportal.com/mp/delta/" target="_blank">DeltaDental</a>
-                     <a class="trd" href="https://mychart.spectrumhealth.org/" target="_blank">CornHole Health</a>
-                     <hr class="green">
-                     <a class="trd" href="#" onclick="window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">CampingWeather</a>
-                     <a class="trd" id="GoCrek" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/CreekRidge+Campground,+5250+Williamston+Rd,+Stockbridge,+MI+49285,+USA/@42.4727642,-84.3807975,9z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8822d4dd5551f97d:0xa7d88f5f2835c710!2m2!1d-84.3190612!2d42.4317817!3e0?entry=ttu" target="_blank" onclick="window.open('https://creekridgecampground.com/'); window.open('https://creekridgecampground.com/wp-content/uploads/2024/01/updated-camp-map-COLOR-2024-2048x1586.jpg'); window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: CreekRidge</a>
-                     <a class="trd" id="GoRose" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Roseland+Resort+%26+Campground,+Nolte+Lane,+Proctor,+WV/@40.842058,-83.8657387,7z/data=!4m16!4m15!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8835fb08f7d5eafd:0x408883b0a6e84393!2m2!1d-80.692917!2d39.733379!2m1!2b1!3e0?entry=ttu" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">WV: Roseland</a>
-                     <hr class="indigo">
-                     <a class="trd" href="https://www.gaymaletube.com/search/%22massage%22?pricing=free" target="_blank">GayMaleTube</a>
-                     <a class="trd" href="https://homo.xxx/" target="_blank">Homo.XXX</a>
-                     <a class="trd" href="https://mrgay.tube/video/10339045/hot-video-p11705/" target="_blank">MrGay</a>
-                     <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
-                     <a class="trd" href="https://www.gayporno.fm/fetishmen-asher-devin-takes-dildo_2880088.html" target="_blank">GayPorno</a>
-                     <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
-                     <a class="trd" href="https://www.tube8.com/gay/porn-video/81315531/" target="_blank">Tube8</a>
-                     <a class="trd" href="https://www.eporner.com/video-ZzlIb0Xw4yT/nuru-massage-teammates-touch-justin-matthews-justin-da-jock/" target="_blank">Nuru</a>
-                     <hr class="green">
-                     <a class="trd" href="https://imginn.com" target="_blank">insta</a>
-                     <hr class="red">
+      <td align="center" bgcolor="#C11B17" class="td" width="75px"><a class="trd" href="https://mail.google.com/" target="_blank">Gmail</a></td>
+      <td align="center" bgcolor="blue" class="td" width="125px"><a class="trd" href="https://chase.com" target="_blank">Chase</a></td>
+      <td align="center" bgcolor="darkorange" class="td" width="250px"><div class="dropdown">
+        <button class="dropbtnFed">Feed</button>
+        <div class="dropdown-content">
+          <a class="trd" href="#" onclick="window.open('https://str8upgayporn.com/'); window.open('https://www.curbsideclassic.com/'); window.open('https://www.thetruthaboutcars.com/'); window.open('https://gmauthority.com/blog/'); window.open('https://www.ghacks.net/'); window.open('https://www.omgubuntu.co.uk/'); window.open('https://www.dedoimedo.com/'); window.open('https://krebsonsecurity.com/'); window.open('https://www.bloomberg.com/'); ">Open ALL</a>
+          <hr class="indigo">
+          <a class="trd" href="https://str8upgayporn.com/" target="_blank">str8upgayporn</a>
+          <a class="trd" href="https://www.curbsideclassic.com/" target="_blank">CurbsideClassics</a>
+          <a class="trd" href="https://www.thetruthaboutcars.com/" target="_blank">TTAC</a>
+          <a class="trd" href="https://gmauthority.com/blog/" target="_blank">GM Authority</a>
+          <a class="trd" href="https://www.ghacks.net/" target="_blank">gHacks</a>
+          <a class="trd" href="https://www.omgubuntu.co.uk/" target="_blank">omgUbuntu</a>
+          <a class="trd" href="https://www.dedoimedo.com/" target="_blank">Dedoimedo</a>
+          <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
+          <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
+          <hr class="green">
+          <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
+          <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
+          <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
+          <hr class="orange">
+        </div>
+      </td>
+      <td align="center" bgcolor="mediumblue" class="td" width="250px"><a class="trd" href="https://www.google.com/finance/quote/PMM:NYSE" target="_blank">Markets</a></td>
+      <td align="center" bgcolor="#77216F" class="td" width="250px"><a class="trd" href="https://docs.google.com/spreadsheets/d/1eFo0uSG24vJOQCUTd31fx-D7RbJStGanIEXQDzDGIUo/" target="_blank">Energy</a></td>
+   </tr>
+   <tr>
+      <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://voice.google.com/u/0/messages" target="_blank">Voice</a></td>
+      <td align="center" bgcolor="gray" class="td"><a class="trd" href="https://online.americanexpress.com/myca/logon/us/action/LogonHandler?request_type=LogonHandler&Face=en_US&inav=iNavLnkLog" target="_blank">AMEX</a></td>
+      <td align="center" bgcolor="indigo" class="td"><div class="dropdown">
+         <button class="dropbtnSTF">Links</button>
+         <div class="dropdown-content">
+            <form action="https://www.google.com/search" target="_blank" method="GET"><input class="search" type="search" maxlength="100" name="q" size="25" placeholder="Search"></form>
+            <a class="trd" href="https://messages.google.com/web/authentication" target="_blank">Messages
+            <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost
+            <a class="trd" href="https://outage.dteenergy.com/" target="_blank">Outage</a>
+            <a class="trd" href="https://www.consumersenergy.com/login" target="_blank">Consumers</a>
+            <a class="trd" href="https://usage.dteenergy.com/?accountNumber=910016170938&productType=electric" target="_blank">DTE</a>
+            <a class="trd" href="https://arborpointe.myvetstoreonline.pharmacy/" target="_blank">EddieRx</a>
+            <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
+            <a class="trd" id="GoWork" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Life+Time,+4700+Investment+Dr,+Troy,+MI+48098,+United+States/@42.5424694,-83.1849884,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238459!2d42.4848197!1m5!1m1!1s0x8824c1510edb80c3:0xbcee7c62cfdae58b!2m2!1d-83.1727718!2d42.5894212!3e0" target="_blank">LTF Troy</a>
+            <a class="trd" id="GoHome" href="https://www.google.com/maps/dir//617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/@42.5423896,-83.2260921,12z/data=!4m9!4m8!1m0!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238301!2d42.4848317!3e0!5m1!1e1?entry=ttu" id="GoHome" target="_blank">Home</a>
+            <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">GasPrices</a>
+            <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
+            <a class="trd" href="https://accounts.craigslist.org/login?rp=%2Flogin%2Fhome&rt=L" target="_blank">Craigslist</a>
+            <hr class="red">
+            <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">HenryFordHealth</a>
+            <a class="trd" href="https://completespinejointcenter.setmore.com/book?step=time-slot&products=s7ab51526494985133&type=service&staff=r46221526575463066&staffSelected=true" target="_blank">CompleteSpine</a>
+            <a class="trd" href="https://patient.labcorp.com/landing" target="_blank">Labcorp</a>
+            <a class="trd" href="https://myhealth.bankofamerica.com/Login.aspx?" target="_blank">myHSA</a>
+            <a class="trd" href="https://www.memberportal.com/mp/delta/" target="_blank">DeltaDental</a>
+            <a class="trd" href="https://mychart.spectrumhealth.org/" target="_blank">CornHole Health</a>
+            <hr class="green">
+            <a class="trd" href="#" onclick="window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">CampingWeather</a>
+            <a class="trd" id="GoCrek" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/CreekRidge+Campground,+5250+Williamston+Rd,+Stockbridge,+MI+49285,+USA/@42.4727642,-84.3807975,9z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8822d4dd5551f97d:0xa7d88f5f2835c710!2m2!1d-84.3190612!2d42.4317817!3e0?entry=ttu" target="_blank" onclick="window.open('https://creekridgecampground.com/'); window.open('https://creekridgecampground.com/wp-content/uploads/2024/01/updated-camp-map-COLOR-2024-2048x1586.jpg'); window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: CreekRidge</a>
+            <a class="trd" id="GoRose" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Roseland+Resort+%26+Campground,+Nolte+Lane,+Proctor,+WV/@40.842058,-83.8657387,7z/data=!4m16!4m15!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8835fb08f7d5eafd:0x408883b0a6e84393!2m2!1d-80.692917!2d39.733379!2m1!2b1!3e0?entry=ttu" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">WV: Roseland</a>
+            <hr class="indigo">
+            <a class="trd" href="https://www.gaymaletube.com/search/%22massage%22?pricing=free" target="_blank">GayMaleTube</a>
+            <a class="trd" href="https://homo.xxx/" target="_blank">Homo.XXX</a>
+            <a class="trd" href="https://mrgay.tube/video/10339045/hot-video-p11705/" target="_blank">MrGay</a>
+            <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
+            <a class="trd" href="https://www.gayporno.fm/fetishmen-asher-devin-takes-dildo_2880088.html" target="_blank">GayPorno</a>
+            <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
+            <a class="trd" href="https://www.tube8.com/gay/porn-video/81315531/" target="_blank">Tube8</a>
+            <a class="trd" href="https://www.eporner.com/video-ZzlIb0Xw4yT/nuru-massage-teammates-touch-justin-matthews-justin-da-jock/" target="_blank">Nuru</a>
+            <hr class="green">
+            <a class="trd" href="https://imginn.com" target="_blank">insta</a>
+            <hr class="red">
 <!-- FIXME
-                     <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
-                     <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
-                     <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
-                     <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
-                     <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
-                     <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
-                     <a class="trd" href="https://my.patientfusion.com/portal/overview/" target="_blank">PatientPortal</a>
-                     <a class="trd" href="https://www.google.com/maps/place/Complete+Spine+and+Joint+Center/@42.4827314,-83.1243783,17z/data=!4m16!1m9!3m8!1s0x8824cf6fcada46ab:0x35b6b0e653c866e2!2sComplete+Spine+and+Joint+Center!8m2!3d42.4827314!4d-83.1243783!9m1!1b1!16s%2Fg%2F1tj2cmff!3m5!1s0x8824cf6fcada46ab:0x35b6b0e653c866e2!8m2!3d42.4827314!4d-83.1243783!16s%2Fg%2F1tj2cmff?entry=ttu" target="_blank">CompleteSpine</a>
-                     <a class="trd" href="https://app.withings.com/8787361/timeline" target="_blank">Withings</a>
-                     <a class="trd" href="https://www.freewill.com/account" target="_blank">Will</a>
-                     <a class="trd" id="GoBuck" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/8670+Spearsville+Rd+Morgantown,+IN+46160/@40.8737371,-87.2706648,7z/data=!3m1!4b1!4m16!4m15!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x886b7e603961e827:0x8b9a11a1755ad17a!2m2!1d-86.2168258!2d39.3233019!2m1!2b1!3e0?entry=tts&g_ep=EgoyMDI0MDUwNi4wKgBIAVAD" target="_blank" onclick="window.open('https://campbuckwood.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/morgantown_united-states_4261611?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">IN: BuckWood</a>
-                     <a class="trd" href="https://rentmasseur.com/gay-massage/detroit/" target="_blank">RentMasseur</a>
-                     <a class="trd" href="https://www.masseurfinder.com/massage/royal_oak/" target="_blank">MasseurFinder</a>
-                     <a class="trd" href="https://www.massagebook.com/business/10864208/select-product/services/category/Bodywork?src=massagebook&ncf_source=search_site" target="_blank">Nate</a>
-                     <a class="trd" href="https://www.vagaro.com/us04/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVCI+vu7btIWtDFTPUdZ5yZl95ABV+hPYfGxw4XFZwALY+3QnSASHZOE4q3Nya9wSBSmXsbQX+IRDdbi9SArI9h/pp3610OfXeJpXGStd5V891UEGtKJjHy0sujllxrCqrFmRXri6GGqnizc1qkzoS7fZg5c16iMob5Y94BjToCG5fHeCLym9xAXG6YMMLqj0wwnyE8oHxYIYHU9Y4Ti9Ts+YYYvcg/cYHheDevfeeB6VoedwlKtZ5Hs+a+U7XXOOtjSjhWC4b3RCmxbuf/+49khk9ZTOrUKNtt4Sf5oZH2n44rWrrmgHF4c3clytvVpIbB+VMmehmpK8stpLU2BmGdLooeLM5tP3lxD/L6uWk2sfB6yJiR1/D9dODXIVIGAo/w==" target="_blank">DPbw</a>
+            <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
+            <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
+            <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
+            <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
+            <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
+            <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
+            <a class="trd" href="https://my.patientfusion.com/portal/overview/" target="_blank">PatientPortal</a>
+            <a class="trd" href="https://www.google.com/maps/place/Complete+Spine+and+Joint+Center/@42.4827314,-83.1243783,17z/data=!4m16!1m9!3m8!1s0x8824cf6fcada46ab:0x35b6b0e653c866e2!2sComplete+Spine+and+Joint+Center!8m2!3d42.4827314!4d-83.1243783!9m1!1b1!16s%2Fg%2F1tj2cmff!3m5!1s0x8824cf6fcada46ab:0x35b6b0e653c866e2!8m2!3d42.4827314!4d-83.1243783!16s%2Fg%2F1tj2cmff?entry=ttu" target="_blank">CompleteSpine</a>
+            <a class="trd" href="https://app.withings.com/8787361/timeline" target="_blank">Withings</a>
+            <a class="trd" href="https://www.freewill.com/account" target="_blank">Will</a>
+            <a class="trd" id="GoBuck" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/8670+Spearsville+Rd+Morgantown,+IN+46160/@40.8737371,-87.2706648,7z/data=!3m1!4b1!4m16!4m15!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x886b7e603961e827:0x8b9a11a1755ad17a!2m2!1d-86.2168258!2d39.3233019!2m1!2b1!3e0?entry=tts&g_ep=EgoyMDI0MDUwNi4wKgBIAVAD" target="_blank" onclick="window.open('https://campbuckwood.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/morgantown_united-states_4261611?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">IN: BuckWood</a>
+            <a class="trd" href="https://rentmasseur.com/gay-massage/detroit/" target="_blank">RentMasseur</a>
+            <a class="trd" href="https://www.masseurfinder.com/massage/royal_oak/" target="_blank">MasseurFinder</a>
+            <a class="trd" href="https://www.massagebook.com/business/10864208/select-product/services/category/Bodywork?src=massagebook&ncf_source=search_site" target="_blank">Nate</a>
+            <a class="trd" href="https://www.vagaro.com/us04/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVCI+vu7btIWtDFTPUdZ5yZl95ABV+hPYfGxw4XFZwALY+3QnSASHZOE4q3Nya9wSBSmXsbQX+IRDdbi9SArI9h/pp3610OfXeJpXGStd5V891UEGtKJjHy0sujllxrCqrFmRXri6GGqnizc1qkzoS7fZg5c16iMob5Y94BjToCG5fHeCLym9xAXG6YMMLqj0wwnyE8oHxYIYHU9Y4Ti9Ts+YYYvcg/cYHheDevfeeB6VoedwlKtZ5Hs+a+U7XXOOtjSjhWC4b3RCmxbuf/+49khk9ZTOrUKNtt4Sf5oZH2n44rWrrmgHF4c3clytvVpIbB+VMmehmpK8stpLU2BmGdLooeLM5tP3lxD/L6uWk2sfB6yJiR1/D9dODXIVIGAo/w==" target="_blank">DPbw</a>
 //-->
-                  </div>
-               </td>
-               <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://digital.fidelity.com/prgw/digital/login/full-page" target="_blank">Fidelity</a></td>
-               <td align="center" bgcolor="#C11B17" class="td"><a class="trd" href="https://www.youtube.com/feed/you" target="_blank">YouTube</a></td>
-            </tr>
-            <tr>
-               <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
-               <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
-               <td align="center" colspan="1" bgcolor="#ff80ed" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1l50V8v-ZrDPEG4xfPRX2WLEkT6PdjdHdJ-p-dthCpAQ/" target="_blank">Journal</a></td>
-               <td align="center" bgcolor="dimgray" class="td"><div class="dropdown">
-                 <button class="dropbtnTOO">Tools</button>
-                 <div class="dropdown-content">
-                     <a class="trd" href="data:text/html, <html contenteditable>" target="_blank">Scratchpad</a>
-                     <a class="trd" href="https://docs.google.com/spreadsheets/d/1wED37u6VX2i3yn2Kk8G7QnQagNTkTePY1iDffyKZh90/edit?gid=1518470510#gid=1518470510" target="_blank">Installed</a>
-                     <a class="trd" href="https://docs.google.com/document/d/1jWrqg2uij8G8A8ncUbzDt2oPTF26opbYtPS5QCf-Yws/edit" target="_blank">Pwds</a>
-                     <a class="trd" href="file:///home/rugby/" target="_blank">root</a>
-                     <a class="trd" href="file:///var/lib/dpkg/status" target="_blank">dpkg</a>
-                     <a class="trd" href="https://takeout.google.com/manage?pli=1" target="_blank">Takeout</a>
-                     <hr class="green">
-                     <a class="trd" href="https://www.nutritionix.com" target="_blank">Nutrition</a>
-                     <a class="trd" href="https://swordsolutions.com/inspections/" target="_blank">Restaurants</a>
-                     <a class="trd" href="https://www.zoetispetcare.com/rewards" target="_blank">Zoetis</a>
-                     <hr class="red">
-                     <a class="trd" href="https://www.shazam.com/" target="_blank">Shazam</a>
-                     <a class="trd" href="https://cnvmp3.com/" target="_blank">convertMP3</a>
-                     <a class="trd" href="https://music.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Songs2Rip</a>
-                     <a class="trd" href="https://www.savethevideo.com/" target="_blank">SaveVideo</a>
-                     <hr class="indigo">
-                     <a class="trd" href="https://github.com/tedwroGotHub/index.html" target="_blank">GitHub</a>
-                     <a class="trd" href="https://tedwrogothub.github.io/index.html/" target="_blank">mySite</a>
-                     <a class="trd" href="https://script.google.com/home/projects/1DpFjQ4HIeSsbDNUm8wEmCpg4RFQjPo1E7JESWL7on6mzR__aj3h62WNI/edit" target="_blank">Stock Watcher</a>
-                     <a class="trd" href="https://tradingeconomics.com/indu:ind" target="_blank">T/E</a>
-                     <a class="trd" href="https://www.barchart.com/stocks/highs-lows?timeFrame=alltime&orderBy=volume&orderDir=desc" target="_blank">Highs</a>
-                     <a class="trd" href="https://finviz.com/map.ashx?t=sec_all&st=w13" target="_blank">Heat Map</a>
-                     <a class="trd" href="https://tradingeconomics.com/united-states/total-vehicle-sales" target="_blank">Sales</a>
-                     <hr class="red">
-                     <a class="trd" href="https://downdetector.com/" target="_blank">Down Detector</a>
-                     <a class="trd" href="https://www.att.com/support/internet/home" target="_blank">Smart Home</a>
-                     <a class="trd" href="https://myaccount.google.com/device-activity?continue%3Dhttps%3A%2F%2Fmyaccount.google.com%2Fsecurity-checkup%2F2%3Fcontinue%253Dhttps%25253A%25252F%25252Fmyaccount.google.com%25252F%25253Frapt%25253DAEjHL4PRJR71PzNEy4QWWP7h0j9X2fvrY2N7Z5cEO_dExRxQHrz7GGHtq_L9HA9Ypwej-oWHfj88OPUwP_hSgc4Gaw-0yOlsqW146bBktPUB5QJZNT0R_Ao%26continue%253Dhttps%3A%2F%2Fmyaccount.google.com%2F%3Frapt%25253DAEjHL4PRJR71PzNEy4QWWP7h0j9X2fvrY2N7Z5cEO_dExRxQHrz7GGHtq_L9HA9Ypwej-oWHfj88OPUwP_hSgc4Gaw-0yOlsqW146bBktPUB5QJZNT0R_Ao" target="_blank">Secure</a>
-                     <a class="trd" href="https://chrome.google.com/sync?hl=en-US" target="_blank">Sync</a>
-                     <a class="trd" href="https://passwords.google.com/search?ep=1&hl=en&rapt=AEjHL4OdTXbOZwYd89trEnZWudixQnE_ap_yJgzMQPqjLm77s3OiSLkopXsCDY46f2rj0Wn5fvk8WOY0H7jva2Wu6we0AzJ2fdsou0CbJ-i25ZvDmHVhsd8&standalone=false" target="_blank">GPM</a>
-                     <a class="trd" href="chrome://net-export" target="_blank">Netlog</a>
-                     <hr class="green">
-                 </div>
-               </td>
-               <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
-            </tr>
-            <tr>
-               <td align="center" style="vertical-align:middle"><a href="http://192.168.1.254/" target="_blank"><img class="router" src="https://lh3.googleusercontent.com/d/1lwBlUH-0QxB2tQiqsd2L_UB4oFExXy_4" alt=""></a></td>
-               <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="file:///home/rugby/ToDo.txt" target="_blank">ToDo</a></td>
-               <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1E_2xovKGjRShwHMidQvjZ8U6G3fcy5m5ECNtWNv--4o/" target="_blank">Budget</a></td>
-               <td align="center" bgcolor="orangered" class="td"><a class="trd" href="https://www.homedepot.com/l/Madison-Heights/MI/Madison-Heights/48071/2731" target="_blank">HD</a>&nbsp;/&nbsp;<a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
-               <td align="center" bgcolor="#2C001E" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
-            <tr>
-               <!-- https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
-               <td align="center" colspan="5" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
-            </tr>
-            <tr>
-               <td align="center" colspan="5" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&single=true&chrome=false"></iframe></td>
-            </tr>
-            <tr>
-               <td align="center" colspan="5" bgcolor="#2C001E">
-                  <a href="https://www.meteoblue.com/en/weather/14-days/royal-oak_united-states_5007804" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
-                  <iframe src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1050px; height: 550px; transform:scale(1); "></iframe>
-               </td>
-            </tr>
-         </table>
+         </div>
+      </td>
+      <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://digital.fidelity.com/prgw/digital/login/full-page" target="_blank">Fidelity</a></td>
+      <td align="center" bgcolor="#C11B17" class="td"><a class="trd" href="https://www.youtube.com/feed/you" target="_blank">YouTube</a></td>
+   </tr>
+   <tr>
+      <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
+      <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
+      <td align="center" colspan="1" bgcolor="#ff80ed" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1l50V8v-ZrDPEG4xfPRX2WLEkT6PdjdHdJ-p-dthCpAQ/" target="_blank">Journal</a></td>
+      <td align="center" bgcolor="dimgray" class="td"><div class="dropdown">
+        <button class="dropbtnTOO">Tools</button>
+        <div class="dropdown-content">
+            <a class="trd" href="data:text/html, <html contenteditable>" target="_blank">Scratchpad</a>
+            <a class="trd" href="https://docs.google.com/spreadsheets/d/1wED37u6VX2i3yn2Kk8G7QnQagNTkTePY1iDffyKZh90/edit?gid=1518470510#gid=1518470510" target="_blank">Installed</a>
+            <a class="trd" href="https://docs.google.com/document/d/1jWrqg2uij8G8A8ncUbzDt2oPTF26opbYtPS5QCf-Yws/edit" target="_blank">Pwds</a>
+            <a class="trd" href="file:///home/rugby/" target="_blank">root</a>
+            <a class="trd" href="file:///var/lib/dpkg/status" target="_blank">dpkg</a>
+            <a class="trd" href="https://takeout.google.com/manage?pli=1" target="_blank">Takeout</a>
+            <hr class="green">
+            <a class="trd" href="https://www.nutritionix.com" target="_blank">Nutrition</a>
+            <a class="trd" href="https://swordsolutions.com/inspections/" target="_blank">Restaurants</a>
+            <a class="trd" href="https://www.zoetispetcare.com/rewards" target="_blank">Zoetis</a>
+            <hr class="red">
+            <a class="trd" href="https://www.shazam.com/" target="_blank">Shazam</a>
+            <a class="trd" href="https://cnvmp3.com/" target="_blank">convertMP3</a>
+            <a class="trd" href="https://music.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Songs2Rip</a>
+            <a class="trd" href="https://www.savethevideo.com/" target="_blank">SaveVideo</a>
+            <hr class="indigo">
+            <a class="trd" href="https://github.com/tedwroGotHub/index.html" target="_blank">GitHub</a>
+            <a class="trd" href="https://tedwrogothub.github.io/index.html/" target="_blank">mySite</a>
+            <a class="trd" href="https://script.google.com/home/projects/1DpFjQ4HIeSsbDNUm8wEmCpg4RFQjPo1E7JESWL7on6mzR__aj3h62WNI/edit" target="_blank">Stock Watcher</a>
+            <a class="trd" href="https://tradingeconomics.com/indu:ind" target="_blank">T/E</a>
+            <a class="trd" href="https://www.barchart.com/stocks/highs-lows?timeFrame=alltime&orderBy=volume&orderDir=desc" target="_blank">Highs</a>
+            <a class="trd" href="https://finviz.com/map.ashx?t=sec_all&st=w13" target="_blank">Heat Map</a>
+            <a class="trd" href="https://tradingeconomics.com/united-states/total-vehicle-sales" target="_blank">Sales</a>
+            <hr class="red">
+            <a class="trd" href="https://downdetector.com/" target="_blank">Down Detector</a>
+            <a class="trd" href="https://www.att.com/support/internet/home" target="_blank">Smart Home</a>
+            <a class="trd" href="https://myaccount.google.com/device-activity?continue%3Dhttps%3A%2F%2Fmyaccount.google.com%2Fsecurity-checkup%2F2%3Fcontinue%253Dhttps%25253A%25252F%25252Fmyaccount.google.com%25252F%25253Frapt%25253DAEjHL4PRJR71PzNEy4QWWP7h0j9X2fvrY2N7Z5cEO_dExRxQHrz7GGHtq_L9HA9Ypwej-oWHfj88OPUwP_hSgc4Gaw-0yOlsqW146bBktPUB5QJZNT0R_Ao%26continue%253Dhttps%3A%2F%2Fmyaccount.google.com%2F%3Frapt%25253DAEjHL4PRJR71PzNEy4QWWP7h0j9X2fvrY2N7Z5cEO_dExRxQHrz7GGHtq_L9HA9Ypwej-oWHfj88OPUwP_hSgc4Gaw-0yOlsqW146bBktPUB5QJZNT0R_Ao" target="_blank">Secure</a>
+            <a class="trd" href="https://chrome.google.com/sync?hl=en-US" target="_blank">Sync</a>
+            <a class="trd" href="https://passwords.google.com/search?ep=1&hl=en&rapt=AEjHL4OdTXbOZwYd89trEnZWudixQnE_ap_yJgzMQPqjLm77s3OiSLkopXsCDY46f2rj0Wn5fvk8WOY0H7jva2Wu6we0AzJ2fdsou0CbJ-i25ZvDmHVhsd8&standalone=false" target="_blank">GPM</a>
+            <a class="trd" href="chrome://net-export" target="_blank">Netlog</a>
+            <hr class="green">
+        </div>
+      </td>
+      <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
+   </tr>
+   <tr>
+      <td align="center" style="vertical-align:middle"><a href="http://192.168.1.254/" target="_blank"><img class="router" src="https://lh3.googleusercontent.com/d/1lwBlUH-0QxB2tQiqsd2L_UB4oFExXy_4" alt=""></a></td>
+      <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="file:///home/rugby/ToDo.txt" target="_blank">ToDo</a></td>
+      <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1E_2xovKGjRShwHMidQvjZ8U6G3fcy5m5ECNtWNv--4o/" target="_blank">Budget</a></td>
+      <td align="center" bgcolor="orangered" class="td"><a class="trd" href="https://www.homedepot.com/l/Madison-Heights/MI/Madison-Heights/48071/2731" target="_blank">HD</a>&nbsp;/&nbsp;<a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
+      <td align="center" bgcolor="#2C001E" class="td"><a class="trd" href="" target="_blank">empty</a></td>
+   <tr>
+      <!-- https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
+      <td align="center" colspan="5" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
+   </tr>
+   <tr>
+      <td align="center" colspan="5" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&single=true&chrome=false"></iframe></td>
+   </tr>
+   <tr>
+      <td align="center" colspan="5" bgcolor="#2C001E">
+         <a href="https://www.meteoblue.com/en/weather/14-days/royal-oak_united-states_5007804" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
+         <iframe src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1050px; height: 550px; transform:scale(1); "></iframe>
       </td>
    </tr>
 </table>
