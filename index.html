@@ -2225,7 +2225,7 @@
    //
    // END OF FUNCTIONS
 </SCRIPT>
-<table bgcolor="gainsboro" border="0" width="850px">
+<table bgcolor="gainsboro" border="0" width="900px">
    <form name="sel_form">
    <tr>
       <td class="trd">
@@ -2314,7 +2314,7 @@
           <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
           <hr class="green">
           <a class="trd" href="https://podcasttomp3.com/podcasts/v2/482243" target="_blank">CarTalk</a>
-          <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
+          <a class="trd" href="https://podbay.fm/p/monday-morning-podcast" target="_blank">Bill Burr</a>
           <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
           <hr class="orange">
         </div>
@@ -2368,7 +2368,6 @@
 <!-- FIXME
             <a class="trd" href="https://www.zoetispetcare.com/rewards" target="_blank">Zoetis</a>
             <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">CarTalk</a>
-            <a class="trd" href="https://www.youtube.com/@BillBurrOfficial" target="_blank">Bill Burr</a>
             <a class="trd" href="https://www.youtube.com/@WhyWontYouDateMePodcast" target="_blank">Nicole Byer</a>
             <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
             <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
@@ -2531,6 +2530,7 @@ sudo update-initramfs  -u -k all
 sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
 sudo dpkg-reconfigure console-setup
 picked UTF-8, Guess optimal, TerminusBold,16x32
+for easier to see console cursor: infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?48;0;32c/' | tic -
 sudo cp /usr/share/xsessions/xfce.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
