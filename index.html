@@ -2585,7 +2585,8 @@ nano ~/.xinitrc
 # ------------------------------------------------
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
-pactl -- set-sink-volume alsa_output.usb-Plantronics_Poly_BT700_3CD602960E9F43D7AB2F78892EE2DEC5-00.analog-stereo 10%
+amixer sset 'PCM' 85%
+#pactl -- set-sink-volume alsa_output.usb-Plantronics_Poly_BT700_3CD602960E9F43D7AB2F78892EE2DEC5-00.analog-stereo 10%
 xset s off -dpms
 google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
 # ------------------------------------------------
@@ -2626,6 +2627,31 @@ iface eth0 inet dhcp
 # ------------------------------------------------
 
 
+A L S A S O U N D :
+sudo nano /etc/asound.conf
+# Dump Pulseadio and replace with Alsa
+# https://forums.gentoo.org/viewtopic-t-1094774-start-0.html
+# aplay -l
+# SOUND FOUND ON DEVICE 3
+# speaker-test -D plughw:0,3 -c 2
+#
+# Replace all 3's if different Device, replace all 0's if different Card
+#
+pcm_slave.slave_rate48000Hz {
+        pcm "hw:0,3"
+#       This is the rate the sond card does.
+#       Any random input rates are resampled to this.
+        rate 48000
+}
+pcm.rate44100Hz {
+        type plug
+        slave slave_rate48000Hz
+}
+defaults.pcm.card 0
+defaults.pcm.device 3
+defaults.ctl.card 0
+
+
 C H R O M E :
 Download deb from https://www.google.com/chrome
 sudo apt install /home/rugby/google-chrome-stable_current_amd64.deb
@@ -2654,7 +2680,7 @@ nano .bashrc
 alias l='ls -CF'
 alias c='printf "\033c"'
 alias h='history'
-alias v='DISPLAY=:0 pavucontrol -t 3'
+alias v='alsamixer; c'
 alias ha='set -o history'
 alias hi='nano ~/.bash_history; c'
 alias ho='sudo nano /etc/hosts; c'
@@ -2679,7 +2705,7 @@ B A S H   H I S T O R Y :
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
  sudo dnstop -l 3 wlan0; c
- history -a # apt-cache depends uxplay
+ history -a # apt-cache depends scrcpy
 #---------------------------------------------------------------------------------------------------------------------
 
 
