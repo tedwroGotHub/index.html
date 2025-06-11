@@ -2495,7 +2495,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown dnstop fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji bash-completion xsel
+sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji bash-completion xsel
 
 
 P U R G E :
@@ -2586,7 +2586,6 @@ nano ~/.xinitrc
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
-#pactl -- set-sink-volume alsa_output.usb-Plantronics_Poly_BT700_3CD602960E9F43D7AB2F78892EE2DEC5-00.analog-stereo 10%
 xset s off -dpms
 google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
 # ------------------------------------------------
@@ -2684,8 +2683,6 @@ alias v='alsamixer; c'
 alias ha='set -o history'
 alias hi='nano ~/.bash_history; c'
 alias ho='sudo nano /etc/hosts; c'
-alias xi='nano .xinitrc; c'
-alias td='nano ~/.ToDo.txt; c'
 alias mc='nano ~/index.html; c'
 alias m0='udisksctl mount -b /dev/sdb'
 alias m1='udisksctl mount -b /dev/sdb1'
@@ -2704,10 +2701,8 @@ B A S H   H I S T O R Y :
  cp ~/Music/*.mp3 ~/.mtp/Internal\ shared\ storage/Music/
  cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
- sudo dnstop -l 3 wlan0; c
  history -a # apt-cache depends scrcpy
 #---------------------------------------------------------------------------------------------------------------------
-
 
 //-->
 </BODY>
