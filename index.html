@@ -2485,28 +2485,28 @@ https://android.com/find
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XUBUNTU 24.04.1 INSTALL
    Bios Version JYGLKCPC.86A.0067.2021.1111.1431   Version 0067   Dated: Dec 11, 2021
-   Minimal install, but incl Restricted Media but not Proprietary Software
+   Minimal install, no Restricted Media and no Proprietary Software
    Software & Updates:  Post install just main & universe repos, never check for updates
    Synaptic..preferences:
    - check "Clicking on the status icon marks the most likely action"
    - uncheck "Consider Recommended Packages as Dependencies"
-   apt-cache depends --important p7zip-full 
+   apt-cache depends --important scrcpy
    grep -Rnw '/home/rugby/' -e 'Blackbox'
 
 
 I N S T A L L :
-sudo apt install eyed3 gvfs-backends gfvs-fuse jmtpfs libid3-tools ifupdown fonts-ubuntu fonts-freefont-ttf fonts-dejavu-core fonts-noto-color-emoji bash-completion xsel
-
+sudo apt install blackbox alttab ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion
 
 P U R G E :
 sudo apt purge snapd apparmor bluez netplan.io
 
+M U S T   K E E P:
+sudo apt install udisks2 pinentry-curses parted dirmngr gnupg gnupg-utils gpg gpg-agent gpgconf gpgsm keyboxd libatasmart4 libblockdev-crypto3 libblockdev-fs3 libblockdev-loop3 libblockdev-mdraid3 libblockdev-nvme3 libblockdev-part3 libblockdev-swap3 libblockdev-utils3 libblockdev3 libbytesize-common libbytesize1 libgpgme11t64 libksba8 libnvme1t64 libparted2t64 libpolkit-agent-1-0 libpolkit-gobject-1-0 libudisks2-0 libvolume-key1
 
 C O N F I G :
 sudo apt update; sudo apt upgrade; sudo apt autoremove;
-sudo mv hosts /etc/hosts; sudo mv nanorc /etc/nanorc 
-chmod 744 up2date.sh
-sudo chmod 777 ~/cl 
+sudo mv .hosts /etc/hosts; sudo mv .nanorc /etc/nanorc
+chmod 744 .up2date.sh
 rm -r Desktop/ Documents/ Downloads/ Pictures/ Public/ Videos/ Templates/
 nano .config/user-dirs.dirs   to cleanup file Save as dialog
 sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
@@ -2524,15 +2524,14 @@ GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
 # ------------------------------------------------
 sudo update-grub
 sudo nano /etc/initramfs-tools/initramfs.conf   revise from MOST to DEP
-sudo update-initramfs  -u -k all
+sudo update-initramfs -u -k all
 sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
 sudo dpkg-reconfigure console-setup
 picked UTF-8, Guess optimal, TerminusBold,16x32
 for easier to see console cursor: infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?48;0;32c/' | tic -
-sudo cp /usr/share/xsessions/xfce.desktop /usr/share/xsessions/tedBuntu.desktop
+sudo cp /usr/share/xsessions/blackbox.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
-mkdir ~/mtp so jtmpfs will mount phone
 sudo systemctl disable --now apt-daily{,-upgrade}.{timer,service}; sudo systemctl disable fstrim.timer; sudo systemctl disable motd-news.timer; sudo systemctl disable accounts-daemon.service; sudo systemctl mask accounts-daemon.service; sudo systemctl disable udisks2.service; sudo systemctl disable remote-fs.target; sudo systemctl disable systemd-rfkill; sudo systemctl mask systemd-rfkill; sudo systemctl disable systemd-tmpfiles-clean.timer; sudo systemctl mask systemd-tmpfiles-clean.timer; sudo systemctl disable systemd-rfkill.socket; sudo systemctl mask systemd-rfkill.socket; 
 sudo chmod -x /etc/update-motd.d/*
 sudo systemctl unmask suspend.target sleep.target
@@ -2554,10 +2553,12 @@ picked 6. Noninteractive and 1. Critical
 sudo chmod 777 /var/cache/debconf/
 sudo chmod 777 /var/cache/debconf/passwords.dat 
 debconf-show debconf
-sudo nano /etc/fstab delete swap file line
+sudo nano /etc/fstab    delete swap file line
 sudo swapoff -a
 sudo rm /swap.img 
-sudo nano /etc/systemd/logind.conf reduce TTYs from 6 to 3
+sudo nano /etc/systemd/logind.conf  reduce TTYs from 6 to 2 and uncomment 2 lines
+sudo mkdir /media/usb
+nano .bashrc : remove \u@\h from line 62
 
 
 A U T O L O G I N :
@@ -2581,20 +2582,36 @@ if [[ $(tty) = /dev/tty1 ]]; then
 fi
 # ------------------------------------------------
 nano ~/.xinitrc
-#!/usr/bin/env bash
 # ------------------------------------------------
+#!/usr/bin/env bash
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
 xset s off -dpms
-google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
+#google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
+exec blackbox
+# ------------------------------------------------
+nano ~/.Xresources
+# ------------------------------------------------
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+xterm*allowTitleOps: false
+xterm*faceName:Terminus:size=22
+xterm*cursorBlink: true
+xterm*background: #1F2229
+xterm*foreground: white
+XTerm*alternateScroll: true
 # ------------------------------------------------
 
 
 N E T W O R K :
 per https://www.tecmint.com/switch-from-netplan-to-interfaces-ubuntu/
 sudo cat /etc/netplan/*.yaml
-sudo apt install ifupdown
 sudo nano /etc/network/interfaces
 # ------------------------------------------------
 # interfaces(5) file used by ifup(8) and ifdown(8)
@@ -2652,11 +2669,10 @@ defaults.ctl.card 0
 
 
 C H R O M E :
-Download deb from https://www.google.com/chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install /home/rugby/google-chrome-stable_current_amd64.deb
 if needed, allow javascript for "file:///home/rugby/index.html" or "file:///*"
-Use Purple Chrome theme. Use Alt+mouse to re-position window
-Fonts: Customize fonts: size 18/15, Ubuntu and Mono, Default Page zoom 175%
+Fonts: Customize fonts: size 22/15, Ubuntu and Mono, Default Page zoom 175%
 Remove all extensions, make sure google docs does not make docs avail offline
 Privacy & Security: Confirm "Use secure DNS" is disabled
 Search for Preload and make sure disabled
@@ -2664,8 +2680,7 @@ Uncheck Continue running background apps when Google Chrome is closed in Setting
 Create custom Search Engine: Settings..Search..Site Search, then make default search
 https://www.google.com/search?q=%s&udm=14&tbs=li:1
 chrome://flags/#enable-force-dark                     select "selective inversion with NON-IMAGE elements"
-chrome://extensions/shortcuts
-chrome://settings/content/federatedIdentityApi?search=Third-party+sign-in
+chrome://settings/content/federatedIdentityApi?search=Third-party+sign-in  disable 3rd party logins
 General.useragent.override
 Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1
 Ctrl+Shift+P   search for Network   Show Network conditions    Screenshot
@@ -2673,36 +2688,25 @@ For Android Phone:
 + Settings..Site Settings..Third-party sign-in: Disable
 
 
-B A S H R C :
-nano .bashrc
-# ------------------------------------------------
-alias l='ls -CF'
-alias c='printf "\033c"'
-alias h='history'
-alias v='alsamixer; c'
-alias ha='set -o history'
-alias hi='nano ~/.bash_history; c'
-alias ho='sudo nano /etc/hosts; c'
-alias mc='nano ~/index.html; c'
-alias m0='udisksctl mount -b /dev/sdb'
-alias m1='udisksctl mount -b /dev/sdb1'
-alias mp='jmtpfs ~/.mtp'
-alias um='udisksctl unmount -b /dev/sdb1; udisksctl unmount -b /dev/sdb; fusermount -u /home/rugby/.mtp'
-alias u='~/.up2date.sh'
-alias home='cd /home/rugby'
-set +o history # STOP SAVING BASH HISTORY
-# ------------------------------------------------
-
-
 B A S H   H I S T O R Y :
- echo -n pwd: ; read -s p; unzip -P $p -d /tmp/ -j .Stuff.zip '*ata*'; c  # EDIT SINGLE FILE
- zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip | nano -v -        # UPD FILE zip -d ".Stuff.zip" filename LIST CONTENTS
- echo -n pwd: ; read -s p; unzip -P $p '.Stuff.zip' -d /tmp/              # UNZIP ENTIRE ARCHIVE
+ sudo mount -t vfat /dev/sdb /media/usb -o uid=1000,gid=1000,utf8
+ sudo umount /media/usb/
+ nano ~/index.html
+ alsamixer 
+ sudo nano /etc/hosts
+ ~/.up2date.sh
+ history
+ nano ~/.bash_history
+#---------------------------------------------------------------------------
+ echo -n pwd:; read -s p; unzip -P $p -d /tmp/ -j .Stuff.zip '*ata*' # EDIT
+ zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip | nano -v -   # UPD1
+ zip -d ".Stuff.zip" [filename]                                      # DEL
+ echo -n pwd: ; read -s p; unzip -P $p '.Stuff.zip' -d /tmp/         # UNZIP
+ ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
  cp ~/Music/*.mp3 ~/.mtp/Internal\ shared\ storage/Music/
- cd ~/Music; ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
- grep -Rnw '/home/rugby' -e 'tedwro@gmail.com'
- history -a # apt-cache depends scrcpy
-#---------------------------------------------------------------------------------------------------------------------
+ grep -Rnw '/home/rugby' -e 'string2search'
+#---------------------------------------------------------------------------
+
 
 //-->
 </BODY>
