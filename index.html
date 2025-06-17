@@ -2370,7 +2370,7 @@
             <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
             <a class="trd" id="GoWork" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Life+Time,+4700+Investment+Dr,+Troy,+MI+48098,+United+States/@42.5424694,-83.1849884,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238459!2d42.4848197!1m5!1m1!1s0x8824c1510edb80c3:0xbcee7c62cfdae58b!2m2!1d-83.1727718!2d42.5894212!3e0" target="_blank">LTF Troy</a>
             <a class="trd" id="GoHome" href="https://www.google.com/maps/dir//617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/@42.5423896,-83.2260921,12z/data=!4m9!4m8!1m0!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238301!2d42.4848317!3e0!5m1!1e1?entry=ttu" id="GoHome" target="_blank">Home</a>
-            <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">&#9981;</a>
+            <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">GasBuddy</a>
             <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
             <a class="trd" href="https://accounts.craigslist.org/login?rp=%2Flogin%2Fhome&rt=L" target="_blank">Craigslist</a>
             <hr class="red">
@@ -2558,6 +2558,7 @@ sudo swapoff -a
 sudo rm /swap.img 
 sudo nano /etc/systemd/logind.conf  reduce TTYs from 6 to 2 and uncomment 2 lines
 sudo mkdir /media/usb
+chmod 644 ~/Music/*.mp3
 nano .bashrc : remove \u@\h from line 62
 
 
@@ -2581,6 +2582,9 @@ if [[ $(tty) = /dev/tty1 ]]; then
    logout
 fi
 # ------------------------------------------------
+
+
+X I N I T R C :
 nano ~/.xinitrc
 # ------------------------------------------------
 #!/usr/bin/env bash
@@ -2589,8 +2593,12 @@ xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
 xset s off -dpms
 #google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
+(sleep 2 && alttab -w 1) &
 exec blackbox
 # ------------------------------------------------
+
+
+X R E S O U R C E S :
 nano ~/.Xresources
 # ------------------------------------------------
 Xft.dpi: 96
@@ -2679,6 +2687,7 @@ Search for Preload and make sure disabled
 Uncheck Continue running background apps when Google Chrome is closed in Settings..System
 Create custom Search Engine: Settings..Search..Site Search, then make default search
 https://www.google.com/search?q=%s&udm=14&tbs=li:1
+Search settings for "AI ", cleanup all the Gemini bullshit
 chrome://flags/#enable-force-dark                     select "selective inversion with NON-IMAGE elements"
 chrome://settings/content/federatedIdentityApi?search=Third-party+sign-in  disable 3rd party logins
 General.useragent.override
@@ -2689,7 +2698,7 @@ For Android Phone:
 
 
 B A S H   H I S T O R Y :
- sudo mount -t vfat /dev/sdb /media/usb -o uid=1000,gid=1000,utf8
+ sudo mount -t vfat /dev/sdb1 /media/usb -o uid=1000,gid=1000,utf8
  sudo umount /media/usb/
  nano ~/index.html
  alsamixer 
@@ -2697,15 +2706,15 @@ B A S H   H I S T O R Y :
  ~/.up2date.sh
  history
  nano ~/.bash_history
-#---------------------------------------------------------------------------
- echo -n pwd:; read -s p; unzip -P $p -d /tmp/ -j .Stuff.zip '*ata*' # EDIT
- zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip | nano -v -   # UPD1
- zip -d ".Stuff.zip" [filename]                                      # DEL
- echo -n pwd: ; read -s p; unzip -P $p '.Stuff.zip' -d /tmp/         # UNZIP
- ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb/
+#------------------------------------------------------------------------
+ unzip -d /tmp/ -j .Stuff.zip '*ata*'                    # EDIT
+ zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip   # UPDATE1
+ zip -d ".Stuff.zip" [filename]                          # DELETE
+ unzip '.Stuff.zip' -d /tmp/                             # UNZIP ARCHIVE
+ ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
  cp ~/Music/*.mp3 ~/.mtp/Internal\ shared\ storage/Music/
  grep -Rnw '/home/rugby' -e 'string2search'
-#---------------------------------------------------------------------------
+#------------------------------------------------------------------------
 
 
 //-->
