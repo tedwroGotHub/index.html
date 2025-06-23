@@ -22,12 +22,12 @@
       input.trdPink {color: MediumPurple; height: 20px; font-family: Ubuntu; font-size: 16px; background-color: #353535; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
       output.trd {color: white; text-decoration:none; }
-      img.spy { width: 500px; height: 400px; }
-      img.map { width: 1000px; height: 390px; }
+      img.spy { width: 530px; height: 400px; }
+      img.map { width: 1060px; height: 390px; }
       img.router { width: 100px; height: 80px; }
-      iframe.ticker { width: 1000px; height: 285px; }    /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width: 1000px; height: 550px; }  /*                                                 */
-      table.selector { width: 1010px; }                  /*                                                 */
+      iframe.ticker { width: 1060px; height: 285px; }    /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width: 1060px; height: 550px; }  /*                                                 */
+      table.selector { width: 1070px; }                  /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
@@ -2218,7 +2218,7 @@
          const forecastElement = document.querySelector('.forecast');
          forecastElement.style.setProperty('height', '625px');
          const selectorElement = document.querySelector('.selector');
-         selectorElement.style.setProperty('width', '1100px');
+         //selectorElement.style.setProperty('width', '1100px');
 
          // For a Mobile device, use default Navigation app on phone instead of Google Maps
          //myGPSapp = document.getElementById("GoWork").href = "geo:42.58942433830024, -83.17294874427856";
@@ -2382,6 +2382,7 @@
             <a class="trd" href="https://mychart.spectrumhealth.org/" target="_blank">CornHole Health</a>
             <hr class="green">
             <a class="trd" id="GoCrek" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/CreekRidge+Campground,+5250+Williamston+Rd,+Stockbridge,+MI+49285,+USA/@42.4727642,-84.3807975,9z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8822d4dd5551f97d:0xa7d88f5f2835c710!2m2!1d-84.3190612!2d42.4317817!3e0?entry=ttu" target="_blank" onclick="window.open('https://creekridgecampground.com/'); window.open('https://creekridgecampground.com/wp-content/uploads/2024/01/updated-camp-map-COLOR-2024-2048x1586.jpg'); window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: CreekRidge</a>
+            <a class="trd" id="GoBoom" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Camp+Boomerang+RV+Park,+North+State+Road,+Orleans,+MI/@42.7736246,-85.4176702,8z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x881887313f33b271:0x48b6d95c8bcf1e09!2m2!1d-85.0746297!2d43.0878344!3e0?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" onclick="window.open('https://michigangaycamping.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/ionia_united-states_4997191?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: Boomerang</a>
             <a class="trd" id="GoRose" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Roseland+Resort+%26+Campground,+Nolte+Lane,+Proctor,+WV/@41.081749,-84.7726617,7z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8835fb08f7d5eafd:0x408883b0a6e84393!2m2!1d-80.692917!2d39.733379!3e0?entry=ttu&g_ep=EgoyMDI1MDQyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">WV: Roseland</a>
             <a class="trd" id="GoBuck" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/8670+Spearsville+Rd+Morgantown,+IN+46160/@40.8737371,-87.2706648,7z/data=!3m1!4b1!4m16!4m15!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x886b7e603961e827:0x8b9a11a1755ad17a!2m2!1d-86.2168258!2d39.3233019!2m1!2b1!3e0?entry=tts&g_ep=EgoyMDI0MDUwNi4wKgBIAVAD" target="_blank" onclick="window.open('https://campbuckwood.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/morgantown_united-states_4261611?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">IN: BuckWood</a>
             <hr class="indigo">
