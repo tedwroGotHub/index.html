@@ -24,8 +24,8 @@
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 530px; height: 400px; }
       img.map { width: 1060px; height: 390px; }
-      img.router { width: 100px; height: 80px; }
-      iframe.ticker { width: 1060px; height: 285px; }    /* these values are adjusted in prep_HTML function */
+      img.router { width: 94px; height: 78px; }
+      iframe.ticker { width: 1060px; height: 240px; }    /* these values are adjusted in prep_HTML function */
       iframe.forecast { width: 1060px; height: 550px; }  /*                                                 */
       table.selector { width: 1070px; }                  /*                                                 */
       button.trd {color: black; }
@@ -51,12 +51,12 @@
    ticker[i++] = 'pmm';   rHigh_PMM   = 5.10;   //  9/12/2022 and $5.10 was absolute LOW
    ticker[i++] = 'fulc';  rHigh_FULC  = 33;     //  9/21/2021
    ticker[i++] = 'upst';  rHigh_UPST  = 401;    // 10/20/2021
-   ticker[i++] = 'SPY';   rHigh_SPY   = 450;    // 06/01
-   ticker[i++] = 'dia';   rHigh_DIA   = 322;    // 06/01
-   ticker[i++] = '$tran'; rHigh_$TRAN = 14700;  // 06/01
-   ticker[i++] = 'vix';   rHigh_VIX   = 19.50;  // 06/01
+   ticker[i++] = 'SPY';   rHigh_SPY   = 480;    // 07/04
+   ticker[i++] = 'dia';   rHigh_DIA   = 322;    // 07/04
+   ticker[i++] = '$tran'; rHigh_$TRAN = 14700;  // 07/04
+   ticker[i++] = 'vix';   rHigh_VIX   = 19.50;  // 07/04
    //   W a t c h l i s t   S t a r t s   H e r e
-   ticker[i++] = 'LTH';   rHigh_LTH   =  22;    // 06/01
+   ticker[i++] = 'LTH';   rHigh_LTH   =  22;    // 07/04
    //   E n d   o f   S y m b o l s
    //
    //   U S E R   S E T T I N G S   F O R   A N A L Y S I S
@@ -2337,7 +2337,6 @@
             <a class="trd" href="https://www.nutritionix.com" target="_blank">Nutrition</a>
             <a class="trd" href="https://swordsolutions.com/inspections/" target="_blank">Restaurants</a>
             <hr class="red">
-            <a class="trd" href="https://www.shazam.com/" target="_blank">Shazam</a>
             <a class="trd" href="https://cnvmp3.com/" target="_blank">convertMP3</a>
             <a class="trd" href="https://music.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Songs2Rip</a>
             <hr class="indigo">
@@ -2381,7 +2380,6 @@
             <a class="trd" href="https://www.memberportal.com/mp/delta/" target="_blank">DeltaDental</a>
             <a class="trd" href="https://mychart.spectrumhealth.org/" target="_blank">CornHole Health</a>
             <hr class="green">
-            <a class="trd" id="GoCrek" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/CreekRidge+Campground,+5250+Williamston+Rd,+Stockbridge,+MI+49285,+USA/@42.4727642,-84.3807975,9z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8822d4dd5551f97d:0xa7d88f5f2835c710!2m2!1d-84.3190612!2d42.4317817!3e0?entry=ttu" target="_blank" onclick="window.open('https://creekridgecampground.com/'); window.open('https://creekridgecampground.com/wp-content/uploads/2024/01/updated-camp-map-COLOR-2024-2048x1586.jpg'); window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: CreekRidge</a>
             <a class="trd" id="GoBoom" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Camp+Boomerang+RV+Park,+North+State+Road,+Orleans,+MI/@42.7736246,-85.4176702,8z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x881887313f33b271:0x48b6d95c8bcf1e09!2m2!1d-85.0746297!2d43.0878344!3e0?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" onclick="window.open('https://michigangaycamping.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/ionia_united-states_4997191?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: Boomerang</a>
             <a class="trd" id="GoRose" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/Roseland+Resort+%26+Campground,+Nolte+Lane,+Proctor,+WV/@41.081749,-84.7726617,7z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8835fb08f7d5eafd:0x408883b0a6e84393!2m2!1d-80.692917!2d39.733379!3e0?entry=ttu&g_ep=EgoyMDI1MDQyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">WV: Roseland</a>
             <a class="trd" id="GoBuck" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/8670+Spearsville+Rd+Morgantown,+IN+46160/@40.8737371,-87.2706648,7z/data=!3m1!4b1!4m16!4m15!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x886b7e603961e827:0x8b9a11a1755ad17a!2m2!1d-86.2168258!2d39.3233019!2m1!2b1!3e0?entry=tts&g_ep=EgoyMDI0MDUwNi4wKgBIAVAD" target="_blank" onclick="window.open('https://campbuckwood.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/morgantown_united-states_4261611?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">IN: BuckWood</a>
@@ -2408,10 +2406,7 @@
             <a class="trd" href="https://www.masseurfinder.com/massage/royal_oak/" target="_blank">MasseurFinder</a>
             <a class="trd" href="https://www.massagebook.com/business/10864208/select-product/services/category/Bodywork?src=massagebook&ncf_source=search_site" target="_blank">Nate</a>
             <a class="trd" href="https://www.vagaro.com/us04/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVCI+vu7btIWtDFTPUdZ5yZl95ABV+hPYfGxw4XFZwALY+3QnSASHZOE4q3Nya9wSBSmXsbQX+IRDdbi9SArI9h/pp3610OfXeJpXGStd5V891UEGtKJjHy0sujllxrCqrFmRXri6GGqnizc1qkzoS7fZg5c16iMob5Y94BjToCG5fHeCLym9xAXG6YMMLqj0wwnyE8oHxYIYHU9Y4Ti9Ts+YYYvcg/cYHheDevfeeB6VoedwlKtZ5Hs+a+U7XXOOtjSjhWC4b3RCmxbuf/+49khk9ZTOrUKNtt4Sf5oZH2n44rWrrmgHF4c3clytvVpIbB+VMmehmpK8stpLU2BmGdLooeLM5tP3lxD/L6uWk2sfB6yJiR1/D9dODXIVIGAo/w==" target="_blank">DPbw</a>
-            <hr class="green">
-            <a class="trd" href="https://podbay.fm/p/car-talk" target="_blank">CarTalk</a>
-            <a class="trd" href="https://podbay.fm/p/monday-morning-podcast" target="_blank">Bill Burr</a>
-            <a class="trd" href="https://podbay.fm/p/why-wont-you-date-me-with-nicole-byer" target="_blank">Nicole Byer</a>
+            <a class="trd" id="GoCrek" href="https://www.google.com/maps/dir/617+S+Campbell+Rd,+Royal+Oak,+MI+48067-4056,+USA/CreekRidge+Campground,+5250+Williamston+Rd,+Stockbridge,+MI+49285,+USA/@42.4727642,-84.3807975,9z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x8824cf75a43456bb:0x4d0fd3eb1783e5ee!2m2!1d-83.1238279!2d42.4848176!1m5!1m1!1s0x8822d4dd5551f97d:0xa7d88f5f2835c710!2m2!1d-84.3190612!2d42.4317817!3e0?entry=ttu" target="_blank" onclick="window.open('https://creekridgecampground.com/'); window.open('https://creekridgecampground.com/wp-content/uploads/2024/01/updated-camp-map-COLOR-2024-2048x1586.jpg'); window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: CreekRidge</a>
 //-->
          </div>
       </td>
