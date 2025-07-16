@@ -22,12 +22,12 @@
       input.trdPink {color: MediumPurple; height: 20px; font-family: Ubuntu; font-size: 16px; background-color: #353535; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
       output.trd {color: white; text-decoration:none; }
-      img.spy { width: 530px; height: 400px; }
-      img.map { width: 1060px; height: 390px; }
+      img.spy { width: 606px; height: 400px; }
+      img.map { width: 1212px; height: 420px; }
       img.router { width: 94px; height: 78px; }
-      iframe.ticker { width: 1060px; height: 240px; }    /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width: 1060px; height: 550px; }  /*                                                 */
-      table.selector { width: 1070px; }                  /*                                                 */
+      iframe.ticker { width: 1212px; height: 265px; }    /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width: 1212px; height: 550px; }  /*                                                 */
+      table.selector { width: 1220px; }                  /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
@@ -2497,7 +2497,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install blackbox alttab ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion
+sudo apt install blackbox alttab ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools
 
 P U R G E :
 sudo apt purge snapd apparmor bluez netplan.io
@@ -2534,7 +2534,7 @@ for easier to see console cursor: infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?
 sudo cp /usr/share/xsessions/blackbox.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
-sudo systemctl disable --now apt-daily{,-upgrade}.{timer,service}; sudo systemctl disable fstrim.timer; sudo systemctl disable motd-news.timer; sudo systemctl disable accounts-daemon.service; sudo systemctl mask accounts-daemon.service; sudo systemctl disable udisks2.service; sudo systemctl disable remote-fs.target; sudo systemctl disable systemd-rfkill; sudo systemctl mask systemd-rfkill; sudo systemctl disable systemd-tmpfiles-clean.timer; sudo systemctl mask systemd-tmpfiles-clean.timer; sudo systemctl disable systemd-rfkill.socket; sudo systemctl mask systemd-rfkill.socket; 
+sudo systemctl disable --now apt-daily{,-upgrade}.{timer,service}; sudo systemctl disable motd-news.timer; sudo systemctl disable accounts-daemon.service; sudo systemctl mask accounts-daemon.service; sudo systemctl disable udisks2.service; sudo systemctl disable remote-fs.target; sudo systemctl disable systemd-rfkill; sudo systemctl mask systemd-rfkill; sudo systemctl disable systemd-tmpfiles-clean.timer; sudo systemctl mask systemd-tmpfiles-clean.timer; sudo systemctl disable systemd-rfkill.socket; sudo systemctl mask systemd-rfkill.socket; 
 sudo chmod -x /etc/update-motd.d/*
 sudo systemctl unmask suspend.target sleep.target
 systemctl is-enabled systemd-rfkill.service  to confirm disabled
@@ -2702,7 +2702,7 @@ For Android Phone:
 B A S H   H I S T O R Y :
  sudo mount -t vfat /dev/sdb1 /media/usb -o uid=1000,gid=1000,utf8
  sudo umount /media/usb/
- nano ~/index.html
+ l -la
  alsamixer 
  sudo nano /etc/hosts
  ~/.up2date.sh
@@ -2714,7 +2714,6 @@ B A S H   H I S T O R Y :
  zip -d ".Stuff.zip" [filename]                          # DELETE
  unzip '.Stuff.zip' -d /tmp/                             # UNZIP ARCHIVE
  ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
- cp ~/Music/*.mp3 ~/.mtp/Internal\ shared\ storage/Music/
  grep -Rnw '/home/rugby' -e 'string2search'
 #------------------------------------------------------------------------
 
