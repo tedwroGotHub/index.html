@@ -22,12 +22,12 @@
       input.trdPink {color: MediumPurple; height: 20px; font-family: Ubuntu; font-size: 16px; background-color: #353535; }
       input.search {color: blue; height: 50px; font-family: Ubuntu; font-size: 20px; }
       output.trd {color: white; text-decoration:none; }
-      img.spy { width: 606px; height: 400px; }
-      img.map { width: 1212px; height: 420px; }
+      img.spy { width: 800px; height: 430px; }
+      img.map { width: 660px; height: 540px; float: left; }
       img.router { width: 94px; height: 78px; }
-      iframe.ticker { width: 1212px; height: 260px; }    /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width: 1212px; height: 550px; }  /*                                                 */
-      table.selector { width: 1220px; }                  /*                                                 */
+      iframe.ticker { width: 1600px; height: 260px; }    /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width: 940px; height: 540px; float: right; }  /*                                                 */
+      table.selector { width: 1600px; }                  /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
@@ -2394,6 +2394,7 @@
             <a class="trd" href="https://mrgay.tube/video/10339045/hot-video-p11705/" target="_blank">MrGay</a>
             <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
             <a class="trd" href="https://www.boyfriendtv.com/videos/1436417/bound/" target="_blank">JoeyMills</a>
+            <a class="trd" href="https://www.boyfriendtv.com/videos/1020384/benjamin-dunn-johny-cruz-and-sam-williams/" target="_blank">JohnnyCruz</a>
             <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
             <hr class="green">
             <a class="trd" href="https://imginn.com/heretohelppod/" target="_blank">insta</a>
@@ -2440,7 +2441,8 @@
    <tr>
       <td align="center" colspan="5" bgcolor="#2C001E">
          <a href="https://www.meteoblue.com/en/weather/14-days/royal-oak_united-states_5007804" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
-         <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1000px; height: 550px; transform:scale(1.1); "></iframe>
+<!-- FIXME        <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1000px; height: 550px; transform:scale(1.1); "></iframe>//-->
+         <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="transform:scale(1); ></iframe>
       </td>
    </tr>
 </table>
@@ -2495,7 +2497,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install blackbox alttab ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools
+sudo apt install blackbox alttab ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools firefox libavcodec60 apulse
 
 P U R G E :
 sudo apt purge snapd apparmor bluez netplan.io
@@ -2690,6 +2692,7 @@ https://www.google.com/search?q=%s&udm=14&tbs=li:1
 Search settings for "AI ", cleanup all the Gemini bullshit
 chrome://flags/#enable-force-dark                     select "selective inversion with NON-IMAGE elements"
 chrome://settings/content/federatedIdentityApi?search=Third-party+sign-in  disable 3rd party logins
+chrome://settings/content/siteData?search=site+data
 General.useragent.override
 Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1
 Ctrl+Shift+P   search for Network   Show Network conditions    Screenshot
@@ -2700,13 +2703,23 @@ For Android Phone:
 
 F I R E F O X :
 https://www.mozilla.org/en-US/firefox/linux/?utm_medium=referral&utm_source=support.mozilla.org
-https://support.mozilla.org/en-US/kb/install-firefox-linux
-cd ~/Downloads; tar xjf firefox-*.tar.bz2
-sudo mv firefox /opt
-sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
+sudo install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+cp .mozilla/firefox/3991bmm8.default-release/prefs.js .mozilla/firefox/3991bmm8.default-release/user.js 
+
 Firefox for Android settings: chrome://geckoview/content/config.xhtml
 dom.disable_open_during_load  set to FALSE to allow javascript window.open's to work
+
+HMMMS:
+dom.popup_allowed_events RESET to empty string
 
 
 B A S H   H I S T O R Y :
@@ -2725,7 +2738,9 @@ B A S H   H I S T O R Y :
  unzip '.Stuff.zip' -d /tmp/                             # UNZIP ARCHIVE
  ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
  grep -Rnw '/home/rugby' -e 'string2search'
+ nano .mozilla/firefox/3991bmm8.default-release/user.js 
 #------------------------------------------------------------------------
+
 
 //-->
 </BODY>
