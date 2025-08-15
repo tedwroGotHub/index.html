@@ -25,9 +25,9 @@
       img.spy { width: 800px; height: 430px; }
       img.map { width: 660px; height: 540px; float: left; }
       img.router { width: 94px; height: 78px; }
-      iframe.ticker { width: 1600px; height: 260px; }    /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width: 940px; height: 540px; float: right; }  /*                                                 */
-      table.selector { width: 1600px; }                  /*                                                 */
+      iframe.ticker { width: 1600px; height: 260px; }                   /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width: 940px; height: 540px; float: right; }    /*                                                 */
+      table.selector { width: 1600px; }                                 /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
@@ -2213,8 +2213,6 @@
       if( isMobileDevice == true ){
          // Increase height of Ticker and Weather Forecast iframes for mobile devices
          // Code based on https://javascript.plainenglish.io/how-to-use-javascript-to-update-css-variables-135d17b5577c
-         const tdElement = document.querySelector('.td');
-         tdElement.style.setProperty('height', '144px');
          const tickerElement = document.querySelector('.ticker');
          tickerElement.style.setProperty('height', '285px');
          const forecastElement = document.querySelector('.forecast');
