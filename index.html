@@ -24,9 +24,9 @@
       input.checkbox {width: 20px; height: 20px; }
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 800px; height: 430px; }
-      img.map { width: 660px; height: 540px; float: left; }
-      iframe.ticker { width: 1600px; height: 260px; }                   /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width: 940px; height: 540px; float: right; }    /*                                                 */
+      img.map { width: 660px; height: 600px; float: left; }
+      iframe.ticker { width: 1600px; height: 220px; }                   /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width: 940px; height: 600px; float: right; }    /*                                                 */
       table.selector { width: 1608px; }                                 /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
@@ -2217,7 +2217,7 @@
          tickerElement.style.setProperty('height', '285px');
          const forecastElement = document.querySelector('.forecast');
          forecastElement.style.setProperty('height', '625px');
-         forecastElement.style.setProperty('transform', 'scale(1)');
+         forecastElement.style.setProperty('transform', 'scale(1.3)');
          const spyElement = document.querySelector('.spy');
 
          // For a Mobile device, use default Navigation app on phone instead of Google Maps
@@ -2432,7 +2432,7 @@
    </tr>
    <tr>
       <td align="center" colspan="6" bgcolor="#2C001E">
-         <a href="https://www.meteoblue.com/en/weather/14-days/royal-oak_united-states_5007804" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
+         <a href="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
 <!-- FIXME        <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1000px; height: 550px; transform:scale(1.1); "></iframe
          <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="transform:scale(1); ></iframe>>//-->
          <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="transform:scale(1); ></iframe>
