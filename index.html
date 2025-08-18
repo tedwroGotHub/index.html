@@ -27,7 +27,7 @@
       img.map { width: 660px; height: 540px; float: left; }
       iframe.ticker { width: 1600px; height: 260px; }                   /* these values are adjusted in prep_HTML function */
       iframe.forecast { width: 940px; height: 540px; float: right; }    /*                                                 */
-      table.selector { width: 1600px; }                                 /*                                                 */
+      table.selector { width: 1610px; }                                 /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; }
@@ -2418,7 +2418,7 @@
    <tr>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
       <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
-      <td align="center" bgcolor="#C11B17" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=SE" target="_blank">Tube</a></td>
+      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=SE" target="_blank">Tube</a></td>
       <td align="center" bgcolor="gray" class="td"><a class="trd" href="https://paulsautowash.com/" target="_blank">Car Wash</a></td>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
       <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
@@ -2503,6 +2503,7 @@ sudo mv .hosts /etc/hosts; sudo mv .nanorc /etc/nanorc
 chmod 744 .up2date.sh
 rm -r Desktop/ Documents/ Downloads/ Pictures/ Public/ Videos/ Templates/
 nano .config/user-dirs.dirs   to cleanup file Save as dialog
+sudo nano /etc/xdg/user-dirs.defaults  to prevent Firefox from recreating Downloads folder
 sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
 # ------------------------------------------------
 Section "Monitor"
@@ -2731,6 +2732,7 @@ B A S H   H I S T O R Y :
  ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
  grep -Rnw '/home/rugby' -e 'string2search'
  nano .mozilla/firefox/3991bmm8.default-release/user.js 
+ apt-cache depends --important gpodder
 #------------------------------------------------------------------------
 
 
