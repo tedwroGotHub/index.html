@@ -4,15 +4,15 @@
       a.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; }
       a.trd:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px;}
       a.trd:hover{color: white; font-family: Ubuntu; text-decoration:underline; font-size: 36px;}
-      a.clock:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
-      a.clock:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
-      a.clock:hover{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
+      a.clock:link{color: black; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
+      a.clock:visited{color: black; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
+      a.clock:hover{color: black; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
       hr.green   {border: 2px solid green; width: 97%; }
       hr.red     {border: 2px solid red; width: 97%; }
       hr.orange  {border: 2px solid darkorange; width: 97%; }
       hr.indigo  {border: 2px solid purple; width: 97%; }
       p.trd {color: silver; text-decoration:none; }
-      td.trd {color: Violet; font-family: Ubuntu; font-size: 28px; }
+      td.trd {color: Violet; font-family: Ubuntu; font-size: 28px; background-color: #353535; }
       td.trdWhite {color: white; font-family: monospace; font-size: 28px; white-space: nowrap; }
       td.td { height: 85px; white-space:nowrap; }
       input.trd      {color: darkorange; font-variant: small-caps; font-family: Ubuntu; font-size: 28px; border: 2px solid #6c6c6c; background-color: #121212; }
@@ -2228,7 +2228,7 @@
    //
    // END OF FUNCTIONS
 </SCRIPT>
-<table class="selector" bgcolor="#353535" border="0">
+<table class="selector" border="0" cellspacing="0">
    <form name="sel_form">
    <tr>
       <td class="trd">
@@ -2242,7 +2242,7 @@
          <input class="checkbox" type="checkbox" name="LTH" value='LTH'>LTH
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<output class="trd" id="myStockNumber"></output>
       </td>
-      <td align="center" rowspan="3" width="150" bgcolor="#2C001E" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
+      <td align="center" rowspan="3" width="150" bgcolor="#FFFF00" class="td"><a class="clock" href="https://www.time.gov/" target="_blank"><div id="clock"></div></a></td>
    </tr>
    <tr>
       <td class="trd">
@@ -2423,7 +2423,6 @@
       <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
    </tr>
    <tr>
-      <!-- FIXME https://stockcharts.com/c-sc/sc?s=PMM&p=D&yr=0&mn=3&dy=0&i=t https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t" target="_blank"><img class="spy" src="https://stockcharts.com/c-sc/sc?s=SPY&p=D&yr=0&mn=3&dy=0&i=t //-->
       <td align="center" colspan="6" bgcolor="#2C001E"><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=pmm&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a><a class="trd" href="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=4&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" target="_blank"><img class="spy" src="https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=spy&uf=0&type=4&size=3&style=320&freq=1&time=6&ma=3&maval=50,200&mocktick=1" onerror="this.style.display='none'" alt=""></a></td>
    </tr>
    <tr>
