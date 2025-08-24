@@ -13,21 +13,21 @@
       hr.indigo  {border: 2px solid purple; width: 97%; }
       p.trd {color: silver; text-decoration:none; }
       td.td { height: 85px; white-space:nowrap; }
-      td.trd {color: Violet; font-family: Ubuntu; font-size: 26px; background-color: #353535; }
-      td.trdWhite {color: white; font-family: monospace; font-size: 26px; white-space: nowrap; }
-      input.trd      {color: darkorange; font-variant: small-caps; font-family: Ubuntu; font-size: 26px; border: 2px solid #6c6c6c; background-color: #121212; }
-      input.trdGreen {color: green; font-variant: small-caps; font-family: Ubuntu; font-size: 26px; border: 2px solid #0EAC00; background-color: #121212; }
-      input.trdRed   {color: red; font-variant: small-caps; font-family: Ubuntu; font-size: 26px; border: 2px solid orangered; background-color: #121212; }
-      input.trdPurple{color: #AA33FF; font-variant: small-caps; font-family: Ubuntu; font-size: 26px; border: 2px solid #AA33FF; background-color: #121212; }
-      input.trdPink  {color: MediumPurple; height: 26px; font-family: Ubuntu; font-size: 26px; background-color: #353535; }
+      td.trd {color: Violet; font-family: Ubuntu; font-size: 20px; background-color: #353535; }
+      td.trdWhite {color: white; font-family: monospace; font-size: 20px; white-space: nowrap; }
+      input.trd      {color: darkorange; font-variant: small-caps; font-family: Ubuntu; font-size: 20px; border: 2px solid #6c6c6c; background-color: #121212; }
+      input.trdGreen {color: green; font-variant: small-caps; font-family: Ubuntu; font-size: 20px; border: 2px solid #0EAC00; background-color: #121212; }
+      input.trdRed   {color: red; font-variant: small-caps; font-family: Ubuntu; font-size: 20px; border: 2px solid orangered; background-color: #121212; }
+      input.trdPurple{color: #AA33FF; font-variant: small-caps; font-family: Ubuntu; font-size: 20px; border: 2px solid #AA33FF; background-color: #121212; }
+      input.trdPink  {color: MediumPurple; height: 20px; font-family: Ubuntu; font-size: 20px; background-color: #353535; }
       input.search   {color: blue; height: 50px; font-family: Ubuntu; font-size: 30px; }
       input.checkbox {width: 20px; height: 20px; }
       output.trd {color: white; text-decoration:none; }
-      img.spy { width: 800px; height: 430px; }
-      img.map { width: 660px; height: 600px; float: left; }
-      iframe.ticker { width: 1600px; height: 220px; }                   /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width: 940px; height: 600px; float: right; }    /*                                                 */
-      table.selector { width: 1608px; }                                 /*                                                 */
+      img.spy { width: 640px; height: 430px; }
+      img.map { width: 1280px; height: 600px; float: left; }
+      iframe.ticker { width: 1280px; height: 220px; }                   /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width:1280px; height: 600px; transform: scale(1.4); float: center; }   /*                                                 */
+      table.selector { width: 1288px; }                                 /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; }
@@ -2417,7 +2417,7 @@
    <tr>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
       <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
-      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=SE" target="_blank">Tube</a></td>
+      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=RDPN" target="_blank">Tube</a></td>
       <td align="center" bgcolor="gray" class="td"><a class="trd" href="https://paulsautowash.com/" target="_blank">Car Wash</a></td>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
       <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
@@ -2429,11 +2429,11 @@
       <td align="center" colspan="6" bgcolor="#2C001E"><iframe class="ticker" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_mcJnqQnaFFI1OVwVu0Y76zGpa1ZvSOfz0kl71P_4jocz7IzFUtdXzqvVUhmy4gLg6LzlKPDxTRAe/pubhtml?gid=527769844&rm=minimal&single=true&chrome=false&widget=false"></iframe></td>
    </tr>
    <tr>
+      <td align="center" colspan="6" bgcolor="#2C001E"><a href="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a></td>
+   </tr>
+   <tr>
       <td align="center" colspan="6" bgcolor="#2C001E">
-         <a href="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" target="_blank"><img class="map" src="https://s.w-x.co/staticmaps/WEB_Current_Weather_Map_1280x720.jpg" onerror="this.style.display='none'" alt="" target="_blank"></a>
-<!-- FIXME        <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="width: 1000px; height: 550px; transform:scale(1.1); "></iframe
-         <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="transform:scale(1); ></iframe>>//-->
-         <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true" style="transform:scale(1); ></iframe>
+         <iframe class="forecast" src="https://www.meteoblue.com/en/weather/widget/three/royal-oak_united-states-of-america_5007804?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=dark" onerror="this.style.display='none'" frameborder="0" scrolling="NO" allowtransparency="true"></iframe>
       </td>
    </tr>
 </table>
