@@ -25,9 +25,9 @@
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 640px; height: 430px; }
       img.map { width: 1280px; height: 600px; float: left; }
-      iframe.ticker { width: 1280px; height: 220px; }                   /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width:1280px; height: 600px; transform: scale(1.4); float: center; }   /*                                                 */
-      table.selector { width: 1288px; }                                 /*                                                 */
+      iframe.ticker { width: 1280px; height: 220px; }                                           /* these values are adjusted in prep_HTML function */
+      iframe.forecast { width:1280px; height: 600px; transform: scale(1.3); float: center; }    /*                                                 */
+      table.selector { width: 1288px; }                                                         /*                                                 */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; }
@@ -2214,7 +2214,7 @@
          // Increase height of Ticker and Weather Forecast iframes for mobile devices
          // Code based on https://javascript.plainenglish.io/how-to-use-javascript-to-update-css-variables-135d17b5577c
          const tickerElement = document.querySelector('.ticker');
-         tickerElement.style.setProperty('height', '275px');
+         tickerElement.style.setProperty('height', '260px');
          const forecastElement = document.querySelector('.forecast');
 // FIXME         forecastElement.style.setProperty('height', '625px');
 // FIXME         forecastElement.style.setProperty('transform', 'scale(1.0)');
@@ -2251,9 +2251,9 @@
          <input class="trd" type="button" name="stocks" value="SelectWatchlist" onClick="select_watchlist()">
          <input class="trdGreen" type="button" name="picks" value="OpenTrades" onClick="review_open_trades()">
          <input class="trdPurple" type="button" name="picks" value="ClosedTrades" onClick="review_closed_trades()">
-         <input class="trdPink" title="Review Cutoff by Exit Date" type="date" style="width: 200px;" id="ReviewCutoffDate" value="2023-01-01">
+         <input class="trdPink" title="Review Cutoff by Exit Date" type="date" style="width: 160px;" id="ReviewCutoffDate" value="2023-01-01">
          <!-- original review_cutoff = 2020-10-01  how far back in Exit dates to review, format: YYYY-MM-DD //-->
-         <input class="trdPink" title="Year Cutoff" type="text" maxlength="4" size="1" style="width: 80px;" id="YearCutoffDate" value="2025">
+         <input class="trdPink" title="Year Cutoff" type="text" maxlength="4" size="1" style="width: 60px;" id="YearCutoffDate" value="2025">
          <!-- default   year_cutoff   = 2023        what year to review if doing large scale lookback //-->
          <input class="trdPink" title="test Stock Symbol" type="text" maxlength="5" size="1" style="width: 80px;" id="testSymbol" value="" tabindex="0" autofocus="autofocus">
          <br>
