@@ -31,11 +31,9 @@
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; }
-      .dropbtnPod {background-color: #ff80ed; color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; border: none; }
       .dropbtnFed {background-color: darkorange; color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; border: none; }
       .dropbtnTOO {background-color: gray; color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; border: none; }
-      .dropbtnLNK {background-color: deepskyblue; color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; border: none; }
-      .dropbtnSTF {background-color: indigo; color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; border: none; }
+      .dropbtnLNK {background-color: indigo; color: white; font-family: Ubuntu; text-decoration:none; font-size: 36px; border: none; }
       .dropdown {position: relative; display: inline-block; }
       .dropdown-content {display: none; position: absolute; background-color: #2C001E; min-width: 160px; z-index: 1; }
       .dropdown-content a {color: white; padding: 12px 16px; text-decoration: none; display: block; }
@@ -51,12 +49,12 @@
    ticker[i++] = 'pmm';   rHigh_PMM   = 5.10;   //  9/12/2022 and $5.10 was absolute LOW
    ticker[i++] = 'fulc';  rHigh_FULC  = 33;     //  9/21/2021
    ticker[i++] = 'upst';  rHigh_UPST  = 401;    // 10/20/2021
-   ticker[i++] = 'SPY';   rHigh_SPY   = 480;    // 07/04
-   ticker[i++] = 'dia';   rHigh_DIA   = 322;    // 07/04
-   ticker[i++] = '$tran'; rHigh_$TRAN = 14700;  // 07/04
-   ticker[i++] = 'vix';   rHigh_VIX   = 19.50;  // 07/04
+   ticker[i++] = 'SPY';   rHigh_SPY   = 480;    // 08/24
+   ticker[i++] = 'dia';   rHigh_DIA   = 370;    // 08/24
+   ticker[i++] = '$tran'; rHigh_$TRAN = 14700;  // 08/24
+   ticker[i++] = 'vix';   rHigh_VIX   = 19.50;  // 08/24
    //   W a t c h l i s t   S t a r t s   H e r e
-   ticker[i++] = 'LTH';   rHigh_LTH   =  22;    // 07/04
+   ticker[i++] = 'LTH';   rHigh_LTH   =  22;    // 08/24
    //   E n d   o f   S y m b o l s
    //
    //   U S E R   S E T T I N G S   F O R   A N A L Y S I S
@@ -2356,7 +2354,7 @@
         </div>
       </td>
       <td align="center" bgcolor="indigo" class="td"><div class="dropdown">
-         <button class="dropbtnSTF">Links</button>
+         <button class="dropbtnLNK">Links</button>
          <div class="dropdown-content">
             <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost
             <a class="trd" href="https://app.usmobile.com/" target="_blank">US Mobile
@@ -2411,7 +2409,7 @@
          </div>
       </td>
       <td align="center" bgcolor="#0EAC00" class="td"><a class="trd" href="https://digital.fidelity.com/prgw/digital/login/full-page" target="_blank">Fidelity</a></td>
-      <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="https://keep.google.com/#home" target="_blank">ToDo</a></td>
+      <td align="center" bgcolor="dimgray" class="td"><a class="trd" href="https://keep.google.com/#NOTE/11R--TSQ12nuv3BoKByMi6gJVuAybvKBCLo0puF8GxkVpaCpCzbPPZY_EMpKkrsM" target="_blank">ToDo</a></td>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.homedepot.com/l/Madison-Heights/MI/Madison-Heights/48071/2731" target="_blank">HD</a></td>
    </tr>
    <tr>
@@ -2623,6 +2621,7 @@ iface lo inet loopback
 # -----------------     WIFI
 allow-hotplug wlan0
 iface wlan0 inet dhcp
+dns-nameservers 8.8.8.8 8.8.4.4
 wpa-ssid "DoYouWantAntz"
 wpa-psk "BecauseThatsH0wY0uGetAntz"
 #  wpa-ssid "SpectrumSetup-58"
@@ -2642,6 +2641,14 @@ iface eth0 inet dhcp
 # sudo apt purge netplan.io
 # sudo ip link set wlan0 down
 # ------------------------------------------------
+cat /etc/resolv.conf
+sudo nano /etc/resolv.conf, add:
+# ------------------------------------------------
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+# ------------------------------------------------
+sudo chattr +i /etc/resolv.conf
+Test with   https://www.dnsleaktest.com
 
 
 A L S A S O U N D :
