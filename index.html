@@ -25,7 +25,7 @@
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 586px; height: 430px; }
       img.map { width: 1170px; height: 600px; float: left; }
-      iframe.ticker { width: 1170px; height: 220px; }                                           /* these values are adjusted in prep_HTML function */
+      iframe.ticker { width: 1170px; height: 210px; }                                           /* these values are adjusted in prep_HTML function */
       iframe.forecast { width:1170px; height: 600px; transform: scale(1.0); float: center; }    /*                                                 */
       table.selector { width: 1170px; }                                                         /*                                                 */
       button.trd {color: black; }
@@ -35,7 +35,7 @@
       .dropbtnTOO {background-color: gray; color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; border: none; }
       .dropbtnLNK {background-color: indigo; color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; border: none; }
       .dropdown {position: relative; display: inline-block; }
-      .dropdown-content {display: none; position: absolute; background-color: #2C001E; min-width: 160px; z-index: 1; }
+      .dropdown-content {display: none; position: absolute; background-color: #2C001E; min-width: 360px; z-index: 1; }
       .dropdown-content a {color: white; padding: 12px 16px; text-decoration: none; display: block; }
       .dropdown-content a:hover {background-color: red; color: white; }
       .dropdown:hover .dropdown-content {display: block; }
@@ -2212,7 +2212,7 @@
          // Increase height of Ticker and Weather Forecast iframes for mobile devices
          // Code based on https://javascript.plainenglish.io/how-to-use-javascript-to-update-css-variables-135d17b5577c
          const tickerElement = document.querySelector('.ticker');
-         tickerElement.style.setProperty('height', '260px');
+         tickerElement.style.setProperty('height', '240px');
          const forecastElement = document.querySelector('.forecast');
 // FIXME         forecastElement.style.setProperty('height', '625px');
          forecastElement.style.setProperty('transform', 'scale(1.1)');
@@ -2356,8 +2356,8 @@
       <td align="center" bgcolor="indigo" class="td"><div class="dropdown">
          <button class="dropbtnLNK">Links</button>
          <div class="dropdown-content">
-            <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost
-            <a class="trd" href="https://app.usmobile.com/" target="_blank">US Mobile
+            <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost</a>
+            <a class="trd" href="https://app.usmobile.com/" target="_blank">US Mobile</a>
             <a class="trd" href="https://outage.dteenergy.com/" target="_blank">Outage</a>
             <a class="trd" href="https://www.consumersenergy.com/login" target="_blank">Consumers</a>
             <a class="trd" href="https://newlook.dteenergy.com/wps/wcm/connect/dte-web/login" target="_blank">DTE</a>
@@ -2380,7 +2380,6 @@
             <a class="trd" id="GoBoom" href="https://maps.app.goo.gl/72dB3Jw9PwGvXixT9" target="_blank" onclick="window.open('https://michigangaycamping.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/ionia_united-states_4997191?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: Boomerang</a>
             <a class="trd" id="GoRose" href="https://maps.app.goo.gl/5RNgPiJMoZjEZrwo8" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light');">WV: Roseland</a>
             <hr class="indigo">
-            <a class="trd" href="https://www.gaymaletube.com/search/%22massage%22?pricing=free" target="_blank">GayMaleTube</a>
             <a class="trd" href="https://homo.xxx/" target="_blank">Homo.XXX</a>
             <a class="trd" href="https://mrgay.tube/video/10339045/hot-video-p11705/" target="_blank">MrGay</a>
             <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
@@ -2390,12 +2389,10 @@
             <a class="trd" href="https://imginn.com/heretohelppod/" target="_blank">insta</a>
             <hr class="red">
 <!-- FIXME
-            <a class="trd" href="https://www.zoetispetcare.com/rewards" target="_blank">Zoetis</a>
             <a class="trd" href="https://www.picuki.com/" target="_blank">insta</a>
             <a class="trd" href="https://www.royalsolutionsgroup.com/" target="_blank">RMI-mri</a>
             <a class="trd" href="https://osoc.com/" target="_blank">OrthopedicSp</a>
             <a class="trd" href="https://my.patientfusion.com/portal/overview/" target="_blank">PatientPortal</a>
-            <a class="trd" href="https://www.google.com/maps/place/Complete+Spine+and+Joint+Center/@42.4827314,-83.1243783,17z/data=!4m16!1m9!3m8!1s0x8824cf6fcada46ab:0x35b6b0e653c866e2!2sComplete+Spine+and+Joint+Center!8m2!3d42.4827314!4d-83.1243783!9m1!1b1!16s%2Fg%2F1tj2cmff!3m5!1s0x8824cf6fcada46ab:0x35b6b0e653c866e2!8m2!3d42.4827314!4d-83.1243783!16s%2Fg%2F1tj2cmff?entry=ttu" target="_blank">CompleteSpine</a>
             <a class="trd" href="https://app.withings.com/8787361/timeline" target="_blank">Withings</a>
             <a class="trd" href="https://www.freewill.com/account" target="_blank">Will</a>
             <a class="trd" href="https://rentmasseur.com/gay-massage/detroit/" target="_blank">RentMasseur</a>
@@ -2405,6 +2402,7 @@
             <a class="trd" href="https://takeout.google.com/manage?pli=1" target="_blank">Takeout</a>
             <a class="trd" href="https://chrome.google.com/sync?hl=en-US" target="_blank">Sync</a>
             <a class="trd" href="chrome://net-export" target="_blank">Netlog</a>
+            <a class="trd" href="https://www.gaymaletube.com/search/%22massage%22?pricing=free" target="_blank">GayMaleTube</a>
 //-->
          </div>
       </td>
@@ -2505,7 +2503,10 @@ sudo nano /etc/X11/xorg.conf.d/10-monitor.conf
 Section "Monitor"
         Identifier "HDMI-1"
         Option "DPMS" "false"
-        Option "Rotate" "left"
+        Modeline "1920x1080x60.0"  148.50  1920 2008 2052 2200  1080 1082 1087 1125 +hsync +vsync
+        Option "PreferredMode" "1920x1080x60.0"
+#        Modeline from file:///home/rugby/.local/share/xorg/Xorg.1.log
+#        Option "Rotate" "left"
 EndSection
 # ------------------------------------------------
 sudo nano /etc/default/grub
@@ -2577,21 +2578,18 @@ fi
 
 X I N I T R C :
 nano ~/.xinitrc
-# ------------------------------------------------
 #!/usr/bin/env bash
+# ------------------------------------------------
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
 xset s off -dpms
-#google-chrome --window-size="2160,3840" --window-position=0,0 /home/rugby/index.html
+# ------------------------------------------------
 (sleep 2 && alttab -w 1) &
 exec blackbox
-# ------------------------------------------------
 
 
 X R E S O U R C E S :
-nano ~/.Xresources
-# ------------------------------------------------
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
@@ -2605,13 +2603,14 @@ xterm*cursorBlink: true
 xterm*background: #1F2229
 xterm*foreground: white
 XTerm*alternateScroll: true
-# ------------------------------------------------
 
 
 N E T W O R K :
 per https://www.tecmint.com/switch-from-netplan-to-interfaces-ubuntu/
 sudo cat /etc/netplan/*.yaml
 sudo nano /etc/network/interfaces
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
 # ------------------------------------------------
 # interfaces(5) file used by ifup(8) and ifdown(8)
 # Include files from /etc/network/interfaces.d:
@@ -2621,9 +2620,10 @@ iface lo inet loopback
 # -----------------     WIFI
 allow-hotplug wlan0
 iface wlan0 inet dhcp
-dns-nameservers 8.8.8.8 8.8.4.4
 wpa-ssid "DoYouWantAntz"
 wpa-psk "BecauseThatsH0wY0uGetAntz"
+dns-nameservers 1.1.1.1 1.0.0.1
+#dns-nameservers 8.8.8.8 8.8.4.4
 #  wpa-ssid "SpectrumSetup-58"
 #  wpa-psk "woodenpant197"
 # -----------------     Hardwired network
@@ -2644,8 +2644,10 @@ iface eth0 inet dhcp
 cat /etc/resolv.conf
 sudo nano /etc/resolv.conf, add:
 # ------------------------------------------------
-nameserver 8.8.8.8
-nameserver 8.8.4.4
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+#nameserver 8.8.8.8
+#nameserver 8.8.4.4
 # ------------------------------------------------
 sudo chattr +i /etc/resolv.conf
 Test with   https://www.dnsleaktest.com
