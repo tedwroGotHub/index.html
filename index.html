@@ -1,7 +1,7 @@
 <!DOCTYPE HTML><HTML><HEAD>
    <TITLE>myChart</TITLE>
    <STYLE>
-      a.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; }
+      a.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; }       /* ensure drobbtn font size matches these values */
       a.trd:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px;}
       a.trd:hover{color: white; font-family: Ubuntu; text-decoration:underline; font-size: 30px;}
       a.clock:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
@@ -25,9 +25,9 @@
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 586px; height: 430px; }
       img.map { width: 1170px; height: 600px; float: left; }
-      iframe.ticker { width: 1170px; height: 220px; }                                           /* these values are adjusted in prep_HTML function */
-      iframe.forecast { width:975px; height: 600px; transform: scale(1.2); float: center; }    /*                                                 */
-      table.selector { width: 1170px; }                                                         /*                                                 */
+      iframe.ticker { width: 1170px; height: 220px; }                                        /* these values are adjusted in prep_HTML function           */
+      iframe.forecast { width:975px; height: 600px; transform: scale(1.2); float: center; }  /* make sure to match forecast (width/scale) to ticker width */
+      table.selector { width: 1170px; }                                                      /*                                                           */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
       dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; }
@@ -2413,7 +2413,7 @@
    <tr>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
       <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
-      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=RDPN" target="_blank">Tube</a></td>
+      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Tube</a></td>
       <td align="center" bgcolor="gray" class="td"><a class="trd" href="https://paulsautowash.com/" target="_blank">Car Wash</a></td>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
       <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
@@ -2483,7 +2483,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install blackbox alttab ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools firefox libavcodec60 apulse
+sudo apt install ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools firefox libavcodec60 apulse console-setup
 
 P U R G E :
 sudo apt purge snapd apparmor bluez netplan.io
@@ -2493,9 +2493,8 @@ sudo apt install udisks2 pinentry-curses parted dirmngr gnupg gnupg-utils gpg gp
 
 C O N F I G :
 sudo apt update; sudo apt upgrade; sudo apt autoremove;
-sudo mv .hosts /etc/hosts; sudo mv .nanorc /etc/nanorc
-chmod 744 .up2date.sh
 rm -r Desktop/ Documents/ Downloads/ Pictures/ Public/ Videos/ Templates/
+ln -s /dev/null ~/Downloads
 nano .config/user-dirs.dirs   to cleanup file Save as dialog
 sudo nano /etc/xdg/user-dirs.defaults  to prevent Firefox from recreating Downloads folder
 sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
@@ -2518,8 +2517,9 @@ sudo update-grub
 sudo nano /etc/initramfs-tools/initramfs.conf   revise from MOST to DEP
 sudo update-initramfs -u -k all
 sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
-sudo dpkg-reconfigure console-setup
-picked UTF-8, Guess optimal, TerminusBold,16x32
+sudo dpkg-reconfigure console-setup , pick UTF-8, Guess Optimal Character Set, TerminusBold, 16x32 (Framebuffer), showconsolefont   to see fonts
+sudo nano /lib/systemd/system/getty@.service
+insert "ExecStartPre=/bin/setupcon --current-tty" right before agetty line 39 to get good looking console fonts
 for easier to see console cursor: infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?48;0;32c/' | tic -
 sudo cp /usr/share/xsessions/blackbox.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
@@ -2548,10 +2548,14 @@ debconf-show debconf
 sudo nano /etc/fstab    delete swap file line
 sudo swapoff -a
 sudo rm /swap.img 
-sudo nano /etc/systemd/logind.conf  reduce TTYs from 6 to 2 and uncomment 2 lines
+sudo nano /etc/systemd/logind.conf  reduce TTYs from 6 to 3 and uncomment 2 lines
+sudo nano /etc/systemd/system.conf
+DefaultTimeoutStartSec=6s
+DefaultTimeoutStopSec=6s
 sudo mkdir /media/usb
 chmod 644 ~/Music/*.mp3
 nano .bashrc : remove \u@\h from line 62
+nano .bash_logout : add if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
 
 
 A U T O L O G I N :
@@ -2584,9 +2588,11 @@ nano ~/.xinitrc
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
 xset s off -dpms
+infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?48;0;32c/' | tic -
 # ------------------------------------------------
-(sleep 2 && alttab -w 1) &
-exec blackbox
+#xterm
+if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
+exec apulse firefox
 
 
 X R E S O U R C E S :
@@ -2716,6 +2722,7 @@ Pin-Priority: 1000
 cp .mozilla/firefox/3991bmm8.default-release/prefs.js .mozilla/firefox/3991bmm8.default-release/user.js 
 Firefox for Android settings: chrome://geckoview/content/config.xhtml
 dom.disable_open_during_load  set to FALSE to allow javascript window.open's to work
+general.useragent.override    set to Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0
 
 
 B A S H   H I S T O R Y :
@@ -2723,10 +2730,10 @@ B A S H   H I S T O R Y :
  sudo umount /media/usb/
  l -la
  alsamixer 
- sudo nano /etc/hosts
+ sudo nano /etc/hosts; clear
  ~/.up2date.sh
  history
- nano ~/.bash_history
+ nano ~/.bash_history; clear
 #------------------------------------------------------------------------
  unzip -d /tmp/ -j .Stuff.zip '*ata*'                    # EDIT
  zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip   # UPDATE1
@@ -2734,8 +2741,10 @@ B A S H   H I S T O R Y :
  unzip '.Stuff.zip' -d /tmp/                             # UNZIP ARCHIVE
  ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
  grep -Rnw '/home/rugby' -e 'string2search'
- nano .mozilla/firefox/3991bmm8.default-release/user.js 
+ nano .mozilla/firefox/3991bmm8.default-release/user.js; clear
  apt-cache depends --important gpodder
+ nano index.html; clear
+ DISPLAY=:0 xterm -e alsamixer &
 #------------------------------------------------------------------------
 
 
