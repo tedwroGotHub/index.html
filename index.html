@@ -1,9 +1,9 @@
 <!DOCTYPE HTML><HTML><HEAD>
    <TITLE>myChart</TITLE>
    <STYLE>
-      a.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; }       /* ensure drobbtn font size matches these values */
-      a.trd:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px;}
-      a.trd:hover{color: white; font-family: Ubuntu; text-decoration:underline; font-size: 30px;}
+      a.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }       /* ensure drobbtn font size matches these values */
+      a.trd:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px;}
+      a.trd:hover{color: white; font-family: Ubuntu; text-decoration:underline; font-size: 28px;}
       a.clock:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
       a.clock:visited{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
       a.clock:hover{color: white; font-family: Ubuntu; text-decoration:none; font-size: 55px;}
@@ -20,7 +20,7 @@
       input.trdRed   {color: red; font-variant: small-caps; font-family: Ubuntu; font-size: 16px; border: 2px solid orangered; background-color: #121212; }
       input.trdPurple{color: #AA33FF; font-variant: small-caps; font-family: Ubuntu; font-size: 16px; border: 2px solid #AA33FF; background-color: #121212; }
       input.trdPink  {color: MediumPurple; height: 16px; font-family: Ubuntu; font-size: 16px; background-color: #353535; }
-      input.search   {color: blue; height: 50px; font-family: Ubuntu; font-size: 30px; }
+      input.search   {color: blue; height: 50px; font-family: Ubuntu; font-size: 28px; }
       input.checkbox {width: 16px; height: 16px; }
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 586px; height: 430px; }
@@ -30,13 +30,13 @@
       table.selector { width: 1170px; }                                                      /*                                                           */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
-      dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; }
-      .dropbtnFed {background-color: darkorange; color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; border: none; }
-      .dropbtnTOO {background-color: gray; color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; border: none; }
-      .dropbtnLNK {background-color: indigo; color: white; font-family: Ubuntu; text-decoration:none; font-size: 30px; border: none; }
+      dropbtn.trd:link{color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; }
+      .dropbtnFed {background-color: darkorange; color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; border: none; }
+      .dropbtnTOO {background-color: gray; color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; border: none; }
+      .dropbtnLNK {background-color: indigo; color: white; font-family: Ubuntu; text-decoration:none; font-size: 28px; border: none; }
       .dropdown {position: relative; display: inline-block; }
       .dropdown-content {display: none; position: absolute; background-color: #2C001E; min-width: 360px; z-index: 1; }
-      .dropdown-content a {color: white; padding: 12px 16px; text-decoration: none; display: block; }
+      .dropdown-content a {color: white; padding: 8px 8px; text-decoration: none; display: block; }
       .dropdown-content a:hover {background-color: red; color: white; }
       .dropdown:hover .dropdown-content {display: block; }
    </STYLE></HEAD><BODY BGCOLOR="#2C001E" onload="prep_HTML()">
@@ -78,7 +78,6 @@
    var net_cumm_gain = new Array();
    var trend_dp = new Array(max_gain,800,700,600,500,400,300,250,200,150,100,50,0,-50,-100,-150,-200,-250,-300,-400,-500,-600,min_gain);
    var symbol = ''; var tr_count=1; var i; var incl_Charts = TRUE;
-   // Template for Charts https://bigcharts.marketwatch.com/advchart/frames/frames.asp?show=&insttype=Fund&symb=pmm&time=6&startdate=1%2F4%2F1999&enddate=11%2F20%2F2024&freq=1&compidx=aaaaa%3A0&comptemptext=&comp=none&ma=3&maval=50%2C200&uf=0&lf=1&lf2=0&lf3=0&type=4&style=320&size=3&x=59&y=9&timeFrameToggle=false&compareToToggle=false&indicatorsToggle=false&chartStyleToggle=false&state=11
    var base_url = 'https://api.wsj.net/api/kaavio/charts/big.chart?nosettings=1&symb=';
    var option_url = '&uf=0&type=4&style=320' ;
    var big_size_chart = '&size=4';
@@ -2214,7 +2213,6 @@
          const tickerElement = document.querySelector('.ticker');
          tickerElement.style.setProperty('height', '235px');
          const forecastElement = document.querySelector('.forecast');
-// FIXME         forecastElement.style.setProperty('height', '625px');
          forecastElement.style.setProperty('transform', 'scale(1.1)');
          const spyElement = document.querySelector('.spy');
 
@@ -2303,18 +2301,27 @@
       <td align="center" bgcolor="darkorange" class="td"><div class="dropdown">
         <button class="dropbtnFed">Feed</button>
         <div class="dropdown-content">
-          <a class="trd" href="#" onclick="window.open('https://str8upgayporn.com/'); window.open('https://www.curbsideclassic.com/'); window.open('https://www.thetruthaboutcars.com/'); window.open('https://gmauthority.com/blog/'); window.open('https://www.ghacks.net/'); window.open('https://www.omgubuntu.co.uk/'); window.open('https://www.dedoimedo.com/'); window.open('https://krebsonsecurity.com/'); window.open('https://www.bloomberg.com/'); ">Open ALL</a>
-          <hr class="indigo">
-          <a class="trd" href="https://str8upgayporn.com/" target="_blank">str8upgayporn</a>
-          <a class="trd" href="https://www.curbsideclassic.com/" target="_blank">CurbsideClassics</a>
-          <a class="trd" href="https://www.thetruthaboutcars.com/" target="_blank">TTAC</a>
-          <a class="trd" href="https://gmauthority.com/blog/" target="_blank">GM Authority</a>
-          <a class="trd" href="https://www.ghacks.net/" target="_blank">gHacks</a>
-          <a class="trd" href="https://www.omgubuntu.co.uk/" target="_blank">omgUbuntu</a>
-          <a class="trd" href="https://www.dedoimedo.com/" target="_blank">Dedoimedo</a>
-          <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
-          <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
-          <hr class="orange">
+            <a class="trd" href="#" onclick="window.open('https://str8upgayporn.com/'); window.open('https://www.curbsideclassic.com/'); window.open('https://www.thetruthaboutcars.com/'); window.open('https://gmauthority.com/blog/'); window.open('https://www.ghacks.net/'); window.open('https://www.omgubuntu.co.uk/'); window.open('https://www.dedoimedo.com/'); window.open('https://krebsonsecurity.com/'); window.open('https://www.bloomberg.com/'); ">Open ALL</a>
+            <hr class="green">
+            <a class="trd" href="https://str8upgayporn.com/" target="_blank">str8upgayporn</a>
+            <a class="trd" href="https://www.curbsideclassic.com/" target="_blank">CurbsideClassics</a>
+            <a class="trd" href="https://www.thetruthaboutcars.com/" target="_blank">TTAC</a>
+            <a class="trd" href="https://gmauthority.com/blog/" target="_blank">GM Authority</a>
+            <a class="trd" href="https://www.ghacks.net/" target="_blank">gHacks</a>
+            <a class="trd" href="https://www.omgubuntu.co.uk/" target="_blank">omgUbuntu</a>
+            <a class="trd" href="https://www.dedoimedo.com/" target="_blank">Dedoimedo</a>
+            <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
+            <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
+            <hr class="orange">
+            <a class="trd" href="https://homo.xxx/" target="_blank">Homo.XXX</a>
+            <a class="trd" href="https://mrgay.tube/video/10049341/dante-colle-igor-romani-and-jack-kross-double-penetration-of-thyle/" target="_blank">MrGay</a>
+            <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
+            <a class="trd" href="https://www.boyfriendtv.com/videos/1020384/benjamin-dunn-johny-cruz-and-sam-williams/" target="_blank">JohnnyCruz</a>
+            <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
+            <hr class="indigo">
+            <a class="trd" id="GoBoom" href="https://maps.app.goo.gl/72dB3Jw9PwGvXixT9" target="_blank" onclick="window.open('https://michigangaycamping.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/ionia_united-states_4997191?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: Boomerang</a>
+            <a class="trd" id="GoRose" href="https://maps.app.goo.gl/MnZhBd876o2VFaqc8" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light');">WV: Roseland</a>
+            <hr class="red">
         </div>
       </td>
       <td align="center" bgcolor="#ff80ed" class="td"><a class="trd" href="https://docs.google.com/spreadsheets/d/1l50V8v-ZrDPEG4xfPRX2WLEkT6PdjdHdJ-p-dthCpAQ/" target="_blank">Journal</a></td>
@@ -2329,28 +2336,21 @@
             <form action="https://www.google.com/search" target="_blank" method="GET"><input class="search" type="search" maxlength="100" name="q" size="25" placeholder="Search"></form>
             <a class="trd" href="https://docs.google.com/spreadsheets/d/1wED37u6VX2i3yn2Kk8G7QnQagNTkTePY1iDffyKZh90/edit?gid=1518470510#gid=1518470510" target="_blank">Installed</a>
             <a class="trd" href="https://docs.google.com/document/d/1jWrqg2uij8G8A8ncUbzDt2oPTF26opbYtPS5QCf-Yws/edit" target="_blank">Pwds</a>
-            <a class="trd" href="file:///home/rugby/" target="_blank">root</a>
             <a class="trd" href="file:///var/lib/dpkg/status" target="_blank">dpkg</a>
             <hr class="green">
             <a class="trd" href="https://www.nutritionix.com" target="_blank">Nutrition</a>
             <a class="trd" href="https://swordsolutions.com/inspections/" target="_blank">Restaurants</a>
-            <hr class="red">
             <a class="trd" href="https://cnvmp3.com/" target="_blank">convertMP3</a>
-            <a class="trd" href="https://music.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Songs2Rip</a>
             <hr class="indigo">
             <a class="trd" href="https://github.com/tedwroGotHub/index.html/upload/main" target="_blank">GitHub</a>
             <a class="trd" href="https://script.google.com/home/projects/1DpFjQ4HIeSsbDNUm8wEmCpg4RFQjPo1E7JESWL7on6mzR__aj3h62WNI/edit" target="_blank">Stock Watcher</a>
             <a class="trd" href="https://tradingeconomics.com/indu:ind" target="_blank">T/E</a>
             <a class="trd" href="https://finviz.com/map.ashx?t=sec_all&st=w13" target="_blank">Heat Map</a>
             <a class="trd" href="https://tradingeconomics.com/united-states/total-vehicle-sales" target="_blank">Sales</a>
-            <hr class="red">
             <a class="trd" href="https://www.att.com/support/internet/home" target="_blank">Smart Home</a>
             <a class="trd" href="http://192.168.1.254/" target="_blank">Router</a>
-            <a class="trd" href="https://myaccount.google.com/device-activity?continue%3Dhttps%3A%2F%2Fmyaccount.google.com%2Fsecurity-checkup%2F2%3Fcontinue%253Dhttps%25253A%25252F%25252Fmyaccount.google.com%25252F%25253Frapt%25253DAEjHL4PRJR71PzNEy4QWWP7h0j9X2fvrY2N7Z5cEO_dExRxQHrz7GGHtq_L9HA9Ypwej-oWHfj88OPUwP_hSgc4Gaw-0yOlsqW146bBktPUB5QJZNT0R_Ao%26continue%253Dhttps%3A%2F%2Fmyaccount.google.com%2F%3Frapt%25253DAEjHL4PRJR71PzNEy4QWWP7h0j9X2fvrY2N7Z5cEO_dExRxQHrz7GGHtq_L9HA9Ypwej-oWHfj88OPUwP_hSgc4Gaw-0yOlsqW146bBktPUB5QJZNT0R_Ao" target="_blank">Secure</a>
-            <a class="trd" href="https://passwords.google.com/search?ep=1&hl=en&rapt=AEjHL4OdTXbOZwYd89trEnZWudixQnE_ap_yJgzMQPqjLm77s3OiSLkopXsCDY46f2rj0Wn5fvk8WOY0H7jva2Wu6we0AzJ2fdsou0CbJ-i25ZvDmHVhsd8&standalone=false" target="_blank">GPM</a>
-            <a class="trd" href="about:networking#dns" target="_blank">DNS</a>
-            <a class="trd" href="about:config" target="_blank">Config</a>
-            <hr class="green">
+            <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
+            <hr class="red">
         </div>
       </td>
       <td align="center" bgcolor="indigo" class="td"><div class="dropdown">
@@ -2358,34 +2358,23 @@
          <div class="dropdown-content">
             <a class="trd" href="https://my.boostmobile.com" target="_blank">Boost</a>
             <a class="trd" href="https://app.usmobile.com/" target="_blank">US Mobile</a>
-            <a class="trd" href="https://outage.dteenergy.com/" target="_blank">Outage</a>
             <a class="trd" href="https://www.consumersenergy.com/login" target="_blank">Consumers</a>
             <a class="trd" href="https://www.dteenergy.com/" target="_blank">DTE</a>
             <a class="trd" href="https://arborpointe.myvetstoreonline.pharmacy/" target="_blank">EddieRx</a>
-            <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
             <hr class="green">
             <a class="trd" id="GoWork" href="https://maps.app.goo.gl/R8PSFvQz8RCMhNes8" target="_blank">LTF Troy</a>
-            <a class="trd" id="GoHome" href="https://maps.app.goo.gl/ABFqoqUMeatgN8Uy9" id="GoHome" target="_blank">Home</a>
+            <a class="trd" id="GoHome" href="https://www.google.com/maps/@42.4925525,-83.147958,14z/" id="GoHome" target="_blank">Home</a>
             <a class="trd" href="https://www.gasbuddy.com/gaspricemap?lat=42.508817170120345&lng=-83.16075727593365&z=13" target="_blank">GasBuddy</a>
             <a class="trd" href="https://www.kroger.com/" target="_blank">Kroger</a>
             <a class="trd" href="https://accounts.craigslist.org/login?rp=%2Flogin%2Fhome&rt=L" target="_blank">Craigslist</a>
-            <hr class="red">
+            <hr class="indigo">
             <a class="trd" href="https://8209-2.portal.athenahealth.com/" target="_blank">HenryFordHealth</a>
             <a class="trd" href="https://completespinejointcenter.setmore.com/book?step=time-slot&products=s7ab51526494985133&type=service&staff=r46221526575463066&staffSelected=true" target="_blank">CompleteSpine</a>
             <a class="trd" href="https://patient.labcorp.com/landing" target="_blank">Labcorp</a>
             <a class="trd" href="https://myhealth.bankofamerica.com/Login.aspx?" target="_blank">myHSA</a>
             <a class="trd" href="https://www.memberportal.com/mp/delta/" target="_blank">DeltaDental</a>
             <a class="trd" href="https://mychart.spectrumhealth.org/" target="_blank">CornHole Health</a>
-            <hr class="green">
-            <a class="trd" id="GoBoom" href="https://maps.app.goo.gl/72dB3Jw9PwGvXixT9" target="_blank" onclick="window.open('https://michigangaycamping.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/ionia_united-states_4997191?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: Boomerang</a>
-            <a class="trd" id="GoRose" href="https://maps.app.goo.gl/5RNgPiJMoZjEZrwo8" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light');">WV: Roseland</a>
-            <hr class="indigo">
-            <a class="trd" href="https://homo.xxx/" target="_blank">Homo.XXX</a>
-            <a class="trd" href="https://mrgay.tube/video/10339045/hot-video-p11705/" target="_blank">MrGay</a>
-            <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
-            <a class="trd" href="https://www.boyfriendtv.com/videos/1020384/benjamin-dunn-johny-cruz-and-sam-williams/" target="_blank">JohnnyCruz</a>
-            <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
-            <hr class="green">
+            <hr class="orange">
             <a class="trd" href="https://imginn.com/heretohelppod/" target="_blank">insta</a>
             <hr class="red">
 <!-- FIXME
@@ -2397,12 +2386,11 @@
             <a class="trd" href="https://www.freewill.com/account" target="_blank">Will</a>
             <a class="trd" href="https://rentmasseur.com/gay-massage/detroit/" target="_blank">RentMasseur</a>
             <a class="trd" href="https://www.masseurfinder.com/massage/royal_oak/" target="_blank">MasseurFinder</a>
-            <a class="trd" href="https://www.vagaro.com/us04/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVCI+vu7btIWtDFTPUdZ5yZl95ABV+hPYfGxw4XFZwALY+3QnSASHZOE4q3Nya9wSBSmXsbQX+IRDdbi9SArI9h/pp3610OfXeJpXGStd5V891UEGtKJjHy0sujllxrCqrFmRXri6GGqnizc1qkzoS7fZg5c16iMob5Y94BjToCG5fHeCLym9xAXG6YMMLqj0wwnyE8oHxYIYHU9Y4Ti9Ts+YYYvcg/cYHheDevfeeB6VoedwlKtZ5Hs+a+U7XXOOtjSjhWC4b3RCmxbuf/+49khk9ZTOrUKNtt4Sf5oZH2n44rWrrmgHF4c3clytvVpIbB+VMmehmpK8stpLU2BmGdLooeLM5tP3lxD/L6uWk2sfB6yJiR1/D9dODXIVIGAo/w==" target="_blank">DPbw</a>
-            <a class="trd" id="GoCrek" href="https://maps.app.goo.gl/NSKDTvX9iLVYR5Yx8" target="_blank" onclick="window.open('https://creekridgecampground.com/'); window.open('https://creekridgecampground.com/wp-content/uploads/2024/01/updated-camp-map-COLOR-2024-2048x1586.jpg'); window.open('https://www.meteoblue.com/en/weather/widget/three/stockbridge_united-states_5011227?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: CreekRidge</a>
             <a class="trd" href="https://takeout.google.com/manage?pli=1" target="_blank">Takeout</a>
-            <a class="trd" href="https://chrome.google.com/sync?hl=en-US" target="_blank">Sync</a>
             <a class="trd" href="chrome://net-export" target="_blank">Netlog</a>
             <a class="trd" href="https://www.gaymaletube.com/search/%22massage%22?pricing=free" target="_blank">GayMaleTube</a>
+            <a class="trd" href="about:networking#dns" target="_blank">DNS</a>
+            <a class="trd" href="about:config" target="_blank">Config</a>
 //-->
          </div>
       </td>
@@ -2413,7 +2401,7 @@
    <tr>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://drive.google.com/drive/my-drive" target="_blank">Drive</a></td>
       <td align="center" bgcolor="#77216F" class="td"><a class="trd" href="https://secure.ally.com" target="_blank">Ally</a></td>
-      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://music.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Tube</a></td>
+      <td align="center" bgcolor="#FF0033" class="td"><a class="trd" href="https://www.youtube.com/playlist?list=WL" target="_blank">You</a><a class="trd" href="https://www.youtube.com/playlist?list=PLKNY4gQJCGSR78s8oGc7JomqtCdQf9IuD" target="_blank">Tube</a></td>
       <td align="center" bgcolor="gray" class="td"><a class="trd" href="https://paulsautowash.com/" target="_blank">Car Wash</a></td>
       <td align="center" bgcolor="darkorange" class="td"><a class="trd" href="https://www.amazon.com" target="_blank">Amazon</a></td>
       <td align="center" bgcolor="mediumblue" class="td"><a class="trd" href="https://www.lowes.com/store/MI-Madison-Heights/2312" target="_blank">Lowes</a></td>
@@ -2455,7 +2443,7 @@ https://myaccount.google.com/blocklist
 https://myaccount.google.com/contacts?pli=1
 https://myaccount.google.com/u/0/permissions?pli=1   for disabling Google Sign-in to 3rd party sites
 https://one.google.com/storage/management
-https://haveibeenpwned
+https://bsaonline.com
 
 https://hummingbirdthyme.com/goat-cheese-cherry-ice-cream-no-churn/
 https://aoc.gov/explore-capitol-campus/buildings-grounds/capitol-building/history
@@ -2470,6 +2458,7 @@ https://android.com/find
 
 https://www.lowes.com/pd/Sparrow-Peak-Acacia-5-ft-x-30-in-Espresso/5001792763
 https://bsaonline.com/SiteSearch/SiteSearchDetails?SearchFocus=All+Records&SearchCategory=Address&SearchText=615+s+campbell&uid=1652&PageIndex=1&ReferenceKey=72-25-23-156-004&ReferenceType=0&SortBy=&SearchOrigin=0&RecordKeyDisplayString=72-25-23-156-004&RecordKey=72-25-23-156-004&RecordKeyType=0
+ffmpeg -i Messages_2025_rcs.mp4 -vf "scale=-1:480" Messages_2025_rcs_resized.mp4 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XUBUNTU 24.04.1 INSTALL
@@ -2554,7 +2543,11 @@ DefaultTimeoutStartSec=6s
 DefaultTimeoutStopSec=6s
 sudo mkdir /media/usb
 chmod 644 ~/Music/*.mp3
-nano .bashrc : remove \u@\h from line 62
+nano .bashrc:
+   - remove \u@\h from line 62
+   - # FIX THE BASH PROMPT AND HISTORY SO PROMPT IS ALWAYS VISIBLE AND HISTORY IS UP-TO-DATE, APPEND TO END OF BASHRC
+   - setterm --cursor on
+   - export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 nano .bash_logout : add if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
 
 
@@ -2588,10 +2581,10 @@ nano ~/.xinitrc
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
 xset s off -dpms
-infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?48;0;32c/' | tic -
 # ------------------------------------------------
 #xterm
 if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
+xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Profile Enabled" 0 0 0     # xinput list to ID -and- xinput list-props to set
 exec apulse firefox
 
 
@@ -2733,7 +2726,7 @@ B A S H   H I S T O R Y :
  sudo nano /etc/hosts; clear
  ~/.up2date.sh
  history
- nano ~/.bash_history; clear
+ nano /home/rugby/.bash_history; clear
 #------------------------------------------------------------------------
  unzip -d /tmp/ -j .Stuff.zip '*ata*'                    # EDIT
  zip -ej .Stuff.zip /tmp/Data.txt; unzip -l .Stuff.zip   # UPDATE1
@@ -2743,8 +2736,8 @@ B A S H   H I S T O R Y :
  grep -Rnw '/home/rugby' -e 'string2search'
  nano .mozilla/firefox/3991bmm8.default-release/user.js; clear
  apt-cache depends --important gpodder
- nano index.html; clear
- DISPLAY=:0 xterm -e alsamixer &
+ nano /home/rugby/index.html; clear
+ DISPLAY=:0 xterm &
 #------------------------------------------------------------------------
 
 
