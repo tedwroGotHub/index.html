@@ -2350,6 +2350,9 @@
             <a class="trd" href="https://www.att.com/support/internet/home" target="_blank">Smart Home</a>
             <a class="trd" href="http://192.168.1.254/" target="_blank">Router</a>
             <a class="trd" href="https://findbyplate.com/US/MI/EPB5296/" target="_blank">FindByPlate</a>
+            <a class="trd" href="about:config" target="_blank">About</a>
+            <a class="trd" href="about:networking#dns" target="_blank">DNS</a>
+            <a class="trd" href="data:text/html,<body contenteditable style='font-family: monospace; white-space: pre-wrap;'></body>" target="_blank">Editor</a>
             <hr class="red">
         </div>
       </td>
@@ -2472,7 +2475,7 @@ XUBUNTU 24.04.1 INSTALL
 
 
 I N S T A L L :
-sudo apt install ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools firefox libavcodec60 apulse console-setup
+sudo apt install ifupdown fonts-ubuntu fonts-dejavu-mono bash-completion libid3-tools firefox libavcodec60 apulse console-setup xsel
 
 P U R G E :
 sudo apt purge snapd apparmor bluez netplan.io
@@ -2486,25 +2489,12 @@ sudo apt update; sudo apt upgrade; sudo apt autoremove;
 rm -r Desktop/ Documents/ Downloads/ Pictures/ Public/ Videos/ Templates/
 nano .config/user-dirs.dirs   to cleanup file Save as dialog
 sudo nano /etc/xdg/user-dirs.defaults  to prevent Firefox from recreating Downloads folder
-sudo nano /etc/X11/xorg.conf.d/10-monitor.conf 
-# ------------------------------------------------
-Section "Monitor"
-        Identifier "HDMI-1"
-        Option "DPMS" "false"
-#        Modeline "1920x1080x60.0"  148.50  1920 2008 2052 2200  1080 1082 1087 1125 +hsync +vsync
-#        Option "PreferredMode" "1920x1080x60.0"
-#        Modeline from file:///home/rugby/.local/share/xorg/Xorg.1.log
-        Option "Rotate" "left"
-EndSection
-# ------------------------------------------------
-sudo nano /etc/default/grub
+sudo nano /etc/default/grub; sudo update-grub
 # ------------------------------------------------
 GRUB_CMDLINE_LINUX_DEFAULT="quiet fbcon=rotate:3"
 GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1"
 # ------------------------------------------------
-sudo update-grub
-sudo nano /etc/initramfs-tools/initramfs.conf   revise from MOST to DEP
-sudo update-initramfs -u -k all
+sudo nano /etc/initramfs-tools/initramfs.conf   # revise from MOST to DEP; sudo update-initramfs -u -k all
 sudo nano /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources   comment out to nuke Ubuntu Pro
 sudo dpkg-reconfigure console-setup , pick UTF-8, Guess Optimal Character Set, TerminusBold, 16x32 (Framebuffer), showconsolefont   to see fonts
 sudo nano /lib/systemd/system/getty@.service
@@ -2544,11 +2534,20 @@ DefaultTimeoutStartSec=6s
 DefaultTimeoutStopSec=6s
 sudo mkdir /media/usb
 chmod 644 ~/Music/*.mp3
-nano .bashrc:
-   - remove \u@\h from line 62
-   - # FIX THE BASH PROMPT AND HISTORY SO PROMPT IS ALWAYS VISIBLE AND HISTORY IS UP-TO-DATE, APPEND TO END OF BASHRC
-   - setterm --cursor on
-   - export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+nano .bashrc; source ~/.bashrc
+   # revise line 62 to for simpler prompt:
+   PS1='${debian_chroot:+($debian_chroot)}\w\$ '
+   # FIX THE BASH PROMPT AND HISTORY SO PROMPT IS ALWAYS VISIBLE AND HISTORY IS UP-TO-DATE, APPEND TO END OF BASHRC
+   setterm --cursor on
+   export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+   # Use nano as the man pager with readable formatting
+   man() {
+       if [[ $# -eq 1 ]]; then
+           command man "$1" | col -b | nano -v -
+       else
+           command man "$@"
+       fi
+   }
 nano .bash_logout : add if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
 
 
@@ -2575,18 +2574,19 @@ fi
 
 
 X I N I T R C :
-nano ~/.xinitrc
 #!/usr/bin/env bash
 # ------------------------------------------------
 #chmod 744 .xinitrc; ln -s ~/.xinitrc ~/.xsession
 xrdb -merge ~/.Xresources
 amixer sset 'PCM' 85%
 xset s off -dpms
+if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
+xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Profile Enabled" 0 0 0 # xinput list to ID, xinput list-props to set
+xrandr --output HDMI-1 --rotate left &
 # ------------------------------------------------
-#xterm
-#if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
-xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Profile Enabled" 0 0 0     # xinput list to ID -and- xinput list-props to set
+#exec xterm -geometry 120x109+0+0
 exec apulse firefox -height 2020 -width 1136
+# ------------------------------------------------
 
 
 X R E S O U R C E S :
@@ -2741,7 +2741,7 @@ B A S H   H I S T O R Y :
  unzip '.Stuff.zip' -d /tmp/                             # UNZIP ARCHIVE
  ls *.mp3 | while read i; do cp "$i" /media/usb/; done; ls -ia /media/usb
  grep -Rnw '/home/rugby' -e 'string2search'
- nano .mozilla/firefox/3991bmm8.default-release/user.js; clear
+ nano .mozilla/firefox/TedBuntu/user.js; clear
  apt-cache depends --important gpodder
  nano /home/rugby/index.html; clear
  DISPLAY=:0 xterm &
