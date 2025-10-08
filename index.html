@@ -2317,7 +2317,7 @@
             <a class="trd" href="https://mrgay.tube/video/10049341/dante-colle-igor-romani-and-jack-kross-double-penetration-of-thyle/" target="_blank">MrGay</a>
             <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
             <a class="trd" href="https://www.boyfriendtv.com/videos/1020384/benjamin-dunn-johny-cruz-and-sam-williams/" target="_blank">JohnnyCruz</a>
-            <a class="trd" href="https://gaygo.tv/view/998490/" target="_blank">GayGo</a>
+            <a class="trd" href="https://gaygo.tv/view/1001271/" target="_blank">GayGo</a><!-- https://gaygo.tv/view/998490/ //-->
             <hr class="indigo">
             <a class="trd" id="GoBoom" href="https://maps.app.goo.gl/72dB3Jw9PwGvXixT9" target="_blank" onclick="window.open('https://michigangaycamping.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/ionia_united-states_4997191?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light'); ">MI: Boomerang</a>
             <a class="trd" id="GoRose" href="https://maps.app.goo.gl/MnZhBd876o2VFaqc8" target="_blank" onclick="window.open('https://roselandwv.com/'); window.open('https://www.meteoblue.com/en/weather/widget/three/proctor_united-states_4819104?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=light');">WV: Roseland</a>
@@ -2503,6 +2503,14 @@ for easier to see console cursor: infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?
 sudo cp /usr/share/xsessions/xubuntu.desktop /usr/share/xsessions/tedBuntu.desktop
 sudo nano /usr/share/xsessions/tedBuntu.desktop
 revise Exec line to   Exec=/etc/X11/Xsession
+sudo nano /etc/X11/xorg.conf.d/10-monitor.conf
+# ------------------------------------------------
+Section "Monitor"
+        Identifier "HDMI-1"
+        Option "DPMS" "false"
+        Option "Rotate" "left"
+EndSection
+# ------------------------------------------------
 sudo systemctl disable --now apt-daily{,-upgrade}.{timer,service}; sudo systemctl disable motd-news.timer; sudo systemctl disable accounts-daemon.service; sudo systemctl mask accounts-daemon.service; sudo systemctl disable udisks2.service; sudo systemctl disable remote-fs.target; sudo systemctl disable systemd-rfkill; sudo systemctl mask systemd-rfkill; sudo systemctl disable systemd-tmpfiles-clean.timer; sudo systemctl mask systemd-tmpfiles-clean.timer; sudo systemctl disable systemd-rfkill.socket; sudo systemctl mask systemd-rfkill.socket; 
 sudo chmod -x /etc/update-motd.d/*
 sudo systemctl unmask suspend.target sleep.target
@@ -2582,7 +2590,6 @@ amixer sset 'PCM' 85%
 xset s off -dpms
 if [ -d ~/Downloads/ ]; then rm -r /home/rugby/Downloads/; fi
 xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Profile Enabled" 0 0 0 # xinput list to ID, xinput list-props to set
-xrandr --output HDMI-1 --rotate left &
 # ------------------------------------------------
 #exec xterm -geometry 120x109+0+0
 exec apulse firefox -height 2020 -width 1136
@@ -2721,8 +2728,9 @@ Editor: data:text/html,<body contenteditable style="font-family: monospace; whit
 about:networking#dns
 about:config
 Firefox for Android settings: chrome://geckoview/content/config.xhtml
-dom.disable_open_during_load  set to FALSE to allow javascript window.open's to work
-general.useragent.override    set to Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0
+dom.disable_open_during_load        set to FALSE to allow javascript window.open's to work
+browser.display.use_document_fonts  set to 0
+general.useragent.override          set to Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0
 
 
 B A S H   H I S T O R Y :
