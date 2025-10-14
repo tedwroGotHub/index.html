@@ -34,9 +34,9 @@
       output.trd {color: white; text-decoration:none; }
       img.spy { width: 565px; height: 430px; }
       img.map { width: 1130px; height: 600px; float: left; }
-      iframe.ticker { width: 1130px; height: 220px; }                 /* these values are adjusted in prep_HTML function           */
-      iframe.forecast { width:940px; height: 600px; float: center; }  /* make sure to match forecast (width/scale) to ticker width */
-      table.selector { width: 1130px; }                               /*                                                           */
+      iframe.ticker { width: 1130px; height: 220px; }                                        /* these values are adjusted in prep_HTML function           */
+      iframe.forecast { width:940px; height: 600px; transform: scale(1.2); float: center; }  /* make sure to match forecast (width/scale) to ticker width */
+      table.selector { width: 1130px; }                                                      /*                                                           */
       button.trd {color: black; }
       ::-webkit-scrollbar {width: 0px; } ! hides scrollbar for Chrome, Firefox requires scrollbar-width: none;
    </STYLE></HEAD><BODY BGCOLOR="#2C001E" onload="prep_HTML()">
@@ -2213,7 +2213,7 @@
          const tickerElement = document.querySelector('.ticker');
          tickerElement.style.setProperty('height', '235px');
          const forecastElement = document.querySelector('.forecast');
-         forecastElement.style.setProperty('transform', 'scale(1.0)');
+         forecastElement.style.setProperty('transform', 'scale(1.1)');
          const spyElement = document.querySelector('.spy');
 
          // For a Mobile device, use default Navigation app on phone instead of Google Maps
@@ -2313,6 +2313,11 @@
             <a class="trd" href="https://krebsonsecurity.com/" target="_blank">Krebs</a>
             <a class="trd" href="https://www.bloomberg.com/" target="_blank">Bloomberg</a>
             <hr class="orange">
+            <a class="trd" href="https://www.npr.org/podcasts/510208/car-talk" target="_blank">Car Talk</a>
+            <a class="trd" href="https://podcasttomp3.com/podcasts/v2/827592" target="_blank">Stuff You Should Know</a>
+            <a class="trd" href="https://podcasttomp3.com/podcasts/v2/165409" target="_blank">Bill Burr</a>
+            <a class="trd" href="https://podcasttomp3.com/podcasts/v2/329446" target="_blank">Nicole Byer</a>
+            <hr class="red">
             <a class="trd" href="https://homo.xxx/" target="_blank">Homo.XXX</a>
             <a class="trd" href="https://mrgay.tube/video/10049341/dante-colle-igor-romani-and-jack-kross-double-penetration-of-thyle/" target="_blank">MrGay</a>
             <a class="trd" href="https://www.yeswegays.com/videos/1225709/hairy-teen-barebacks-his-doctor-hairydudetube-com/" target="_blank">YesWeGays</a>
